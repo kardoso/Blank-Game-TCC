@@ -120,7 +120,7 @@ public class Player : MonoBehaviour {
 		
 
         //if(hitForBow.collider != null){
-            if((Input.GetButtonDown("Attack") && canUseBow)){
+            if(((Input.GetButtonDown("Attack") || Input.GetButtonDown("X")) && canUseBow)){
 				if(allHits != null){
 					foreach (RaycastHit2D rh in allHits)
 					{
@@ -268,7 +268,7 @@ public class Player : MonoBehaviour {
 
 	void Jump()
     {
-        if(Input.GetButtonDown("Jump") && !wallSliding){
+        if((Input.GetButtonDown("Jump") || Input.GetButtonDown("A")) && !wallSliding){
             if(isGrounded){
                 rb.velocity = Vector2.up * jumpVelocity;
             }
@@ -278,7 +278,7 @@ public class Player : MonoBehaviour {
         if(rb.velocity.y < 0){
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
-        else if(rb.velocity.y > 0 && !Input.GetButton("Jump")){
+        else if(rb.velocity.y > 0 && (!Input.GetButton("Jump") && !Input.GetButton("A"))){
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
@@ -303,7 +303,7 @@ public class Player : MonoBehaviour {
         rb.velocity = new Vector2(rb.velocity.x, -10);
         wallSliding = true;
 
-        if(Input.GetButtonDown("Jump")){
+        if(Input.GetButtonDown("Jump") || Input.GetButtonDown("A")){
             if(wallCheckLeft){
                 rb.AddForce(new Vector2(5000, 2500) * jumpVelocity);
             }
