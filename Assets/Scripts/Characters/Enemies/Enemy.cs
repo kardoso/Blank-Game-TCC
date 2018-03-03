@@ -18,6 +18,7 @@ public abstract class Enemy : MonoBehaviour{
 	//Velocidade que o inimigo se moverá
 	protected float velocity;
 	public bool canDie;
+	protected bool isDead = false;
 
 	protected virtual void Update()
 	{
@@ -36,10 +37,7 @@ public abstract class Enemy : MonoBehaviour{
 	public abstract void MakeDamage();
 
 	public void Respawn(){
-		if(canDie){
-			EnableGameObject();
-			FindObjectOfType<Fade>().FadeGameObject(gameObject, true, 1);
-		}
+		EnableGameObject();
 	}
 
 	protected void FlipSprite(){
@@ -60,6 +58,15 @@ public abstract class Enemy : MonoBehaviour{
 
 	public void EnableGameObject(){
 		gameObject.SetActive(true);
+	}
+
+	void OnEnable()
+	{
+		if(isDead){
+			GetComponent<BoxCollider2D>().enabled = true;
+			GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+			isDead = false;
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D col)

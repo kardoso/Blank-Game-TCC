@@ -19,9 +19,7 @@ public class EnemyWalker : Enemy {
 	public LayerMask wallLayerMask;
 	public LayerMask floorLayerMask;
 	public GameObject checkWallL, checkWallR, checkFloorL, checkFloorR;
-
-	bool isDead = false;
-
+	
 	// Use this for initialization
 	void Start () {
 		canDie = true;
@@ -132,12 +130,5 @@ public class EnemyWalker : Enemy {
 		GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 		GetComponent<BoxCollider2D>().enabled = false;
 		anim.SetTrigger("Die");
-	}
-
-	void OnEnable()
-	{
-		GetComponent<BoxCollider2D>().enabled = true;
-		GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-		isDead = false;
 	}
 }
