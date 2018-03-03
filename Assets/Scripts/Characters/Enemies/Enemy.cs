@@ -45,4 +45,11 @@ public abstract class Enemy : MonoBehaviour{
 			GetComponent<SpriteRenderer>().flipX = true;
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if(col.gameObject.tag.Equals("Player")){
+			col.gameObject.GetComponent<Player>().MakeDamage();
+		}
+	}
 }

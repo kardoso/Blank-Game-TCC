@@ -47,6 +47,9 @@ public class Player : MonoBehaviour {
     public bool boxCheckRight;
     public bool boxCheckLeft;
 
+    //Position player to go when "dead"
+    public Vector3 posToGo;
+
 	// Use this for initialization
 	void Awake () {
         invertDirectionalControls = false;
@@ -56,34 +59,55 @@ public class Player : MonoBehaviour {
         anim = GetComponent<Animator>();
 	}
 
+    void Start(){
+        canMove = true;
+        //Faz a animação usar UnscaledTime, fazendo com que não dependa do Time.deltaTime
+        anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+        //"Salvar" a posição inicial do jogador na fase
+        FindObjectOfType<LevelManager>().SetPlayerInitialPos(transform.position);
+    }
+
 	// Update is called once per frame
 	void Update () {
-        if(invertDirectionalControls){
-            input_x = -Input.GetAxisRaw("Horizontal");
-            input_y = -Input.GetAxisRaw("Vertical");
-        }
-        else{
-            input_x = Input.GetAxisRaw("Horizontal");
-            input_y = Input.GetAxisRaw("Vertical");
-        }
-
-        isGrounded = Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Floor"))
-                    ||
-                    Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Arrow"))
-                    ||
-                    Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Box"))
-                    ;
-
-        Debug.DrawLine(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f));
-
-        anim.SetBool("isGrounded", isGrounded);
-        anim.SetBool("isSliding", wallSliding);
 
         if(canMove){
+            if(invertDirectionalControls){
+                input_x = -Input.GetAxisRaw("Horizontal");
+                input_y = -Input.GetAxisRaw("Vertical");
+            }
+            else{
+                input_x = Input.GetAxisRaw("Horizontal");
+                input_y = Input.GetAxisRaw("Vertical");
+            }
+
+            isGrounded = Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Floor"))
+                        ||
+                        Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Arrow"))
+                        ||
+                        Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Box"))
+                        ;
+
+            Debug.DrawLine(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f));
+
+            anim.SetBool("isGrounded", isGrounded);
+            anim.SetBool("isSliding", wallSliding);
+
             FlipSprite();
             Jump();
             WallSlide();
             BowAttack();
+        }
+        else{
+            if(Time.timeScale < 1){
+                float step = walkSpeed * Time.unscaledDeltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, posToGo, step);
+                if(transform.position == posToGo){
+                    GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    GetComponent<BoxCollider2D>().enabled = true;
+                    canMove = true;
+                    FindObjectOfType<LevelManager>().TimeInNormal();
+                }
+            }
         }
 	}
 
@@ -334,7 +358,13 @@ public class Player : MonoBehaviour {
     }
 
     public void MakeDamage(){
-
+        canMove = false;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        GetComponent<BoxCollider2D>().enabled = false;
+        FindObjectOfType<LevelManager>().TimeInDeath();
+        posToGo = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
+        
+        //transform.position = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
     }
 
     /*void OnDrawGizmos()

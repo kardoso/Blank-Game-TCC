@@ -186,7 +186,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 18586837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 78.7, y: 0.9, z: -2}
+  m_LocalPosition: {x: 176.3, y: 95.9, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 880893793}
@@ -232,6 +232,7 @@ MonoBehaviour:
   boxCheckLeftPoint: {fileID: 599740445}
   boxCheckRight: 0
   boxCheckLeft: 0
+  posToGo: {x: 0, y: 0, z: 0}
 --- !u!61 &18586841
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2659,6 +2660,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7116bc4514e004f99b8622997a2fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeWhileDeath: 0.2
+  mainCamera: {fileID: 1256852651}
+  onlyPlayerCamera: {fileID: 234543827}
 --- !u!4 &1052977550
 Transform:
   m_ObjectHideFlags: 0
