@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
     //Variáveis para altura do pulo
     [Range(100, 200)]
     public float jumpVelocity = 150;        //velocidade do pulo
-    public float fallMultiplier = 20;       //multiplicador de queda
+    public float fallMultiplier = 30;       //multiplicador de queda
     public float lowJumpMultiplier = 50;    //multiplicador de pulo baixo
     
     /***************************************************/

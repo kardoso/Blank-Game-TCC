@@ -17,9 +17,12 @@ public abstract class Enemy : MonoBehaviour{
 	protected bool movingRight;
 	//Velocidade que o inimigo se moverá
 	protected float velocity;
-	public bool canDie;
 	protected bool isDead = false;
+	private Vector3 initialPos;
 
+	protected virtual void Start(){
+		initialPos = transform.position;
+	}
 	protected virtual void Update()
 	{
 		FlipSprite();
@@ -57,10 +60,14 @@ public abstract class Enemy : MonoBehaviour{
 	}
 
 	public void EnableGameObject(){
-		gameObject.SetActive(true);
+		if(!gameObject.activeInHierarchy){
+			transform.position = initialPos;
+			gameObject.SetActive(true);
+			FindObjectOfType<Fade>().FadeGameObject(this.gameObject, true, 1);
+		}
 	}
 
-	void OnEnable()
+	protected virtual void OnEnable()
 	{
 		if(isDead){
 			GetComponent<BoxCollider2D>().enabled = true;

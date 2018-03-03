@@ -20,8 +20,8 @@ public class EnemyDasher : Enemy {
 	public GameObject checkWallL, checkWallR, checkFloorL, checkFloorR;
 
 	// Use this for initialization
-	void Start () {
-		canDie = false;
+	protected override void Start () {
+		base.Start();
 		player = FindObjectOfType<Player>().transform;
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();

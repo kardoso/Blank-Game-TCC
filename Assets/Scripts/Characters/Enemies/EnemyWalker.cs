@@ -19,10 +19,10 @@ public class EnemyWalker : Enemy {
 	public LayerMask wallLayerMask;
 	public LayerMask floorLayerMask;
 	public GameObject checkWallL, checkWallR, checkFloorL, checkFloorR;
-	
+
 	// Use this for initialization
-	void Start () {
-		canDie = true;
+	protected override void Start () {
+		base.Start();
 		player = FindObjectOfType<Player>().transform;
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
@@ -130,5 +130,11 @@ public class EnemyWalker : Enemy {
 		GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 		GetComponent<BoxCollider2D>().enabled = false;
 		anim.SetTrigger("Die");
+	}
+
+	protected override void OnEnable()
+	{
+		base.OnEnable();
+		StartCoroutine(NotAttacking());
 	}
 }
