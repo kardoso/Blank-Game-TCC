@@ -143,7 +143,7 @@ public class Fade : MonoBehaviour {
 
 		while (counter < duration)
 		{
-			counter += Time.deltaTime;
+			counter += Time.unscaledDeltaTime;
 			float alpha = Mathf.Lerp(a, b, counter / duration);
 
 			switch (mode)

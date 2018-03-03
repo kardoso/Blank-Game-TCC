@@ -17,6 +17,7 @@ public abstract class Enemy : MonoBehaviour{
 	protected bool movingRight;
 	//Velocidade que o inimigo se moverá
 	protected float velocity;
+	public bool canDie;
 
 	protected virtual void Update()
 	{
@@ -34,6 +35,13 @@ public abstract class Enemy : MonoBehaviour{
 	//Função de dano no inimigo
 	public abstract void MakeDamage();
 
+	public void Respawn(){
+		if(canDie){
+			EnableGameObject();
+			FindObjectOfType<Fade>().FadeGameObject(gameObject, true, 1);
+		}
+	}
+
 	protected void FlipSprite(){
 		if (!movingRight)
 		{
@@ -44,6 +52,14 @@ public abstract class Enemy : MonoBehaviour{
 			//inverter sprite na horizontal
 			GetComponent<SpriteRenderer>().flipX = true;
 		}
+	}
+
+	private void DisableGameObject(){
+		gameObject.SetActive(false);
+	}
+
+	public void EnableGameObject(){
+		gameObject.SetActive(true);
 	}
 
 	void OnCollisionEnter2D(Collision2D col)

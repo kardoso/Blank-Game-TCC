@@ -20,8 +20,11 @@ public class EnemyWalker : Enemy {
 	public LayerMask floorLayerMask;
 	public GameObject checkWallL, checkWallR, checkFloorL, checkFloorR;
 
+	bool isDead = false;
+
 	// Use this for initialization
 	void Start () {
+		canDie = true;
 		player = FindObjectOfType<Player>().transform;
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
@@ -32,12 +35,14 @@ public class EnemyWalker : Enemy {
 	
 	// Update is called once per frame
 	protected override void Update () {
-		base.Update();
-		CheckStates();
-		if(rb.velocity.y == 0){
-			CheckFloorAndWall();
+		if(!isDead){
+			base.Update();
+			CheckStates();
+			if(rb.velocity.y == 0){
+				CheckFloorAndWall();
+			}
+			anim.SetFloat("xVel", rb.velocity.x==0?0:1);
 		}
-		anim.SetFloat("xVel", rb.velocity.x==0?0:1);
 	}
 
 	private void CheckFloorAndWall(){
@@ -123,6 +128,16 @@ public class EnemyWalker : Enemy {
 	}
 
 	public override void MakeDamage(){
-		Debug.Log("Damage");
+		isDead = true;
+		GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+		GetComponent<BoxCollider2D>().enabled = false;
+		anim.SetTrigger("Die");
+	}
+
+	void OnEnable()
+	{
+		GetComponent<BoxCollider2D>().enabled = true;
+		GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+		isDead = false;
 	}
 }

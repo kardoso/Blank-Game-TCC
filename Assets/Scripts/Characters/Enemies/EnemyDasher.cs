@@ -21,6 +21,7 @@ public class EnemyDasher : Enemy {
 
 	// Use this for initialization
 	void Start () {
+		canDie = false;
 		player = FindObjectOfType<Player>().transform;
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();

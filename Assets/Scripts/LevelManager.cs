@@ -9,9 +9,11 @@ public class LevelManager : MonoBehaviour {
 	public float timeWhileDeath;
 	public GameObject mainCamera;
 	public GameObject  onlyPlayerCamera;
+	Enemy[] enemies;
 
 	// Use this for initialization
 	void Start () {
+		enemies = FindObjectsOfType<Enemy>();
 		TimeInNormal();
 	}
 	
@@ -30,6 +32,9 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void TimeInDeath(){
+		foreach(Enemy e in enemies){
+			e.Respawn();
+		}
 		Time.timeScale = timeWhileDeath;
 		mainCamera.GetComponent<UnityStandardAssets.ImageEffects.ColorCorrectionRamp>().enabled = true;
 		onlyPlayerCamera.SetActive(true);

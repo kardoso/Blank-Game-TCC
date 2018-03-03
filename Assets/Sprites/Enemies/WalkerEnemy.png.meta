@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c0a66b0ac3e03d347b7c5b478ffe6089
-timeCreated: 1519608147
+timeCreated: 1520069524
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -24,6 +24,11 @@ TextureImporter:
     21300034: WalkerEnemy_17
     21300036: WalkerEnemy_18
     21300038: WalkerEnemy_19
+    21300040: WalkerEnemy_20
+    21300042: WalkerEnemy_21
+    21300044: WalkerEnemy_22
+    21300046: WalkerEnemy_23
+    21300048: WalkerEnemy_24
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -124,7 +129,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -138,7 +143,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -152,7 +157,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -166,7 +171,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -180,7 +185,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -194,7 +199,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 240
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -208,7 +213,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 288
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -222,7 +227,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 336
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -236,7 +241,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -250,7 +255,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 432
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -264,7 +269,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -278,7 +283,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -292,7 +297,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -306,7 +311,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -320,7 +325,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -334,7 +339,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 240
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -348,7 +353,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 288
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -362,7 +367,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 336
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -376,7 +381,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -390,6 +395,76 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 432
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WalkerEnemy_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WalkerEnemy_21
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WalkerEnemy_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WalkerEnemy_23
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WalkerEnemy_24
+      rect:
+        serializedVersion: 2
+        x: 192
         y: 0
         width: 48
         height: 48
