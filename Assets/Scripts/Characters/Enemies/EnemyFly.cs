@@ -120,4 +120,9 @@ public class EnemyFly : Enemy {
 		EnableGameObject();
 		hp = 2;
 	}
+
+	public void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, seguir);
+    }
 }
