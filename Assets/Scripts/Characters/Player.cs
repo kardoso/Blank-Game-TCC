@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(canMove){
+        if(canMove && rb.bodyType == RigidbodyType2D.Dynamic){
             if(invertDirectionalControls){
                 input_x = -Input.GetAxisRaw("Horizontal");
                 input_y = -Input.GetAxisRaw("Vertical");
@@ -99,7 +99,7 @@ public class Player : MonoBehaviour {
         }
         else{
             if(Time.timeScale < 1){
-                float step = walkSpeed * Time.unscaledDeltaTime;
+                float step = (walkSpeed * 2) * Time.unscaledDeltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, posToGo, step);
                 if(transform.position == posToGo){
                     GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if(canMove){
+        if(canMove && rb.bodyType == RigidbodyType2D.Dynamic){
             Move();
         }
     }
@@ -198,11 +198,13 @@ public class Player : MonoBehaviour {
             Vector3 spawnPos = new Vector3(spawnX, spawnY, initialZ);
 
             yield return new WaitForSeconds(0.25f);
-            //Desenhar a linha
-            GetComponent<LineRenderer>().SetPosition(0, new Vector3(initialX, initialY, initialZ));
-            GetComponent<LineRenderer>().SetPosition(1, new Vector3(hitForArrow.x, hitForArrow.y, initialZ));
+            if(Time.timeScale >= 1){
+                //Desenhar a linha
+                GetComponent<LineRenderer>().SetPosition(0, new Vector3(initialX, initialY, initialZ));
+                GetComponent<LineRenderer>().SetPosition(1, new Vector3(hitForArrow.x, hitForArrow.y, initialZ));
+            }
             //Dano nos inimigos
-            if(allHits != null){
+            if((allHits != null) && Time.timeScale >= 1){
                 foreach (RaycastHit2D rh in hits)
                 {
                     if(rh.collider.gameObject.layer.Equals(12)) //12 = Enemy layer
@@ -219,10 +221,12 @@ public class Player : MonoBehaviour {
             }
             
             yield return new WaitForSeconds(0.025f);
-            //Instanciar flecha
-            //GameObject.Instantiate(ArrowPrototype, spawnPos, Quaternion.identity);
-            ArrowPrototype.transform.position = spawnPos;
-            GameObject.Instantiate(ArrowPrototype).GetComponent<Arrow>().SetInitial(arrowShouldMove, movingRight?Vector2.right:Vector2.left);
+            if(Time.timeScale >= 1){
+                //Instanciar flecha
+                //GameObject.Instantiate(ArrowPrototype, spawnPos, Quaternion.identity);
+                ArrowPrototype.transform.position = spawnPos;
+                GameObject.Instantiate(ArrowPrototype).GetComponent<Arrow>().SetInitial(arrowShouldMove, movingRight?Vector2.right:Vector2.left);
+            }
 
             yield return new WaitForSeconds(0.025f);
             //Limpar a linha
@@ -283,7 +287,9 @@ public class Player : MonoBehaviour {
         }
         //rb.velocity = new Vector2(input_x * _actualSpeedX, rb.velocity.y);
 
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        if(rb.bodyType == RigidbodyType2D.Dynamic){
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
 
         anim.SetFloat("xVelocity", _actualSpeedX);
     }
@@ -359,8 +365,8 @@ public class Player : MonoBehaviour {
 
     public void MakeDamage(){
         canMove = false;
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         FindObjectOfType<LevelManager>().TimeInDeath();
         posToGo = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
         

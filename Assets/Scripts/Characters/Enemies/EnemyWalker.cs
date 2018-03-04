@@ -132,6 +132,10 @@ public class EnemyWalker : Enemy {
 		anim.SetTrigger("Die");
 	}
 
+	public override void Respawn(){
+		EnableGameObject();
+	}
+
 	protected override void OnEnable()
 	{
 		base.OnEnable();

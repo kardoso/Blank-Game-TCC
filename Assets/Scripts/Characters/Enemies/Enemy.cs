@@ -39,9 +39,7 @@ public abstract class Enemy : MonoBehaviour{
 	//Função de dano no inimigo
 	public abstract void MakeDamage();
 
-	public void Respawn(){
-		EnableGameObject();
-	}
+	public abstract void Respawn();
 
 	protected void FlipSprite(){
 		if (!movingRight)
@@ -63,13 +61,20 @@ public abstract class Enemy : MonoBehaviour{
 		if(!gameObject.activeInHierarchy){
 			transform.position = initialPos;
 			gameObject.SetActive(true);
+			isDead = false;
 			FindObjectOfType<Fade>().FadeGameObject(this.gameObject, true, 1);
+		}
+		else{
+			transform.position = initialPos;
+			FindObjectOfType<Fade>().FadeGameObject(this.gameObject, false, 0.5f);
+			FindObjectOfType<Fade>().FadeGameObject(this.gameObject, true, 0.5f);
 		}
 	}
 
 	protected virtual void OnEnable()
 	{
 		if(isDead){
+			transform.position = initialPos;
 			GetComponent<BoxCollider2D>().enabled = true;
 			GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 			isDead = false;
@@ -77,6 +82,13 @@ public abstract class Enemy : MonoBehaviour{
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
+	{
+		if(col.gameObject.tag.Equals("Player")){
+			col.gameObject.GetComponent<Player>().MakeDamage();
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D col)
 	{
 		if(col.gameObject.tag.Equals("Player")){
 			col.gameObject.GetComponent<Player>().MakeDamage();

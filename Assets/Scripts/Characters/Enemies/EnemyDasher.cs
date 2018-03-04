@@ -134,4 +134,8 @@ public class EnemyDasher : Enemy {
 	public override void MakeDamage(){
 		Idle();
 	}
+
+	public override void Respawn(){
+		EnableGameObject();
+	}
 }
