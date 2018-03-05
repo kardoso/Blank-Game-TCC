@@ -80,6 +80,7 @@ public class EnemySurprise : Enemy {
 	public override void MakeDamage() {
 		canShootAndMove = false;
 		GetComponent<BoxCollider2D>().enabled = false;
+		anim.updateMode = AnimatorUpdateMode.UnscaledTime;
 		anim.SetTrigger("Die");
 	}
 

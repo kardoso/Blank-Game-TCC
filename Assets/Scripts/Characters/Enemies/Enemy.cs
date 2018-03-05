@@ -54,7 +54,12 @@ public abstract class Enemy : MonoBehaviour{
 	}
 
 	private void DisableGameObject(){
-		gameObject.SetActive(false);
+		if(GetComponent<EnemySurprise>() != null){
+			Destroy(gameObject);
+		}
+		else{
+			gameObject.SetActive(false);
+		}
 	}
 
 	public void EnableGameObject(){
