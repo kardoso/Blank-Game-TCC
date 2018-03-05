@@ -5,30 +5,24 @@ using UnityEngine;
 public class ProjectileFromEnemy : MonoBehaviour {
 
 	public float velocidade;
-	private Transform player;
-	private Vector2 alvo;
-
-	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player").transform;
-		alvo = new Vector2 (player.position.x, player.position.y);
-	}
 	
 	void Update () {
-		transform.position = Vector2.MoveTowards (transform.position, alvo, velocidade * Time.deltaTime);
-		if (transform.position.x == alvo.x && transform.position.y == alvo.y) {
-			Destroybala ();
+		transform.Translate(Vector2.right * Time.deltaTime * velocidade);
+		//transform.position = Vector2.MoveTowards (transform.position, alvo, velocidade * Time.deltaTime);
+		if(Time.timeScale < 1){
+			Destroy(this.gameObject);
 		}
 	}
 
 	void OnTriggerEnter2D (Collider2D Other){
-		if (Other.CompareTag ("Player")) {
-			Destroybala ();
+		if (Other.tag.Equals("Player")) {
+			Other.gameObject.GetComponent<Player>().MakeDamage();
+			Destroy(this.gameObject);
 		}
-	
 	}
 
-	void Destroybala(){
-		Destroy (gameObject);
-	
+	void OnBecameInvisible()
+	{
+		Destroy(this.gameObject);
 	}
 }

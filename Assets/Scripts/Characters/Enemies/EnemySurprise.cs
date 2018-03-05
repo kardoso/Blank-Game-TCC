@@ -9,7 +9,6 @@ public class EnemySurprise : Enemy {
 
 	private Transform player;
 	public GameObject bala;
-	private float _velocity = 25;
 	private Rigidbody2D rb;
 
 	public float velocidade;
@@ -19,70 +18,74 @@ public class EnemySurprise : Enemy {
 	private float tempotiro;
 	public float podeatirar;
 
+	public bool canShootAndMove;
+
 	protected override void Start () {
 		base.Start();
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		tempotiro = podeatirar;
-		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 	}
 
 	protected override void Update () {
 		base.Update ();
-		CheckStates ();
-		if (player.position.x > transform.position.x) {
-			transform.localScale = new Vector3 (100, 100, 1);
-		} else if (player.position.x < transform.position.x) {
-			transform.localScale = new Vector3 (-100, 100, 1);
-		}
-		if (Vector2.Distance (transform.position, player.position) > seguir) {
-			transform.position = Vector2.MoveTowards (transform.position, player.position, velocidade * Time.deltaTime);
-
-		} else if (Vector2.Distance (transform.position, player.position) < seguir && Vector2.Distance (transform.position, player.position) > voltar) {
-			transform.position = this.transform.position;
-
-		} else if (Vector2.Distance (transform.position, player.position) < voltar) {
-			transform.position = Vector2.MoveTowards (transform.position, player.position, -velocidade * Time.deltaTime);
-		}
-
-		if (tempotiro <= 0) {
-			Instantiate (bala, transform.position, Quaternion.identity);
-			tempotiro = podeatirar;
-
-		} else {
-			tempotiro -= Time.deltaTime;
+		if(canShootAndMove){
+			LookAtPlayer();
+			Walk();
+			Attack(player.position);
 		}
 	}
 
 	protected override void CheckStates () {
-		
 	}
 
 	protected override void Idle () {
-		state = States.idle;
 	}
 
 	protected override void Walk () {
-		state = States.walk;
+		if (Vector2.Distance (transform.position, player.position) > seguir) {
+			transform.position = Vector2.MoveTowards (transform.position, player.position, velocidade * Time.deltaTime);
+		} 
+		else if (Vector2.Distance (transform.position, player.position) < seguir && Vector2.Distance (transform.position, player.position) > voltar) {
+			transform.position = this.transform.position;
+		} 
+		else if (Vector2.Distance (transform.position, player.position) < voltar) {
+			transform.position = Vector2.MoveTowards (transform.position, player.position, -velocidade * Time.deltaTime);
+		}
 	}
 
 	protected override void Attack(Vector2 whereThePlayerIs){
-		velocity = _velocity*2;
-		rb.AddForce((Vector2.right * velocity * 500) * (movingRight?1:-1) * Time.timeScale);
-		if(rb.velocity.x > velocity){
-			rb.velocity = new Vector2(velocity, rb.velocity.y);
+		if (tempotiro <= 0) {
+			//Instantiate (bala, transform.position, Quaternion.identity);
+			Instantiate(bala, transform.position, transform.GetChild(0).rotation);
+			tempotiro = podeatirar;
+		} 
+		else {
+			tempotiro -= Time.deltaTime;
 		}
-		if(rb.velocity.x < -velocity){
-			rb.velocity = new Vector2(-velocity, rb.velocity.y);
-		}
+	}
+
+	void LookAtPlayer(){
+        Vector3 lookPos = player.position;
+        lookPos = lookPos - transform.GetChild(0).position;
+        float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+        transform.GetChild(0).rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+	}
+
+	public void ActiveEnemy(){
+		//This is called in animator event, last frame of "born" animation
+		canShootAndMove = true;
 	}
 		
 	public override void MakeDamage() {
-		Debug.Log("Damage");
+		canShootAndMove = false;
+		GetComponent<BoxCollider2D>().enabled = false;
+		anim.SetTrigger("Die");
 	}
 
 	public override void Respawn(){
-		EnableGameObject();
+		canShootAndMove = false;
+		GetComponent<BoxCollider2D>().enabled = false;
+		Destroy(this.gameObject);
 	}
-
 }
