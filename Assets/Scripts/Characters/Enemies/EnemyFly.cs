@@ -118,7 +118,7 @@ public class EnemyFly : Enemy {
 
     public override void Respawn(){
 		EnableGameObject();
-		hp = 2;
+		ResetHP();
 	}
 
 	public void OnDrawGizmos() {
