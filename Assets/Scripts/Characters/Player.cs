@@ -61,8 +61,6 @@ public class Player : MonoBehaviour {
 
     void Start(){
         canMove = true;
-        //Faz a animação usar UnscaledTime, fazendo com que não dependa do Time.deltaTime
-        anim.updateMode = AnimatorUpdateMode.UnscaledTime;
         //"Salvar" a posição inicial do jogador na fase
         FindObjectOfType<LevelManager>().SetPlayerInitialPos(transform.position);
     }
@@ -71,39 +69,46 @@ public class Player : MonoBehaviour {
 	void Update () {
 
         if(canMove && rb.bodyType == RigidbodyType2D.Dynamic){
-            if(invertDirectionalControls){
-                input_x = -Input.GetAxisRaw("Horizontal");
-                input_y = -Input.GetAxisRaw("Vertical");
+            if(Time.timeScale == 1){
+                if(invertDirectionalControls){
+                    input_x = -Input.GetAxisRaw("Horizontal");
+                    input_y = -Input.GetAxisRaw("Vertical");
+                }
+                else{
+                    input_x = Input.GetAxisRaw("Horizontal");
+                    input_y = Input.GetAxisRaw("Vertical");
+                }
+
+                isGrounded = Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Floor"))
+                            ||
+                            Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Arrow"))
+                            ||
+                            Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Box"))
+                            ;
+
+                Debug.DrawLine(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f));
+
+                anim.SetBool("isGrounded", isGrounded);
+                anim.SetBool("isSliding", wallSliding);
+
+                FlipSprite();
+                Jump();
+                WallSlide();
+                BowAttack();
             }
-            else{
-                input_x = Input.GetAxisRaw("Horizontal");
-                input_y = Input.GetAxisRaw("Vertical");
-            }
-
-            isGrounded = Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Floor"))
-                        ||
-                        Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Arrow"))
-                        ||
-                        Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Box"))
-                        ;
-
-            Debug.DrawLine(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f));
-
-            anim.SetBool("isGrounded", isGrounded);
-            anim.SetBool("isSliding", wallSliding);
-
-            FlipSprite();
-            Jump();
-            WallSlide();
-            BowAttack();
         }
         else{
             if(Time.timeScale < 1){
+                //Faz a animação usar UnscaledTime, fazendo com que não dependa do Time.deltaTime
+                anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+
                 float step = (walkSpeed * 2) * Time.unscaledDeltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, posToGo, step);
+
                 if(transform.position == posToGo){
                     GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                     GetComponent<BoxCollider2D>().enabled = true;
+                    anim.updateMode = AnimatorUpdateMode.Normal;
                     canMove = true;
                     FindObjectOfType<LevelManager>().TimeInNormal();
                 }
@@ -114,7 +119,9 @@ public class Player : MonoBehaviour {
     void FixedUpdate()
     {
         if(canMove && rb.bodyType == RigidbodyType2D.Dynamic){
-            Move();
+            if(Time.timeScale == 1){
+                Move();
+            }
         }
     }
 
@@ -148,7 +155,9 @@ public class Player : MonoBehaviour {
 				if(allHits != null){
 					foreach (RaycastHit2D rh in allHits)
 					{
-						objectsInRayHit.Add(rh);
+                        if((!rh.collider.gameObject.layer.Equals(16) || !rh.collider.gameObject.layer.Equals(17)) && !rh.collider.gameObject.layer.Equals(18)){
+						    objectsInRayHit.Add(rh);
+                        }
 						if(!rh.collider.gameObject.layer.Equals(12)) //12 = Enemy layer
 							break;
 					}
@@ -172,8 +181,8 @@ public class Player : MonoBehaviour {
                                         objectsInRayHit,
 										distance,
 										hasFinal?false:true,
-										hasFinal?objectsInRayHit.Last().point:new Vector2(initialX+distance/2, initialY), 
-										hasFinal?objectsInRayHit.Last().point.x:initialX+distance/2, 
+										hasFinal?objectsInRayHit.Last().point:new Vector2(initialX+distance, initialY), 
+										hasFinal?objectsInRayHit.Last().point.x:initialX+distance, 
 										hasFinal?objectsInRayHit.Last().point.y:initialY,
 										initialX, 
 										initialY, 

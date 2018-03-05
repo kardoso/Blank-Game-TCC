@@ -57,16 +57,28 @@ public class Trap : MonoBehaviour {
             t.gameObject.GetComponent<EnemySurprise>().MakeDamage();
             t.parent = null;
         }*/
-        /*for(int i = ObjectForEnemiesSpawn.transform.childCount; i >= 0; i--){
+        for(int i = ObjectForEnemiesSpawn.transform.childCount-1; i >= 0; i--){
             ObjectForEnemiesSpawn.transform.GetChild(i).GetComponent<EnemySurprise>().MakeDamage();
             ObjectForEnemiesSpawn.transform.GetChild(i).parent = null;
+        }
+        /*if(ObjectForEnemiesSpawn.transform.childCount == 3){
+            ObjectForEnemiesSpawn.transform.GetChild(2).GetComponent<EnemySurprise>().MakeDamage();
+            ObjectForEnemiesSpawn.transform.GetChild(2).parent = null;
+            ObjectForEnemiesSpawn.transform.GetChild(1).GetComponent<EnemySurprise>().MakeDamage();
+            ObjectForEnemiesSpawn.transform.GetChild(1).parent = null;
+            ObjectForEnemiesSpawn.transform.GetChild(0).GetComponent<EnemySurprise>().MakeDamage();
+            ObjectForEnemiesSpawn.transform.GetChild(0).parent = null;
+        }
+        else if(ObjectForEnemiesSpawn.transform.childCount == 2){
+            ObjectForEnemiesSpawn.transform.GetChild(1).GetComponent<EnemySurprise>().MakeDamage();
+            ObjectForEnemiesSpawn.transform.GetChild(1).parent = null;
+            ObjectForEnemiesSpawn.transform.GetChild(0).GetComponent<EnemySurprise>().MakeDamage();
+            ObjectForEnemiesSpawn.transform.GetChild(0).parent = null;
+        }
+        else if(ObjectForEnemiesSpawn.transform.childCount == 1){
+            ObjectForEnemiesSpawn.transform.GetChild(0).GetComponent<EnemySurprise>().MakeDamage();
+            ObjectForEnemiesSpawn.transform.GetChild(0).parent = null;
         }*/
-        ObjectForEnemiesSpawn.transform.GetChild(2).GetComponent<EnemySurprise>().MakeDamage();
-        ObjectForEnemiesSpawn.transform.GetChild(2).parent = null;
-        ObjectForEnemiesSpawn.transform.GetChild(1).GetComponent<EnemySurprise>().MakeDamage();
-        ObjectForEnemiesSpawn.transform.GetChild(1).parent = null;
-        ObjectForEnemiesSpawn.transform.GetChild(0).GetComponent<EnemySurprise>().MakeDamage();
-        ObjectForEnemiesSpawn.transform.GetChild(0).parent = null;
         Destroy(ObjectForEnemiesSpawn);
     }
 }
