@@ -155,7 +155,7 @@ public class Player : MonoBehaviour {
 				if(allHits != null){
 					foreach (RaycastHit2D rh in allHits)
 					{
-                        if((!rh.collider.gameObject.layer.Equals(16) || !rh.collider.gameObject.layer.Equals(17)) && !rh.collider.gameObject.layer.Equals(18)){
+                        if((!rh.collider.gameObject.layer.Equals(16) && !rh.collider.gameObject.layer.Equals(17)) && !rh.collider.gameObject.layer.Equals(18)){
 						    objectsInRayHit.Add(rh);
                         }
 						if(!rh.collider.gameObject.layer.Equals(12)) //12 = Enemy layer

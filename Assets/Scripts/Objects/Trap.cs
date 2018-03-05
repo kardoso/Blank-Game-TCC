@@ -57,9 +57,12 @@ public class Trap : MonoBehaviour {
             t.gameObject.GetComponent<EnemySurprise>().MakeDamage();
             t.parent = null;
         }*/
-        for(int i = ObjectForEnemiesSpawn.transform.childCount-1; i >= 0; i--){
-            ObjectForEnemiesSpawn.transform.GetChild(i).GetComponent<EnemySurprise>().MakeDamage();
-            ObjectForEnemiesSpawn.transform.GetChild(i).parent = null;
+        if(ObjectForEnemiesSpawn != null){
+            for(int i = ObjectForEnemiesSpawn.transform.childCount-1; i >= 0; i--){
+                ObjectForEnemiesSpawn.transform.GetChild(i).GetComponent<EnemySurprise>().MakeDamage();
+                ObjectForEnemiesSpawn.transform.GetChild(i).parent = null;
+            }
+            Destroy(ObjectForEnemiesSpawn);
         }
         /*if(ObjectForEnemiesSpawn.transform.childCount == 3){
             ObjectForEnemiesSpawn.transform.GetChild(2).GetComponent<EnemySurprise>().MakeDamage();
@@ -79,6 +82,5 @@ public class Trap : MonoBehaviour {
             ObjectForEnemiesSpawn.transform.GetChild(0).GetComponent<EnemySurprise>().MakeDamage();
             ObjectForEnemiesSpawn.transform.GetChild(0).parent = null;
         }*/
-        Destroy(ObjectForEnemiesSpawn);
     }
 }
