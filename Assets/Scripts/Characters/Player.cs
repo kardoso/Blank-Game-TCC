@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     protected Rigidbody2D rb;
     protected Animator anim;
@@ -11,21 +12,21 @@ public class Player : MonoBehaviour {
     protected float input_x;
     protected float input_y;
     protected bool invertDirectionalControls;
-	protected float walkSpeed = 70;          //Velocidade que o player anda
+    protected float walkSpeed = 70;          //Velocidade que o player anda
     protected float maxSpeed = 70;
     protected bool movingRight = true;      //Se está virado para a direita ou não. Usado para inverter o sprite do personagem
     protected bool isGrounded;              //Se o player está no chão ou não
     protected bool canMove;
-    
+
     /***********************************************************/
     //Variáveis para altura do pulo
     [Range(100, 200)]
     public float jumpVelocity = 150;        //velocidade do pulo
     public float fallMultiplier = 30;       //multiplicador de queda
     public float lowJumpMultiplier = 50;    //multiplicador de pulo baixo
-    
+
     /***************************************************/
-    
+
     public bool wallSliding;
     public Transform wallCheckRightPoint;
     public Transform wallCheckLeftPoint;
@@ -37,8 +38,8 @@ public class Player : MonoBehaviour {
     public Transform bowInitialPointRight;
     public Transform bowInitialPointLeft;
     RaycastHit2D hitForBow;
-	RaycastHit2D[] allHits;
-	List<RaycastHit2D> objectsInRayHit = new List<RaycastHit2D>();
+    RaycastHit2D[] allHits;
+    List<RaycastHit2D> objectsInRayHit = new List<RaycastHit2D>();
     bool canUseBow;
 
     public LayerMask boxLayerMask;
@@ -50,31 +51,38 @@ public class Player : MonoBehaviour {
     //Position player to go when "dead"
     public Vector3 posToGo;
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake()
+    {
         invertDirectionalControls = false;
         canUseBow = true;
         canMove = true;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-	}
+    }
 
-    void Start(){
+    void Start()
+    {
         canMove = true;
         //"Salvar" a posição inicial do jogador na fase
         FindObjectOfType<LevelManager>().SetPlayerInitialPos(transform.position);
     }
 
-	// Update is called once per frame
-	void Update () {
-
-        if(canMove && rb.bodyType == RigidbodyType2D.Dynamic){
-            if(Time.timeScale == 1){
-                if(invertDirectionalControls){
+    // Update is called once per frame
+    void Update()
+    {
+        Debug.Log(rb.velocity);
+        if (canMove && rb.bodyType == RigidbodyType2D.Dynamic)
+        {
+            if (Time.timeScale == 1)
+            {
+                if (invertDirectionalControls)
+                {
                     input_x = -Input.GetAxisRaw("Horizontal");
                     input_y = -Input.GetAxisRaw("Vertical");
                 }
-                else{
+                else
+                {
                     input_x = Input.GetAxisRaw("Horizontal");
                     input_y = Input.GetAxisRaw("Vertical");
                 }
@@ -97,15 +105,18 @@ public class Player : MonoBehaviour {
                 BowAttack();
             }
         }
-        else{
-            if(Time.timeScale < 1){
+        else
+        {
+            if (Time.timeScale < 1)
+            {
                 //Faz a animação usar UnscaledTime, fazendo com que não dependa do Time.deltaTime
                 anim.updateMode = AnimatorUpdateMode.UnscaledTime;
 
                 float step = (walkSpeed * 2) * Time.unscaledDeltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, posToGo, step);
 
-                if(transform.position == posToGo){
+                if (transform.position == posToGo)
+                {
                     GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                     GetComponent<BoxCollider2D>().enabled = true;
                     anim.updateMode = AnimatorUpdateMode.Normal;
@@ -114,86 +125,97 @@ public class Player : MonoBehaviour {
                 }
             }
         }
-	}
+    }
 
     void FixedUpdate()
     {
-        if(canMove && rb.bodyType == RigidbodyType2D.Dynamic){
-            if(Time.timeScale == 1){
+        if (canMove && rb.bodyType == RigidbodyType2D.Dynamic)
+        {
+            if (Time.timeScale == 1)
+            {
                 Move();
             }
         }
     }
 
-    void BowAttack(){
-        
+    void BowAttack()
+    {
+
         float initialX = 0;
         float initialY = 0;
         float initialZ = 0;
         float distance = 0;
 
-        if(movingRight){
+        if (movingRight)
+        {
             initialX = bowInitialPointRight.position.x;
             initialY = bowInitialPointRight.position.y;
             initialZ = bowInitialPointRight.position.z;
             distance = 500;
         }
-        else{
+        else
+        {
             initialX = bowInitialPointLeft.position.x;
             initialY = bowInitialPointLeft.position.y;
             initialZ = bowInitialPointLeft.position.z;
             distance = -500;
         }
 
-		
-		allHits = Physics2D.LinecastAll(new Vector2(initialX, initialY), new Vector2(initialX + distance, initialY));
-		Debug.DrawLine(new Vector2(initialX, initialY), new Vector2(initialX + distance, initialY));
-		
+
+        allHits = Physics2D.LinecastAll(new Vector2(initialX, initialY), new Vector2(initialX + distance, initialY));
+        Debug.DrawLine(new Vector2(initialX, initialY), new Vector2(initialX + distance, initialY));
+
 
         //if(hitForBow.collider != null){
-            if(((Input.GetButtonDown("Attack") || Input.GetButtonDown("X")) && canUseBow)){
-				if(allHits != null){
-					foreach (RaycastHit2D rh in allHits)
-					{
-                        if((!rh.collider.gameObject.layer.Equals(16) && !rh.collider.gameObject.layer.Equals(17)) && !rh.collider.gameObject.layer.Equals(18)){
-						    objectsInRayHit.Add(rh);
-                        }
-						if(!rh.collider.gameObject.layer.Equals(12)) //12 = Enemy layer
-							break;
-					}
+        if (((Input.GetButtonDown("Attack") || Input.GetButtonDown("X")) && canUseBow))
+        {
+            if (allHits != null)
+            {
+                foreach (RaycastHit2D rh in allHits)
+                {
+                    if ((!rh.collider.gameObject.layer.Equals(16) && !rh.collider.gameObject.layer.Equals(17)) && !rh.collider.gameObject.layer.Equals(18))
+                    {
+                        objectsInRayHit.Add(rh);
+                    }
+                    if (!rh.collider.gameObject.layer.Equals(12)) //12 = Enemy layer
+                        break;
+                }
 
-					objectsInRayHit.Sort(delegate(RaycastHit2D rh1, RaycastHit2D rh2){
-						return (rh1.point.x).CompareTo(rh2.point.x);
-						});
+                objectsInRayHit.Sort(delegate (RaycastHit2D rh1, RaycastHit2D rh2)
+                {
+                    return (rh1.point.x).CompareTo(rh2.point.x);
+                });
 
-					/*for(int i = 0; i < objectsInRayHit.Count; i++){
-						Debug.Log(objectsInRayHit[i].distance);
-					}*/
-				}
-				//objectsInRayHit.Clear();
-				//Se o ultimo ponto da reta toca em algo
-				bool hasFinalPoint = objectsInRayHit.Count != 0;
-				//Se o ultimo ponto da reta toca em algo e esse algo é um inimigo
-				bool hasFinal = hasFinalPoint?hasFinal = !objectsInRayHit[objectsInRayHit.Count-1].collider.gameObject.layer.Equals(12) : hasFinal = false;
-				
-				//Debug.Log(hasFinal);
-				StartCoroutine(ThrowArrow(
-                                        objectsInRayHit,
-										distance,
-										hasFinal?false:true,
-										hasFinal?objectsInRayHit.Last().point:new Vector2(initialX+distance, initialY), 
-										hasFinal?objectsInRayHit.Last().point.x:initialX+distance, 
-										hasFinal?objectsInRayHit.Last().point.y:initialY,
-										initialX, 
-										initialY, 
-										initialZ));
-				
+                /*for(int i = 0; i < objectsInRayHit.Count; i++){
+                    Debug.Log(objectsInRayHit[i].distance);
+                }*/
             }
+            //objectsInRayHit.Clear();
+            //Se o ultimo ponto da reta toca em algo
+            bool hasFinalPoint = objectsInRayHit.Count != 0;
+            //Se o ultimo ponto da reta toca em algo e esse algo é um inimigo
+            bool hasFinal = hasFinalPoint ? hasFinal = !objectsInRayHit[objectsInRayHit.Count - 1].collider.gameObject.layer.Equals(12) : hasFinal = false;
+
+            //Debug.Log(hasFinal);
+            StartCoroutine(ThrowArrow(
+                                    objectsInRayHit,
+                                    distance,
+                                    hasFinal ? false : true,
+                                    hasFinal ? objectsInRayHit.Last().point : new Vector2(initialX + distance, initialY),
+                                    hasFinal ? objectsInRayHit.Last().point.x : initialX + distance,
+                                    hasFinal ? objectsInRayHit.Last().point.y : initialY,
+                                    initialX,
+                                    initialY,
+                                    initialZ));
+
+        }
         //}
     }
 
-    IEnumerator ThrowArrow(List<RaycastHit2D> hits,float _distance, bool arrowShouldMove, Vector2 hitForArrow, float spawnX, float spawnY, float initialX, float initialY, float initialZ){
-		if(!wallSliding){
+    IEnumerator ThrowArrow(List<RaycastHit2D> hits, float _distance, bool arrowShouldMove, Vector2 hitForArrow, float spawnX, float spawnY, float initialX, float initialY, float initialZ)
+    {
+        if (!wallSliding)
+        {
             anim.SetTrigger("Attack");
             //Desativar tiro de arco
             canUseBow = false;
@@ -207,34 +229,38 @@ public class Player : MonoBehaviour {
             Vector3 spawnPos = new Vector3(spawnX, spawnY, initialZ);
 
             yield return new WaitForSeconds(0.25f);
-            if(Time.timeScale >= 1){
+            if (Time.timeScale >= 1)
+            {
                 //Desenhar a linha
                 GetComponent<LineRenderer>().SetPosition(0, new Vector3(initialX, initialY, initialZ));
                 GetComponent<LineRenderer>().SetPosition(1, new Vector3(hitForArrow.x, hitForArrow.y, initialZ));
             }
             //Dano nos inimigos
-            if((allHits != null) && Time.timeScale >= 1){
+            if ((allHits != null) && Time.timeScale >= 1)
+            {
                 foreach (RaycastHit2D rh in hits)
                 {
-                    if(rh.collider.gameObject.layer.Equals(12)) //12 = Enemy layer
+                    if (rh.collider.gameObject.layer.Equals(12)) //12 = Enemy layer
                         rh.collider.gameObject.GetComponent<Enemy>().MakeDamage();
                 }
 
-                objectsInRayHit.Sort(delegate(RaycastHit2D rh1, RaycastHit2D rh2){
+                objectsInRayHit.Sort(delegate (RaycastHit2D rh1, RaycastHit2D rh2)
+                {
                     return (rh1.point.x).CompareTo(rh2.point.x);
-                    });
+                });
 
                 /*for(int i = 0; i < objectsInRayHit.Count; i++){
                     Debug.Log(objectsInRayHit[i].distance);
                 }*/
             }
-            
+
             yield return new WaitForSeconds(0.025f);
-            if(Time.timeScale >= 1){
+            if (Time.timeScale >= 1)
+            {
                 //Instanciar flecha
                 //GameObject.Instantiate(ArrowPrototype, spawnPos, Quaternion.identity);
                 ArrowPrototype.transform.position = spawnPos;
-                GameObject.Instantiate(ArrowPrototype).GetComponent<Arrow>().SetInitial(arrowShouldMove, movingRight?Vector2.right:Vector2.left);
+                GameObject.Instantiate(ArrowPrototype).GetComponent<Arrow>().SetInitial(arrowShouldMove, movingRight ? Vector2.right : Vector2.left);
             }
 
             yield return new WaitForSeconds(0.025f);
@@ -245,7 +271,7 @@ public class Player : MonoBehaviour {
             FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, false, 0.5f);
             //Ativar movimento novamente
             canMove = true;
-            
+
             yield return new WaitForSeconds(0.5f);
             arrowIndicatorSphere.SetActive(false);
 
@@ -259,7 +285,7 @@ public class Player : MonoBehaviour {
         objectsInRayHit.Clear();
     }
 
-	public void Move()
+    public void Move()
     {
         float _actualSpeedX = 0;
         float _maxSpeed = 0;
@@ -270,17 +296,20 @@ public class Player : MonoBehaviour {
         //Andar
         if (input_x != 0)
         {
-            if(boxCheckLeft || boxCheckRight){
+            if (boxCheckLeft || boxCheckRight)
+            {
                 anim.SetBool("Pushing", true);
-                _maxSpeed = maxSpeed/8;
+                _maxSpeed = maxSpeed / 8;
             }
-            else{
+            else
+            {
                 _maxSpeed = maxSpeed;
                 anim.SetBool("Pushing", false);
             }
             _actualSpeedX = walkSpeed;
         }
-        else{
+        else
+        {
             _actualSpeedX = 0;
             anim.SetBool("Pushing", false);
         }
@@ -288,71 +317,87 @@ public class Player : MonoBehaviour {
         //Mover
         //transform.position += new Vector3(input_x, 0, 0).normalized * Time.deltaTime * _actualSpeedX;
         rb.AddForce((Vector2.right * _actualSpeedX * 500) * input_x);
-        if(rb.velocity.x > _maxSpeed){
+        if (rb.velocity.x > _maxSpeed)
+        {
             rb.velocity = new Vector2(_maxSpeed, rb.velocity.y);
         }
-        if(rb.velocity.x < -_maxSpeed){
+        if (rb.velocity.x < -_maxSpeed)
+        {
             rb.velocity = new Vector2(-_maxSpeed, rb.velocity.y);
         }
         //rb.velocity = new Vector2(input_x * _actualSpeedX, rb.velocity.y);
 
-        if(rb.bodyType == RigidbodyType2D.Dynamic){
+        if (rb.bodyType == RigidbodyType2D.Dynamic)
+        {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
         anim.SetFloat("xVelocity", _actualSpeedX);
     }
 
-    public void InvetControls(){invertDirectionalControls = !invertDirectionalControls; }
+    public void InvetControls() { invertDirectionalControls = !invertDirectionalControls; }
 
-	void Jump()
+    void Jump()
     {
-        if((Input.GetButtonDown("Jump") || Input.GetButtonDown("A")) && !wallSliding){
-            if(isGrounded){
+        if ((Input.GetButtonDown("Jump") || Input.GetButtonDown("A")) && !wallSliding)
+        {
+            if (isGrounded)
+            {
                 rb.velocity = Vector2.up * jumpVelocity;
             }
         }
-        
+
         //Controlar altura do pulo
-        if(rb.velocity.y < 0){
+        if (rb.velocity.y < 0)
+        {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
-        else if(rb.velocity.y > 0 && (!Input.GetButton("Jump") && !Input.GetButton("A"))){
+        else if (rb.velocity.y > 0 && (!Input.GetButton("Jump") && !Input.GetButton("A")))
+        {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
         anim.SetFloat("yVelocity", rb.velocity.y);
     }
 
-    void WallSlide(){
-        if(!isGrounded){
+    void WallSlide()
+    {
+        if (!isGrounded)
+        {
             wallCheckRight = Physics2D.OverlapCircle(wallCheckRightPoint.position, 0.1f, wallLayerMask);
             wallCheckLeft = Physics2D.OverlapCircle(wallCheckLeftPoint.position, -0.1f, wallLayerMask);
 
-            if((wallCheckLeft && input_x < 0) || (wallCheckRight && input_x > 0)){
+            if ((wallCheckLeft && input_x < 0) || (wallCheckRight && input_x > 0))
+            {
                 HandleWallSliding();
             }
-            else{
+            else
+            {
                 wallSliding = false;
             }
         }
     }
 
-    void HandleWallSliding(){
+    void HandleWallSliding()
+    {
         rb.velocity = new Vector2(rb.velocity.x, -10);
         wallSliding = true;
 
-        if(Input.GetButtonDown("Jump") || Input.GetButtonDown("A")){
-            if(wallCheckLeft){
+        if (Input.GetButtonDown("Jump") || Input.GetButtonDown("A"))
+        {
+            if (wallCheckLeft)
+            {
                 rb.AddForce(new Vector2(5000, 2500) * jumpVelocity);
             }
-            else{
+            else
+            {
                 rb.AddForce(new Vector2(-5000, 2500) * jumpVelocity);
             }
         }
     }
 
-    void FlipSprite(){
+    void FlipSprite()
+    {
         if (input_x > 0)
         {
             if (!movingRight)
@@ -372,25 +417,29 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void MakeDamage(){
+    public void MakeDamage()
+    {
         canMove = false;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         FindObjectOfType<LevelManager>().TimeInDeath();
         posToGo = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
-        
+
         //transform.position = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
     }
+
+    //Check side collider
+    //And change the velocity.x to 0 when colliding with something in side on Move() function
 
     /*void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         //Desenhar linha de checagem do chão
         Gizmos.DrawLine(new Vector2(transform.position.x - 4f, transform.position.y - 16.5f), new Vector2(transform.position.x + 4f, transform.position.y - 16.5f));
-        
+
         foreach (RaycastHit2D rh in allHits)
-		{
-			Gizmos.DrawSphere(rh.point, 2);
-		}
-	}*/
+        {
+            Gizmos.DrawSphere(rh.point, 2);
+        }
+    }*/
 }
