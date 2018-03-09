@@ -21,12 +21,10 @@ public class Inventory : MonoBehaviour {
 	public void AddDoor(){
 		doorQuant += 1;
 		doorIndicatorSphere.SetActive(true);
-		FindObjectOfType<Fade>().FadeGameObject(doorIndicatorSphere, true, 1f);
 	}
 
 	public void RemoveDoor(){
 		doorQuant -= 1;
 		doorIndicatorSphere.SetActive(false);
-		FindObjectOfType<Fade>().FadeGameObject(doorIndicatorSphere, true, 1f);
 	}
 }

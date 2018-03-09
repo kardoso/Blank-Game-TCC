@@ -71,7 +71,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(rb.velocity);
         if (canMove && rb.bodyType == RigidbodyType2D.Dynamic)
         {
             if (Time.timeScale == 1)
@@ -173,7 +172,7 @@ public class Player : MonoBehaviour
             {
                 foreach (RaycastHit2D rh in allHits)
                 {
-                    if ((!rh.collider.gameObject.layer.Equals(16) && !rh.collider.gameObject.layer.Equals(17)) && !rh.collider.gameObject.layer.Equals(18))
+                    if ((!rh.collider.gameObject.layer.Equals(16) && !rh.collider.gameObject.layer.Equals(17)) && (!rh.collider.gameObject.layer.Equals(18) && !rh.collider.gameObject.layer.Equals(19)))
                     {
                         objectsInRayHit.Add(rh);
                     }
@@ -268,7 +267,7 @@ public class Player : MonoBehaviour
             GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
             GetComponent<LineRenderer>().SetPosition(1, Vector3.zero);
             //Desativar a esfera indicadora
-            FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, false, 0.5f);
+            FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, 0.5f, 1, 0);
             //Ativar movimento novamente
             canMove = true;
 
@@ -277,7 +276,7 @@ public class Player : MonoBehaviour
 
             //yield return new WaitForSeconds(0.5f);
             arrowIndicatorSphere.SetActive(true);
-            FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, true, 0.5f);
+            FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, 0.5f, 0, 1);
             //Ativar flecha
             canUseBow = true;
         }

@@ -67,12 +67,12 @@ public abstract class Enemy : MonoBehaviour{
 			transform.position = initialPos;
 			gameObject.SetActive(true);
 			isDead = false;
-			FindObjectOfType<Fade>().FadeGameObject(this.gameObject, true, 1);
+			FindObjectOfType<Fade>().FadeGameObject(this.gameObject, 1, 0, 1);
 		}
 		else{
 			transform.position = initialPos;
-			FindObjectOfType<Fade>().FadeGameObject(this.gameObject, false, 0.5f);
-			FindObjectOfType<Fade>().FadeGameObject(this.gameObject, true, 0.5f);
+			FindObjectOfType<Fade>().FadeGameObject(this.gameObject, 0.5f, 1, 0);
+			FindObjectOfType<Fade>().FadeGameObject(this.gameObject, 0.5f, 0, 1);
 		}
 	}
 

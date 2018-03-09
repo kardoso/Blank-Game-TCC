@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 2
+  m_CurrentQuality: 0
   m_QualitySettings:
   - serializedVersion: 2
     name: Simple
@@ -64,7 +64,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Beautiful
-    pixelLightCount: 0
+    pixelLightCount: 16
     shadows: 0
     shadowResolution: 2
     shadowProjection: 1
@@ -106,7 +106,7 @@ QualitySettings:
     textureQuality: 0
     anisotropicTextures: 0
     antiAliasing: 0
-    softParticles: 1
+    softParticles: 0
     softVegetation: 1
     realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 1
@@ -118,7 +118,4 @@ QualitySettings:
     asyncUploadBufferSize: 4
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms: []
-  m_PerPlatformDefaultQuality:
-    Android: 3
-    Standalone: 3
-    WebGL: 0
+  m_PerPlatformDefaultQuality: {}
