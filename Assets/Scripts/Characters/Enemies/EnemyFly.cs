@@ -106,7 +106,6 @@ public class EnemyFly : Enemy {
 		esperartempo = ficarparado;
 		anim.SetTrigger("Damage");
 		hp--;
-		Debug.Log(hp);
 		if(hp <= 0){
 			GetComponent<BoxCollider2D>().enabled = false;
 			isDead = true;
