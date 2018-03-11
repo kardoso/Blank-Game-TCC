@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowProjectile : MonoBehaviour {
+public class Launcher : MonoBehaviour {
 
 	public enum LaunchDirection{
 		Up,
@@ -18,10 +18,26 @@ public class ThrowProjectile : MonoBehaviour {
 
 	void Start(){
 		spawnPoint = transform.GetChild(0);
+		DisableLight();
 		StartCoroutine("LaunchProjectile");
 	}
 
 	IEnumerator LaunchProjectile(){
+		while(true){
+			yield return new WaitForSeconds(timeToThrow);
+			GetComponent<Animator>().SetTrigger("LaunchNOW");
+		}
+	}
+
+	void EnableLight(){
+		transform.Find("Light").gameObject.SetActive(true);
+	}
+
+	void DisableLight(){
+		transform.Find("Light").gameObject.SetActive(false);
+	}
+
+	void Launch(){
 		var projectilePrototype = Resources.Load("Objects/Projectile", typeof(GameObject)) as GameObject;
 		Vector3 spawnPos = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
 		Vector2 direction = Vector2.up;
@@ -40,7 +56,5 @@ public class ThrowProjectile : MonoBehaviour {
 		projectilePrototype.transform.position = spawnPos;
 		GameObject.Instantiate(projectilePrototype).GetComponent<Projectile>().SetDirection(direction);
 		//GameObject.Instantiate(projectilePrototype, spawnPos, Quaternion.identity);
-		yield return new WaitForSeconds(timeToThrow);
-		StartCoroutine("LaunchProjectile");
 	}
 }
