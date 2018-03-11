@@ -14,10 +14,6 @@ public class ChangeAmbient : MonoBehaviour {
 		inside = false;
 		GetComponent<Tilemap>().color = quadColor;
 		EnableLights(false);
-	}
-
-	void Update()
-	{
 		player = FindObjectOfType<Player>().transform;
 	}
 
