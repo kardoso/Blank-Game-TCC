@@ -24,13 +24,28 @@ public class OpenDoor : MonoBehaviour {
 			buttonImage.SetActive(keyPressed?false:true);
 			if((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("B")) && !keyPressed){
 				FindObjectOfType<Inventory>().RemoveKey();
+				FindObjectOfType<Player>().StopMovement();
 				keyPressed = true;
-				TransitionManager.Instance.LoadLevel(sceneToLoadName, 1.0f);
+				int _value = Random.Range(0,2);
+				switch (_value){
+					case 0:
+						GetComponent<Animator>().SetTrigger("Porta1");
+						break;
+					case 1:
+						GetComponent<Animator>().SetTrigger("Porta2");
+						break;
+					default:
+						break;
+				}
 			}
 		}
 		else{
 			buttonImage.SetActive(false);
 		}
+	}
+
+	void LoadLevel(){
+		TransitionManager.Instance.LoadLevel(sceneToLoadName, 1.0f);
 	}
 
 	void OnTriggerStay2D(Collider2D other){

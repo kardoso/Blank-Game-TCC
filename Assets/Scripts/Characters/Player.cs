@@ -445,6 +445,10 @@ public class Player : MonoBehaviour
         canMove = true;
     }
 
+    public void StopMovement(){
+        canMove = false;
+    }
+
     //Check side collider
     //And change the velocity.x to 0 when colliding with something in side on Move() function
 
