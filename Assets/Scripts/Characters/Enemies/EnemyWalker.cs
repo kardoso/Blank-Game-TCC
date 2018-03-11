@@ -131,11 +131,11 @@ public class EnemyWalker : Enemy {
 		GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 		GetComponent<BoxCollider2D>().enabled = false;
 		anim.SetTrigger("Die");
-		DroptKey();
+		DropKey();
 	}
 
-	void DroptKey(){
-		Instantiate(key, transform.position, transform.rotation);
+	void DropKey(){
+		Instantiate(key, new Vector3(transform.position.x, transform.position.y-16, transform.position.y), transform.rotation);
 	}
 
 	public override void Respawn(){

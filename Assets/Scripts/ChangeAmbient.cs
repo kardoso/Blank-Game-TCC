@@ -23,7 +23,7 @@ public class ChangeAmbient : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		if(other.gameObject.tag.Equals("Player") || other.gameObject.tag.Equals("DeadPlayer")){
+		if(other.gameObject.tag.Equals("Player")){
 			if (GetComponent<CompositeCollider2D>().bounds.Contains(new Vector3(player.position.x, player.position.y, transform.position.z))){
 				if(!inside){
 					RenderSettings.ambientLight = inAmbientColor;
@@ -41,6 +41,25 @@ public class ChangeAmbient : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	void OnTriggerExit2D(Collider2D other)
+	{	
+		if(other.gameObject.tag.Equals("Player")){
+			if(inside){
+				RenderSettings.ambientLight = outAmbientColor;
+				EnableLights(false);
+				FadeThisObject(0.2f, true);
+				inside = false;
+			}
+		}
+	}
+
+	public void ResetObject(){
+		RenderSettings.ambientLight = outAmbientColor;
+		EnableLights(false);
+		FadeThisObject(0.05f, true);
+		inside = false;
 	}
 
 	void FadeThisObject(float duration, bool fadeIn){

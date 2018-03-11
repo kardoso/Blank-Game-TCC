@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     RaycastHit2D[] allHits;
     List<RaycastHit2D> objectsInRayHit = new List<RaycastHit2D>();
     bool canUseBow;
+    public LayerMask layersForArrow;
 
     public LayerMask boxLayerMask;
     public Transform boxCheckRightPoint;
@@ -112,16 +113,14 @@ public class Player : MonoBehaviour
                 //Faz a animação usar UnscaledTime, fazendo com que não dependa do Time.deltaTime
                 anim.updateMode = AnimatorUpdateMode.UnscaledTime;
 
-                float step = (walkSpeed * 2) * Time.unscaledDeltaTime;
+                float step = (walkSpeed * 1.5f) * Time.unscaledDeltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, posToGo, step);
 
                 if (transform.position == posToGo)
                 {
-                    GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                    GetComponent<BoxCollider2D>().enabled = true;
                     anim.updateMode = AnimatorUpdateMode.Normal;
-                    canMove = true;
                     FindObjectOfType<LevelManager>().TimeInNormal();
+                    ImBack();
                 }
             }
         }
@@ -162,7 +161,7 @@ public class Player : MonoBehaviour
         }
 
 
-        allHits = Physics2D.LinecastAll(new Vector2(initialX, initialY), new Vector2(initialX + distance, initialY));
+        allHits = Physics2D.LinecastAll(new Vector2(initialX, initialY), new Vector2(initialX + distance, initialY), layersForArrow);
         Debug.DrawLine(new Vector2(initialX, initialY), new Vector2(initialX + distance, initialY));
 
 
@@ -173,12 +172,7 @@ public class Player : MonoBehaviour
             {
                 foreach (RaycastHit2D rh in allHits)
                 {
-                    if ((!rh.collider.gameObject.layer.Equals(16) && !rh.collider.gameObject.layer.Equals(17)) && !rh.collider.gameObject.layer.Equals(18))
-                    {
                         objectsInRayHit.Add(rh);
-                    }
-                    if (!rh.collider.gameObject.layer.Equals(12)) //12 = Enemy layer
-                        break;
                 }
 
                 objectsInRayHit.Sort(delegate (RaycastHit2D rh1, RaycastHit2D rh2)
@@ -229,11 +223,13 @@ public class Player : MonoBehaviour
             Vector3 spawnPos = new Vector3(spawnX, spawnY, initialZ);
 
             yield return new WaitForSeconds(0.25f);
+            //criar linha
+            var lineRenderer= new GameObject().AddComponent<LineRenderer>();
+            lineRenderer.name = "LineRenderer";
             if (Time.timeScale >= 1)
             {
-                //Desenhar a linha
-                GetComponent<LineRenderer>().SetPosition(0, new Vector3(initialX, initialY, initialZ));
-                GetComponent<LineRenderer>().SetPosition(1, new Vector3(hitForArrow.x, hitForArrow.y, initialZ));
+                lineRenderer.GetComponent<LineRenderer>().SetPosition(0, new Vector3(initialX, initialY, initialZ));
+                lineRenderer.GetComponent<LineRenderer>().SetPosition(1, new Vector3(hitForArrow.x, hitForArrow.y, initialZ));
             }
             //Dano nos inimigos
             if ((allHits != null) && Time.timeScale >= 1)
@@ -265,8 +261,9 @@ public class Player : MonoBehaviour
 
             yield return new WaitForSeconds(0.025f);
             //Limpar a linha
-            GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
-            GetComponent<LineRenderer>().SetPosition(1, Vector3.zero);
+            lineRenderer.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
+            lineRenderer.GetComponent<LineRenderer>().SetPosition(1, Vector3.zero);
+            Destroy(lineRenderer.gameObject);
             //Desativar a esfera indicadora
             //FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, 0.5f, 1, 0);
             //Ativar movimento novamente
@@ -420,23 +417,19 @@ public class Player : MonoBehaviour
     public void MakeDamage()
     {
         canMove = false;
-        gameObject.layer = 20; //layer DeadPlayer
-        foreach(Transform t in transform){
-            t.gameObject.layer = 20;
-        }
-        rb.gravityScale = 0;
+        rb.bodyType = RigidbodyType2D.Static;
+        rb.isKinematic = true;
+        GetComponent<BoxCollider2D>().enabled = false;
         FindObjectOfType<LevelManager>().TimeInDeath();
         posToGo = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
-
         //transform.position = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
     }
 
     public void ImBack(){
-        rb.gravityScale = 30;
-        gameObject.layer = 11;//layer Player
-        foreach(Transform t in transform){
-            t.gameObject.layer = 11;
-        }
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.isKinematic = false;
+        GetComponent<BoxCollider2D>().enabled = true;
+        canMove = true;
     }
 
     //Check side collider

@@ -12,12 +12,22 @@ public class LevelManager : MonoBehaviour {
 	Enemy[] enemies;
 	Trap[] traps;
 	private Player player;
+	ChangeAmbient[] changesForAmbient;
+
+	void Awake()
+	{
+		if(FindObjectOfType<TransitionManager>() == null){
+			var transitionManager= new GameObject().AddComponent<TransitionManager>();
+			transitionManager.name = "TransitionManager";
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
 		player = FindObjectOfType<Player>();
 		enemies = FindObjectsOfType<Enemy>();
 		traps = FindObjectsOfType<Trap>();
+		changesForAmbient = FindObjectsOfType<ChangeAmbient>();
 		TimeInNormal();
 	}
 	
@@ -52,5 +62,8 @@ public class LevelManager : MonoBehaviour {
 		player.ImBack();
 		onlyPlayerCamera.SetActive(false);
 		Time.timeScale = 1f;
+		foreach(ChangeAmbient c in changesForAmbient){
+			c.ResetObject();
+		}
 	}
 }

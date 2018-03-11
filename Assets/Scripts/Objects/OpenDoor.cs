@@ -10,15 +10,41 @@ public class OpenDoor : MonoBehaviour {
 
 	private bool keyPressed = false;
 
+	public GameObject buttonImage;
+	private bool isInside;
+
+	void Start()
+	{
+		buttonImage.SetActive(false);
+	}
+
+	void Update()
+	{
+		if(isInside){
+			buttonImage.SetActive(keyPressed?false:true);
+			if((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("B")) && !keyPressed){
+				FindObjectOfType<Inventory>().RemoveKey();
+				keyPressed = true;
+				TransitionManager.Instance.LoadLevel(sceneToLoadName, 1.0f);
+			}
+		}
+		else{
+			buttonImage.SetActive(false);
+		}
+	}
+
 	void OnTriggerStay2D(Collider2D other){
 		if(other.gameObject.tag.Equals("Player")){
 			if(other.gameObject.GetComponent<Inventory>().HasKey()){
-				if(Input.GetKeyDown(KeyCode.E) && !keyPressed){
-					other.gameObject.GetComponent<Inventory>().RemoveKey();
-					keyPressed = true;
-					TransitionManager.Instance.LoadLevel(sceneToLoadName, 1.0f);
-				}
+				isInside = true;
 			}
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D other)
+	{
+		if(other.gameObject.tag.Equals("Player")){
+			isInside = false;
 		}
 	}
 }

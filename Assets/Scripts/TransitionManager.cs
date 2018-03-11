@@ -150,6 +150,7 @@ public class TransitionManager : LightGive.SingletonMonoBehaviour<TransitionMana
     /// <param name="_transitionColor">Transition color.</param>
     public void LoadLevel(string _sceneName, float _transitionTime, TransitionType _transitionType, Color _transitionColor)
     {
+        Init();
         StartCoroutine(SceneChange(_sceneName, _transitionTime, _transitionType, _transitionColor));
     }
 
@@ -199,7 +200,7 @@ public class TransitionManager : LightGive.SingletonMonoBehaviour<TransitionMana
         transImageObj.SetActive(false);
     }
 
-    void SettingTransitionType(TransitionType _transitionType)
+    public void SettingTransitionType(TransitionType _transitionType)
     {
 
         switch (_transitionType)
