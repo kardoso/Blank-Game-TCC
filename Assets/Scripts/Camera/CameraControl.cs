@@ -60,7 +60,7 @@ public class CameraControl : MonoBehaviour {
         //Limitar no eixo Y
         coord.y = Mathf.Clamp(coord.y, minY, maxY);
         //Definir a posição em Z da câmera. Padrão: -10
-        coord.z = -10;
+        coord.z = -20;
         //Setar a posição da câmera de acordo com a variável "coord"
         transform.position = coord;
     }

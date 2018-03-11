@@ -88,14 +88,14 @@ public class Player : MonoBehaviour
                     input_y = Input.GetAxisRaw("Vertical");
                 }
 
-                isGrounded = Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Floor"))
+                isGrounded = Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16f), 1 << LayerMask.NameToLayer("Floor"))
                             ||
-                            Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Arrow"))
+                            Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16f), 1 << LayerMask.NameToLayer("Arrow"))
                             ||
-                            Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f), 1 << LayerMask.NameToLayer("Box"))
+                            Physics2D.Linecast(new Vector2(transform.position.x - 3.8f, transform.position.y - 16f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16f), 1 << LayerMask.NameToLayer("Box"))
                             ;
 
-                Debug.DrawLine(new Vector2(transform.position.x - 3.8f, transform.position.y - 16.5f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16.5f));
+                Debug.DrawLine(new Vector2(transform.position.x - 3.8f, transform.position.y - 16f), new Vector2(transform.position.x + 3.9f, transform.position.y - 16f));
 
                 anim.SetBool("isGrounded", isGrounded);
                 anim.SetBool("isSliding", wallSliding);
@@ -286,9 +286,15 @@ public class Player : MonoBehaviour
     {
         float _actualSpeedX = 0;
         float _maxSpeed = 0;
+        float _velocityMultiplier = 0;
 
         boxCheckRight = Physics2D.OverlapCircle(boxCheckRightPoint.position, 0.1f, boxLayerMask);
         boxCheckLeft = Physics2D.OverlapCircle(boxCheckLeftPoint.position, -0.1f, boxLayerMask);
+
+        var inLeft = Physics2D.Linecast(new Vector2(transform.position.x - 4f, transform.position.y - 15f), new Vector2(transform.position.x - 4f, transform.position.y + 1), 1 << LayerMask.NameToLayer("Floor"));
+        var inRight = Physics2D.Linecast(new Vector2(transform.position.x + 4.1f, transform.position.y - 15f), new Vector2(transform.position.x + 4.1f, transform.position.y + 1), 1 << LayerMask.NameToLayer("Floor"));
+        Debug.DrawLine(new Vector2(transform.position.x - 4f, transform.position.y - 15f), new Vector2(transform.position.x - 4f, transform.position.y + 1));
+        Debug.DrawLine(new Vector2(transform.position.x + 4.1f, transform.position.y - 15f), new Vector2(transform.position.x + 4.1f, transform.position.y + 1));
 
         //Andar
         if (input_x != 0)
@@ -297,23 +303,30 @@ public class Player : MonoBehaviour
             {
                 anim.SetBool("Pushing", true);
                 _maxSpeed = maxSpeed / 8;
+                _velocityMultiplier = 1;
+            }
+            else if((inLeft || inRight) && !isGrounded){
+                _actualSpeedX = 0;
+                _velocityMultiplier = 0;
             }
             else
             {
                 _maxSpeed = maxSpeed;
                 anim.SetBool("Pushing", false);
+                _velocityMultiplier = 1;
             }
             _actualSpeedX = walkSpeed;
         }
         else
         {
             _actualSpeedX = 0;
+            _velocityMultiplier = 0;
             anim.SetBool("Pushing", false);
         }
 
         //Mover
         //transform.position += new Vector3(input_x, 0, 0).normalized * Time.deltaTime * _actualSpeedX;
-        rb.AddForce((Vector2.right * _actualSpeedX * 500) * input_x);
+        rb.AddForce((Vector2.right * _actualSpeedX * 500) * input_x * _velocityMultiplier);
         if (rb.velocity.x > _maxSpeed)
         {
             rb.velocity = new Vector2(_maxSpeed, rb.velocity.y);
