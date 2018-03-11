@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_AmbientSkyColor: {r: 0.85294116, g: 0.85294116, b: 0.85294116, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -161,6 +161,11 @@ Prefab:
     - target: {fileID: 4824822712437726, guid: 5d18091398746054ea9a6be17e50825f, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108425473689157648, guid: 5d18091398746054ea9a6be17e50825f,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d18091398746054ea9a6be17e50825f, type: 2}
@@ -543,6 +548,11 @@ Prefab:
       propertyPath: m_Name
       value: Spotlight (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 108425473689157648, guid: 5d18091398746054ea9a6be17e50825f,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d18091398746054ea9a6be17e50825f, type: 2}
   m_IsPrefabParent: 0
@@ -596,6 +606,11 @@ Prefab:
     - target: {fileID: 1853040480709898, guid: 5d18091398746054ea9a6be17e50825f, type: 2}
       propertyPath: m_Name
       value: Spotlight (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 108425473689157648, guid: 5d18091398746054ea9a6be17e50825f,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d18091398746054ea9a6be17e50825f, type: 2}
@@ -962,6 +977,11 @@ Prefab:
     - target: {fileID: 1853040480709898, guid: 5d18091398746054ea9a6be17e50825f, type: 2}
       propertyPath: m_Name
       value: Spotlight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 108425473689157648, guid: 5d18091398746054ea9a6be17e50825f,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d18091398746054ea9a6be17e50825f, type: 2}
@@ -6617,6 +6637,11 @@ Prefab:
     - target: {fileID: 1853040480709898, guid: 5d18091398746054ea9a6be17e50825f, type: 2}
       propertyPath: m_Name
       value: Spotlight (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 108425473689157648, guid: 5d18091398746054ea9a6be17e50825f,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d18091398746054ea9a6be17e50825f, type: 2}
