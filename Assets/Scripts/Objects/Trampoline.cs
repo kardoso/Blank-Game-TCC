@@ -7,7 +7,8 @@ public class Trampoline : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.tag.Equals("Player")){
-			other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpVelocity;
+			other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.up * 400f;
+			GetComponent<Animator>().SetTrigger("Active");
 		}
 	}
 }
