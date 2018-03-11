@@ -31,6 +31,9 @@ public class Projectile : MonoBehaviour {
 		if(!collided){
 			transform.Translate(Vector2.right * Time.deltaTime * velocity);
 		}
+		if(Time.timeScale < 1){
+			Destroy(this.gameObject);
+		}
 	}
 
 	public void SetDirection(Vector2 dir){

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Key : MonoBehaviour {
 
+	void Start()
+	{
+		transform.position = new Vector3(transform.position.x, transform.position.y, -1);
+	}
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.gameObject.tag.Equals("Player")){

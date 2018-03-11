@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour {
 	public GameObject  onlyPlayerCamera;
 	Enemy[] enemies;
 	Trap[] traps;
+	Box[] boxes;
 	private Player player;
 	ChangeAmbient[] changesForAmbient;
 
@@ -27,6 +28,7 @@ public class LevelManager : MonoBehaviour {
 		player = FindObjectOfType<Player>();
 		enemies = FindObjectsOfType<Enemy>();
 		traps = FindObjectsOfType<Trap>();
+		boxes = FindObjectsOfType<Box>();
 		changesForAmbient = FindObjectsOfType<ChangeAmbient>();
 		TimeInNormal();
 	}
@@ -51,6 +53,9 @@ public class LevelManager : MonoBehaviour {
 		}
 		foreach(Trap t in traps){
 			t.Enable();
+		}
+		foreach(Box b in boxes){
+			b.Respawn();
 		}
 		Time.timeScale = timeWhileDeath;
 		mainCamera.GetComponent<UnityStandardAssets.ImageEffects.ColorCorrectionRamp>().enabled = true;
