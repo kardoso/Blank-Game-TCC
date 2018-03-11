@@ -11,6 +11,7 @@ public class Arrow : MonoBehaviour
     RaycastHit2D hitInEnemy;
     RaycastHit2D hitNormalWall;
     RaycastHit2D hitWallForArrow;
+    RaycastHit2D hitInButton;
     float velocity = 1000;
 
     Vector3 direction;
@@ -27,6 +28,7 @@ public class Arrow : MonoBehaviour
             hitInBox = Physics2D.Linecast(new Vector2(transform.position.x + 1, transform.position.y), new Vector2(transform.position.x + 4, transform.position.y), 1 << LayerMask.NameToLayer("Box"));
             hitNormalWall = Physics2D.Linecast(new Vector2(transform.position.x + 1, transform.position.y), new Vector2(transform.position.x + 4, transform.position.y), 1 << LayerMask.NameToLayer("Wall"));
             hitWallForArrow = Physics2D.Linecast(new Vector2(transform.position.x + 1, transform.position.y), new Vector2(transform.position.x + 4, transform.position.y), 1 << LayerMask.NameToLayer("WallForArrow"));
+            hitInButton = Physics2D.Linecast(new Vector2(transform.position.x + 1, transform.position.y), new Vector2(transform.position.x + 4, transform.position.y), 1 << LayerMask.NameToLayer("Button"));
         }
         else
         {
@@ -35,6 +37,7 @@ public class Arrow : MonoBehaviour
             hitInBox = Physics2D.Linecast(new Vector2(transform.position.x - 1, transform.position.y), new Vector2(transform.position.x - 4, transform.position.y), 1 << LayerMask.NameToLayer("Box"));
             hitNormalWall = Physics2D.Linecast(new Vector2(transform.position.x - 1, transform.position.y), new Vector2(transform.position.x - 4, transform.position.y), 1 << LayerMask.NameToLayer("Wall"));
             hitWallForArrow = Physics2D.Linecast(new Vector2(transform.position.x - 1, transform.position.y), new Vector2(transform.position.x - 4, transform.position.y), 1 << LayerMask.NameToLayer("WallForArrow"));
+            hitInButton = Physics2D.Linecast(new Vector2(transform.position.x - 1, transform.position.y), new Vector2(transform.position.x - 4, transform.position.y), 1 << LayerMask.NameToLayer("Button"));
         }
 
         if (hitInArrow)
@@ -53,6 +56,9 @@ public class Arrow : MonoBehaviour
         else if (hitWallForArrow)
         {
 
+        }
+        else if(hitInButton){
+            
         }
         else
         {

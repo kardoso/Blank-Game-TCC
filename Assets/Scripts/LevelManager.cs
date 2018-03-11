@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour {
 	Enemy[] enemies;
 	Trap[] traps;
 	Box[] boxes;
+	ButtonArrow[] buttonsArrow;
 	private Player player;
 	ChangeAmbient[] changesForAmbient;
 
@@ -29,6 +30,7 @@ public class LevelManager : MonoBehaviour {
 		enemies = FindObjectsOfType<Enemy>();
 		traps = FindObjectsOfType<Trap>();
 		boxes = FindObjectsOfType<Box>();
+		buttonsArrow = FindObjectsOfType<ButtonArrow>();
 		changesForAmbient = FindObjectsOfType<ChangeAmbient>();
 		TimeInNormal();
 	}
@@ -69,6 +71,9 @@ public class LevelManager : MonoBehaviour {
 		Time.timeScale = 1f;
 		foreach(ChangeAmbient c in changesForAmbient){
 			c.ResetObject();
+		}
+		foreach(ButtonArrow b in buttonsArrow){
+			b.DisableButton();
 		}
 	}
 }

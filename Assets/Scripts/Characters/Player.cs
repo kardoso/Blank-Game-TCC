@@ -172,7 +172,10 @@ public class Player : MonoBehaviour
             {
                 foreach (RaycastHit2D rh in allHits)
                 {
-                        objectsInRayHit.Add(rh);
+                    objectsInRayHit.Add(rh);
+                    if(rh.collider.gameObject.layer.Equals(8)){
+                        break;
+                    }
                 }
 
                 objectsInRayHit.Sort(delegate (RaycastHit2D rh1, RaycastHit2D rh2)
@@ -238,6 +241,8 @@ public class Player : MonoBehaviour
                 {
                     if (rh.collider.gameObject.layer.Equals(12)) //12 = Enemy layer
                         rh.collider.gameObject.GetComponent<Enemy>().MakeDamage();
+                    if(rh.collider.gameObject.layer.Equals(20))
+                        rh.collider.gameObject.GetComponent<ButtonArrow>().EnableButton();
                 }
 
                 objectsInRayHit.Sort(delegate (RaycastHit2D rh1, RaycastHit2D rh2)

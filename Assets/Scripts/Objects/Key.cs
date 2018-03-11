@@ -9,6 +9,13 @@ public class Key : MonoBehaviour {
 		transform.position = new Vector3(transform.position.x, transform.position.y, -1);
 	}
 
+	void Update()
+	{
+		if(Time.timeScale < 1){
+			Destroy(this.gameObject);
+		}
+	}
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.gameObject.tag.Equals("Player")){
