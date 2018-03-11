@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     public bool wallCheckRight;
     public LayerMask wallLayerMask;
 
-    public GameObject arrowIndicatorSphere;
+    //public GameObject arrowIndicatorSphere;
     public Transform bowInitialPointRight;
     public Transform bowInitialPointLeft;
     RaycastHit2D hitForBow;
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        gameObject.layer = 11;//layer Player
         invertDirectionalControls = false;
         canUseBow = true;
         canMove = true;
@@ -172,7 +173,7 @@ public class Player : MonoBehaviour
             {
                 foreach (RaycastHit2D rh in allHits)
                 {
-                    if ((!rh.collider.gameObject.layer.Equals(16) && !rh.collider.gameObject.layer.Equals(17)) && (!rh.collider.gameObject.layer.Equals(18) && !rh.collider.gameObject.layer.Equals(19)))
+                    if ((!rh.collider.gameObject.layer.Equals(16) && !rh.collider.gameObject.layer.Equals(17)) && !rh.collider.gameObject.layer.Equals(18))
                     {
                         objectsInRayHit.Add(rh);
                     }
@@ -267,16 +268,16 @@ public class Player : MonoBehaviour
             GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
             GetComponent<LineRenderer>().SetPosition(1, Vector3.zero);
             //Desativar a esfera indicadora
-            FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, 0.5f, 1, 0);
+            //FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, 0.5f, 1, 0);
             //Ativar movimento novamente
             canMove = true;
 
             yield return new WaitForSeconds(0.5f);
-            arrowIndicatorSphere.SetActive(false);
+            //arrowIndicatorSphere.SetActive(false);
 
             //yield return new WaitForSeconds(0.5f);
-            arrowIndicatorSphere.SetActive(true);
-            FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, 0.5f, 0, 1);
+            //arrowIndicatorSphere.SetActive(true);
+            //FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, 0.5f, 0, 1);
             //Ativar flecha
             canUseBow = true;
         }
@@ -419,12 +420,23 @@ public class Player : MonoBehaviour
     public void MakeDamage()
     {
         canMove = false;
-        GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        gameObject.layer = 20; //layer DeadPlayer
+        foreach(Transform t in transform){
+            t.gameObject.layer = 20;
+        }
+        rb.gravityScale = 0;
         FindObjectOfType<LevelManager>().TimeInDeath();
         posToGo = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
 
         //transform.position = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
+    }
+
+    public void ImBack(){
+        rb.gravityScale = 30;
+        gameObject.layer = 11;//layer Player
+        foreach(Transform t in transform){
+            t.gameObject.layer = 11;
+        }
     }
 
     //Check side collider

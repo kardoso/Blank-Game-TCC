@@ -16,6 +16,7 @@ public class EnemyWalker : Enemy {
 	private float timeInIdle = 4;
 	private float timeWalking = 3;
 
+	public GameObject key;
 	public LayerMask wallLayerMask;
 	public LayerMask floorLayerMask;
 	public GameObject checkWallL, checkWallR, checkFloorL, checkFloorR;
@@ -130,6 +131,11 @@ public class EnemyWalker : Enemy {
 		GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 		GetComponent<BoxCollider2D>().enabled = false;
 		anim.SetTrigger("Die");
+		DroptKey();
+	}
+
+	void DroptKey(){
+		Instantiate(key, transform.position, transform.rotation);
 	}
 
 	public override void Respawn(){

@@ -12,14 +12,18 @@ public class ChangeAmbient : MonoBehaviour {
 	void Start()
 	{
 		inside = false;
-		player = FindObjectOfType<Player>().transform;
 		GetComponent<Tilemap>().color = quadColor;
 		EnableLights(false);
 	}
 
+	void Update()
+	{
+		player = FindObjectOfType<Player>().transform;
+	}
+
 	void OnTriggerStay2D(Collider2D other)
 	{
-		if(other.gameObject.tag.Equals("Player")){
+		if(other.gameObject.tag.Equals("Player") || other.gameObject.tag.Equals("DeadPlayer")){
 			if (GetComponent<CompositeCollider2D>().bounds.Contains(new Vector3(player.position.x, player.position.y, transform.position.z))){
 				if(!inside){
 					RenderSettings.ambientLight = inAmbientColor;

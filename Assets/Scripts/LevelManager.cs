@@ -11,9 +11,11 @@ public class LevelManager : MonoBehaviour {
 	public GameObject  onlyPlayerCamera;
 	Enemy[] enemies;
 	Trap[] traps;
+	private Player player;
 
 	// Use this for initialization
 	void Start () {
+		player = FindObjectOfType<Player>();
 		enemies = FindObjectsOfType<Enemy>();
 		traps = FindObjectsOfType<Trap>();
 		TimeInNormal();
@@ -47,6 +49,7 @@ public class LevelManager : MonoBehaviour {
 
 	public void TimeInNormal(){
 		mainCamera.GetComponent<UnityStandardAssets.ImageEffects.ColorCorrectionRamp>().enabled = false;
+		player.ImBack();
 		onlyPlayerCamera.SetActive(false);
 		Time.timeScale = 1f;
 	}

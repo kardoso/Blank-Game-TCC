@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour {
 
-	public GameObject doorIndicatorSphere;
+	public GameObject keyIndicatorSphere;
 
-	private int doorQuant;
+	private int keyQuant;
 
 	void Awake()
 	{
-		doorIndicatorSphere.SetActive(false);
-		doorQuant = 0;
+		keyIndicatorSphere.SetActive(false);
+		keyQuant = 0;
 	}
 
-	public bool HasDoor(){
-		return doorQuant > 0;
+	public bool HasKey(){
+		return keyQuant > 0;
 	}
 
-	public void AddDoor(){
-		doorQuant += 1;
-		doorIndicatorSphere.SetActive(true);
+	public void AddKey(){
+		keyQuant += 1;
+		keyIndicatorSphere.SetActive(true);
 	}
 
-	public void RemoveDoor(){
-		doorQuant -= 1;
-		doorIndicatorSphere.SetActive(false);
+	public void RemoveKey(){
+		keyQuant -= 1;
+		keyIndicatorSphere.SetActive(false);
 	}
 }
