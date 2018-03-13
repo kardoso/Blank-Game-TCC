@@ -25,6 +25,7 @@ public class EnemySurprise : Enemy {
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		tempotiro = podeatirar;
 		anim = GetComponent<Animator>();
+		StartCoroutine("AutoDestroy");
 	}
 
 	protected override void Update () {
@@ -88,5 +89,10 @@ public class EnemySurprise : Enemy {
 		canShootAndMove = false;
 		GetComponent<BoxCollider2D>().enabled = false;
 		Destroy(this.gameObject);
+	}
+
+	IEnumerator AutoDestroy(){
+		yield return new WaitForSeconds(4f);
+		MakeDamage();
 	}
 }
