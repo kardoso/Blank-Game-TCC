@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
                 //Faz a animação usar UnscaledTime, fazendo com que não dependa do Time.deltaTime
                 anim.updateMode = AnimatorUpdateMode.UnscaledTime;
 
-                float step = (walkSpeed * 1.5f) * Time.unscaledDeltaTime;
+                float step = (walkSpeed * 2f) * Time.unscaledDeltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, posToGo, step);
 
                 if (transform.position == posToGo)
