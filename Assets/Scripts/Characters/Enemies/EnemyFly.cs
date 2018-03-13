@@ -20,7 +20,7 @@ public class EnemyFly : Enemy {
 	public float miny;
 	public float maxy;
 
-	private float hp = 2;
+	//private float hp = 2;
 
 
 	protected override void Start () {
@@ -99,25 +99,21 @@ public class EnemyFly : Enemy {
 	}
 
 	public void ResetHP(){
-		hp = 2;
+		//hp = 2;
 	}
 
 	public override void MakeDamage() {
 		esperartempo = ficarparado;
 		anim.SetTrigger("Damage");
-		hp--;
-		if(hp <= 0){
+		//hp--;
+		//if(hp <= 0){
 			GetComponent<BoxCollider2D>().enabled = false;
 			isDead = true;
-		}
-		else{
-			state = States.attack;
-		}
 	}
 
     public override void Respawn(){
 		EnableGameObject();
-		ResetHP();
+		//ResetHP();
 	}
 
 	public void OnDrawGizmos() {
