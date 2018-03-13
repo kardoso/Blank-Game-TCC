@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections;
+using System.Collections.Generic;
 
 public class ChangeAmbient : MonoBehaviour {
 	Transform player;			//This will be the player(duh)
@@ -8,6 +10,8 @@ public class ChangeAmbient : MonoBehaviour {
 	public Color quadColor;		//The color of this quad when player is not inside
 	public Color inAmbientColor;	//Ambient light color when player is inside this quad
 	public Color outAmbientColor;	//Ambient light color when player is outside this quad
+
+	public Transform objectWithInsideLights;
 
 	void Start()
 	{
@@ -68,9 +72,8 @@ public class ChangeAmbient : MonoBehaviour {
 	}
 
 	public void EnableLights(bool check){
-		Light[] lights = FindObjectsOfType<Light>();
-		foreach(Light l in lights){
-			l.enabled = check;
+		foreach(Transform t in objectWithInsideLights){
+			t.GetComponent<Light>().enabled = check;
 		}
 	}
 }
