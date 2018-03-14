@@ -20,7 +20,7 @@ public class CameraControl : MonoBehaviour
     public Vector3 axisShakeMin;    //Balanço mínimo
     public Vector3 axisShakeMax;    //Balanço máximo
     public float timeOfShake;       //Tempo de duração
-    private float timeOfShakeStore; //Quanto tempo passou
+    private float timeOfShakeStore; //Tempo de duração pré-definido
     private bool shake;             //Definir se câmera deve balançar
     private Vector3 shakeStartPos;       //Posição inicial da câmera enquanto em shake
 
