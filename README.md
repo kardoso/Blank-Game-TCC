@@ -7,3 +7,6 @@ Being done with Unity 2017.3.0f3
 [TransitionManager](https://github.com/LightGive/TransitionManager)
 
 [ChangeAmbientLight2D](https://github.com/kardoso/ChangeAmbientLight2D)
+
+## Used resources
+[Unity Legacy Image Effects](https://assetstore.unity.com/packages/essentials/legacy-image-effects-83913)
