@@ -1,8 +1,9 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraControl : MonoBehaviour {
+public class CameraControl : MonoBehaviour
+{
     //VARIÁVEIS PARA DEFINIR OS LIMITES DA CÂMERA DENTRO DE CADA AMBIENTE
     //Variáveis para limitar pontos máximos e mínimos da câmera
     public float minX;          //Localização mínima em X
@@ -49,16 +50,17 @@ public class CameraControl : MonoBehaviour {
         LimitCameraBounds();
     }
 
-      void FixedUpdate () {
+    void FixedUpdate()
+    {
         if (shake)
-        {         
+        {
             transform.position = shakeStartPos + new Vector3(Random.Range(axisShakeMin.x, axisShakeMax.x), Random.Range(axisShakeMin.y, axisShakeMax.y), Random.Range(axisShakeMin.z, axisShakeMax.z));
             timeOfShake -= Time.deltaTime;
             if (timeOfShake <= 0.0f)
             {
                 shake = false;
                 transform.position = shakeStartPos;
-            }        
+            }
         }
     }
 
@@ -90,8 +92,7 @@ public class CameraControl : MonoBehaviour {
         transform.position = coord;
     }
 
-    //Função para definir os limites da câmera
-    public void SetBounds(float _minX, float _maxX, float _minY,float _maxY)
+    public void SetBounds(float _minX, float _maxX, float _minY, float _maxY)
     {
         minX = _minX;
         maxX = _maxX;
@@ -99,29 +100,33 @@ public class CameraControl : MonoBehaviour {
         maxY = _maxY;
     }
 
-    public float GetMinX(){return minX;}
-    public float GetMaxX(){return maxX;}
-    public float GetMinY(){return minY;}
-    public float GetMaxY(){return maxY;}
+    public float GetMinX() { return minX; }
+    public float GetMaxX() { return maxX; }
+    public float GetMinY() { return minY; }
+    public float GetMaxY() { return maxY; }
 
     //Retorna o objeto que a câmera está focando
-    public GameObject GetTarget(){
+    public GameObject GetTarget()
+    {
         return target.gameObject;
     }
 
     //Define um novo target instantaneamente
-    public void SetTarget(Transform newTarget){
+    public void SetTarget(Transform newTarget)
+    {
         target = newTarget;
     }
 
     //Define um target após um tempo t
-    public IEnumerator SetTarget(float t){
+    public IEnumerator SetTarget(float t)
+    {
         yield return new WaitForSeconds(t);
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     //Balançar a câmera por um tempo definido "shakeTime"
-    public void ShakeCamera(float shakeTime = -1.0f){
+    public void ShakeCamera(float shakeTime = -1.0f)
+    {
         if (shakeTime > 0.0f)
         {
             timeOfShake = shakeTime;
