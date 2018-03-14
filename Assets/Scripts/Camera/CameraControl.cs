@@ -92,6 +92,7 @@ public class CameraControl : MonoBehaviour
         transform.position = coord;
     }
 
+    //Definir novos limites para a camera
     public void SetBounds(float _minX, float _maxX, float _minY, float _maxY)
     {
         minX = _minX;
