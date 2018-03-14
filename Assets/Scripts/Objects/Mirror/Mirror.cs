@@ -8,7 +8,7 @@ public class Mirror : MonoBehaviour {
 	{
 		if(other.gameObject.tag.Equals("Player")){
 			other.gameObject.GetComponent<Player>().InvetControls();
-			Camera.main.GetComponent<CameraShake>().ShakeCamera(0.2f);
+			Camera.main.GetComponent<CameraControl>().ShakeCamera(0.2f);
 			//break sprite
 			GetComponent<BoxCollider2D>().enabled = false;
 		}

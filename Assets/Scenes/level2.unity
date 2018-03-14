@@ -6954,7 +6954,14 @@ Prefab:
       propertyPath: maxY
       value: 98
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114230589362426830, guid: 63568a15a1cd1cb49ade32983c056076,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114717755764081328, guid: 63568a15a1cd1cb49ade32983c056076, type: 2}
+    - {fileID: 114230589362426830, guid: 63568a15a1cd1cb49ade32983c056076, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 63568a15a1cd1cb49ade32983c056076, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1809305883

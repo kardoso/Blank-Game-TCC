@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Parallaxing : MonoBehaviour {
 
+	//It may not work now. It's an old script and I haven't tested recently.
+
 	public Transform[] backgrounds;		//Array of all the back and foregrounds to be parallaxed
 	private float[] parallaxScales;		//The proportion of the camera's movement to move the background by
 	public float smoothing = 1f;		//How smooth the parallax is going to be. Make sute to set this above 0.

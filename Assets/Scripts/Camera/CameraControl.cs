@@ -11,9 +11,17 @@ public class CameraControl : MonoBehaviour {
     public float maxY;          //Localização máxima em Y
 
     //VARIÁVEIS PARA FAZER A CÂMERA SEGUIR O PLAYER
-    private float dampTime = 0f;    //Tempo de atraso que a câmera seguirá o jogador
+    private float dampTime = 0f;    //Tempo de atraso que a câmera seguirá o target
     private Transform target;       //O alvo que a câmera seguirá
     private Vector3 velocidade;     //A velocidade da câmera
+
+    //Variáveis para balançar a câmera (Camera Shake)
+    public Vector3 axisShakeMin;    //Balanço mínimo
+    public Vector3 axisShakeMax;    //Balanço máximo
+    public float timeOfShake;       //Tempo de duração
+    private float timeOfShakeStore; //Quanto tempo passou
+    private bool shake;             //Definir se câmera deve balançar
+    private Vector3 shakeStartPos;       //Posição inicial da câmera enquanto em shake
 
     void Start()
     {
@@ -21,11 +29,15 @@ public class CameraControl : MonoBehaviour {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         //Definir a variável "velocidade" com a velocidade da câmera
         velocidade = transform.position;
+        //
+        shake = false;
+        shakeStartPos = transform.position;
+        timeOfShakeStore = timeOfShake;
     }
 
     void Update()
     {
-        FollowPlayer();
+        FollowTarget();
 
         #if UNITY_EDITOR
         DebugDrawLimits();
@@ -37,10 +49,23 @@ public class CameraControl : MonoBehaviour {
         LimitCameraBounds();
     }
 
-    //SEGUIR O PLAYER
-    private void FollowPlayer()
+      void FixedUpdate () {
+        if (shake)
+        {         
+            transform.position = shakeStartPos + new Vector3(Random.Range(axisShakeMin.x, axisShakeMax.x), Random.Range(axisShakeMin.y, axisShakeMax.y), Random.Range(axisShakeMin.z, axisShakeMax.z));
+            timeOfShake -= Time.deltaTime;
+            if (timeOfShake <= 0.0f)
+            {
+                shake = false;
+                transform.position = shakeStartPos;
+            }        
+        }
+    }
+
+    //SEGUIR O TARGET
+    private void FollowTarget()
     {
-        //Seguir o player
+        //Seguir o target
         Vector3 point = GetComponent<Camera>().WorldToViewportPoint(target.position);
         Vector3 delta = target.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z));
         Vector3 destino = transform.position + delta;
@@ -65,7 +90,7 @@ public class CameraControl : MonoBehaviour {
         transform.position = coord;
     }
 
-    //Função para definir os limites da câmera. (Função para ser chamada em outro script)
+    //Função para definir os limites da câmera. (Preferencialmente com triggers)
     public void SetBounds(float _minX, float _maxX, float _minY,float _maxY)
     {
         minX = _minX;
@@ -84,15 +109,28 @@ public class CameraControl : MonoBehaviour {
         return target.gameObject;
     }
 
-    //Define um objeto para a camera focar
+    //Define um novo target instantaneamente
     public void SetTarget(Transform newTarget){
         target = newTarget;
     }
 
-    //Faz a câmera focar no player depois de 0.5 segundos
-    public IEnumerator TargetPlayer(){
-        yield return new WaitForSeconds(.5f);
+    //Define um target após um tempo t
+    public IEnumerator SetTarget(float t){
+        yield return new WaitForSeconds(t);
         target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    //Balançar a câmera por um tempo definido "shakeTime"
+    public void ShakeCamera(float shakeTime = -1.0f){
+        if (shakeTime > 0.0f)
+        {
+            timeOfShake = shakeTime;
+        }
+        else
+        {
+            timeOfShake = timeOfShakeStore;
+        }
+        shake = true;
     }
 
     void DebugDrawLimits()
