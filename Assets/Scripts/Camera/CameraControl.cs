@@ -90,7 +90,7 @@ public class CameraControl : MonoBehaviour {
         transform.position = coord;
     }
 
-    //Função para definir os limites da câmera. (Preferencialmente com triggers)
+    //Função para definir os limites da câmera
     public void SetBounds(float _minX, float _maxX, float _minY,float _maxY)
     {
         minX = _minX;
