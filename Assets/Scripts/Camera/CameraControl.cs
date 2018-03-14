@@ -119,10 +119,10 @@ public class CameraControl : MonoBehaviour
     }
 
     //Define um target após um tempo t
-    public IEnumerator SetTarget(float t)
+    public IEnumerator SetTarget(float t, Transform targTransform)
     {
         yield return new WaitForSeconds(t);
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = targTransform;
     }
 
     //Balançar a câmera por um tempo definido "shakeTime"
