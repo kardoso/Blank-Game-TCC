@@ -204,9 +204,7 @@ public class Player : MonoBehaviour
                                     initialX,
                                     initialY,
                                     initialZ));
-
         }
-        //}
     }
 
     IEnumerator ThrowArrow(List<RaycastHit2D> hits, float _distance, bool arrowShouldMove, Vector2 hitForArrow, float spawnX, float spawnY, float initialX, float initialY, float initialZ)
