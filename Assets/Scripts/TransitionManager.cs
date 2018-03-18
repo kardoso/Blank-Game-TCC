@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 /// UnityのUIを使ったシーン遷移
 /// フェードもあり。
 /// </summary>
-public class TransitionManager : LightGive.SingletonMonoBehaviour<TransitionManager>
+public class TransitionManager : SingletonMonoBehaviour<TransitionManager>
 {
     public enum TransitionType
     {
