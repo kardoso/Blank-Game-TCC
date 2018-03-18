@@ -7,10 +7,10 @@ public class Fade : MonoBehaviour {
 
 	//Fade GameObject
 	public void FadeGameObject(GameObject objectToFade, float duration, float initialValue, float finalValue){
-		StartCoroutine(CoFadeGameObject(objectToFade, duration, initialValue, finalValue));
+		StartCoroutine(JustFadeGameObject(objectToFade, duration, initialValue, finalValue));
 	}
 
-	IEnumerator CoFadeGameObject(GameObject objectToFade, float duration, float initialValue, float finalValue)
+	IEnumerator JustFadeGameObject(GameObject objectToFade, float duration, float initialValue, float finalValue)
 	{
 		float counter = 0f;
 		int mode = 0;

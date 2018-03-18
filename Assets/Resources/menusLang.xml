@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+	<Portuguese>
+		<string name="on">Habilitado</string>
+		<string name="off">Desabilitado</string>
+		<string name="exit">Sair</string>
+		<string name="start_game">Iniciar jogo</string>
+		<string name="continue">Continuar</string>
+		<string name="reload">Recarregar</string>
+		<string name="main_menu">Menu principal</string>
+		<string name="settings">Configurações</string>
+		<string name="cancel">Cancelar</string>
+		<string name="confirm">Confirmar</string>
+		<string name="full_screen">Tela cheia</string>
+		<string name="bgm_volume">Música de fundo</string>
+		<string name="fx_volume">Efeitos sonoros</string>
+		<string name="v_sync">Sincronização vertical</string>
+		<string name="confirm_new_game">Um jogo salvo foi encontrado. Deseja carregá-lo ou iniciar um novo jogo?
+		
+		O estado salvo será apagado caso inicie um novo jogo.</string>
+	</Portuguese>
+
+	<English>
+		<string name="on">On</string>
+		<string name="off">Off</string>
+		<string name="exit">Quit</string>
+		<string name="start_game">Start game</string>
+		<string name="continue">Continue</string>
+		<string name="reload">Reload</string>
+		<string name="main_menu">Main menu</string>
+		<string name="settings">Settings</string>
+		<string name="cancel">Cancel</string>
+		<string name="confirm">Confirm</string>
+		<string name="full_screen">Full Screen</string>
+		<string name="bgm_volume">BGM Sound Volume</string>
+		<string name="fx_volume">FX Sound Volume</string>
+		<string name="v_sync">VSync</string>
+		<string name="confirm_new_game">blah blah blah blah</string>
+	</English>
+
+	<Japanese>
+		<string name="on">有効</string>
+		<string name="off">無効</string>
+		<string name="exit">終了</string>
+		<string name="start_game">スタート</string>
+		<string name="continue">ゲームを続ける</string>
+		<string name="reload">リロード</string>
+		<string name="main_menu">タイル画面に戻る</string>
+		<string name="settings">設定</string>
+		<string name="cancel">キャンセル</string>
+		<string name="confirm">決定</string>
+		<string name="full_screen">フルスクリーンにする</string>
+		<string name="bgm_volume">バックグラウンドミュージックの音量</string>
+		<string name="fx_volume">効果音の音量</string>
+		<string name="v_sync">垂直同期</string>
+		<string name="confirm_new_game">ああああああああああああ</string>
+	</Japanese>
+</languages>
