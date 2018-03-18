@@ -36,10 +36,12 @@ public class EnemyFly : Enemy {
 		base.Update ();
 		CheckStates ();
 		
-		Idle();
-		Walk();
-		Attack(alvo.position);
-		
+		if(!isDead){
+			Idle();
+			Walk();
+			Attack(alvo.position);
+		}
+
 		anim.SetFloat("walkTime", esperartempo);
 		anim.SetBool("Die", isDead);
 	}
