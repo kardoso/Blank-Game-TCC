@@ -99,7 +99,7 @@ public class MainMenu : Menu
             }
             //Options
             else if(menuMode == 2){
-                if (Input.GetButtonDown("Submit"))
+                if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel"))
                 {
                     //New Game
                     if(chooseThisOption == 0){
