@@ -464,7 +464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionTime: 1
   transitionColor: {r: 0, g: 0, b: 0, a: 1}
-  transitionType: 1
+  transitionType: 0
   animationCurve:
     serializedVersion: 2
     m_Curve:
