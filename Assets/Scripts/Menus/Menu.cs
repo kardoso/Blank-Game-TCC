@@ -70,10 +70,9 @@ public abstract class Menu : MonoBehaviour{
             fade.FadeGameObject(g, 1, 0, 1);
             foreach(Transform gg in g.transform){
                 gg.gameObject.SetActive(true);
-                fade.FadeGameObject(gg.gameObject, 1, 0, 1);
+                fade.FadeGameObject(gg.gameObject, .1f, 0, 1);
             }
         }
-        yield return new WaitForSeconds(0.5f);
         pressed = false;
     }
 
