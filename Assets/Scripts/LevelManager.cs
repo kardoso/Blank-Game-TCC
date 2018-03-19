@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour {
 
 	void Awake()
 	{
-		if(FindObjectOfType<TransitionManager>() == null){
+		if(TransitionManager.Instance == null){
 			var transitionManager= new GameObject().AddComponent<TransitionManager>();
 			transitionManager.name = "TransitionManager";
 		}

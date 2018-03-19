@@ -53,10 +53,6 @@ public class Trap : MonoBehaviour {
 
     public void Enable(){
         this.gameObject.SetActive(true);
-        /*foreach(Transform t in ObjectForEnemiesSpawn.transform){
-            t.gameObject.GetComponent<EnemySurprise>().MakeDamage();
-            t.parent = null;
-        }*/
         if(ObjectForEnemiesSpawn != null){
             for(int i = ObjectForEnemiesSpawn.transform.childCount-1; i >= 0; i--){
                 ObjectForEnemiesSpawn.transform.GetChild(i).GetComponent<EnemySurprise>().MakeDamage();
@@ -64,23 +60,5 @@ public class Trap : MonoBehaviour {
             }
             Destroy(ObjectForEnemiesSpawn);
         }
-        /*if(ObjectForEnemiesSpawn.transform.childCount == 3){
-            ObjectForEnemiesSpawn.transform.GetChild(2).GetComponent<EnemySurprise>().MakeDamage();
-            ObjectForEnemiesSpawn.transform.GetChild(2).parent = null;
-            ObjectForEnemiesSpawn.transform.GetChild(1).GetComponent<EnemySurprise>().MakeDamage();
-            ObjectForEnemiesSpawn.transform.GetChild(1).parent = null;
-            ObjectForEnemiesSpawn.transform.GetChild(0).GetComponent<EnemySurprise>().MakeDamage();
-            ObjectForEnemiesSpawn.transform.GetChild(0).parent = null;
-        }
-        else if(ObjectForEnemiesSpawn.transform.childCount == 2){
-            ObjectForEnemiesSpawn.transform.GetChild(1).GetComponent<EnemySurprise>().MakeDamage();
-            ObjectForEnemiesSpawn.transform.GetChild(1).parent = null;
-            ObjectForEnemiesSpawn.transform.GetChild(0).GetComponent<EnemySurprise>().MakeDamage();
-            ObjectForEnemiesSpawn.transform.GetChild(0).parent = null;
-        }
-        else if(ObjectForEnemiesSpawn.transform.childCount == 1){
-            ObjectForEnemiesSpawn.transform.GetChild(0).GetComponent<EnemySurprise>().MakeDamage();
-            ObjectForEnemiesSpawn.transform.GetChild(0).parent = null;
-        }*/
     }
 }

@@ -55,6 +55,5 @@ public class Launcher : MonoBehaviour {
 		}
 		projectilePrototype.transform.position = spawnPos;
 		GameObject.Instantiate(projectilePrototype).GetComponent<Projectile>().SetDirection(direction);
-		//GameObject.Instantiate(projectilePrototype, spawnPos, Quaternion.identity);
 	}
 }

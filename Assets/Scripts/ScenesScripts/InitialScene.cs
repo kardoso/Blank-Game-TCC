@@ -16,7 +16,7 @@ public class InitialScene : MonoBehaviour {
 	void Start () {
 		fade = FindObjectOfType<Fade>();
 		done = false;
-		if(FindObjectOfType<GameManager>().initialScene){
+		if(GameManager.Instance.initialScene){
 			//Important Scene Objects
 			skyLayer.SetActive(true);
 			//player position
@@ -44,7 +44,7 @@ public class InitialScene : MonoBehaviour {
 	}
 
 	void StartGame(){
-		FindObjectOfType<GameManager>().initialScene = false;
+		GameManager.Instance.initialScene = false;
 		fade.FadeGameObject(skyLayer, 1, 1, 0);
 		stars.gameObject.SetActive(false);
 		Destroy(lightInPlayer);

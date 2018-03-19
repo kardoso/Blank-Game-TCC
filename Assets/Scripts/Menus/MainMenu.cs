@@ -30,8 +30,8 @@ public class MainMenu : Menu
             g.GetComponent<Text>().color = optionNotSelected;
         }
 
-        if(FindObjectOfType<GameManager>().mainMenuMode == 0){
-            FindObjectOfType<GameManager>().mainMenuMode = 1;
+        if(GameManager.Instance.mainMenuMode == 0){
+            GameManager.Instance.mainMenuMode = 1;
             StartCoroutine(SetNewOptions(languageOptions));
             menuMode = 0;
         }
@@ -55,15 +55,15 @@ public class MainMenu : Menu
                     //Portugues
                     if(chooseThisOption == 0){
                         Debug.Log("Portuguese");
-                        FindObjectOfType<GameManager>().Language = "Portuguese";
+                        GameManager.Instance.Language = "Portuguese";
                     }
                     //EngLish
                     else if(chooseThisOption == 1){
                         Debug.Log("English");
-                        FindObjectOfType<GameManager>().Language = "English";
+                        GameManager.Instance.Language = "English";
                     }
 
-                    FindObjectOfType<Lang>().setLanguage((TextAsset)Resources.Load("menusLang"), FindObjectOfType<GameManager>().Language);
+                    FindObjectOfType<Lang>().setLanguage((TextAsset)Resources.Load("menusLang"), GameManager.Instance.Language);
                     LoadLanguage();
 
                     StartCoroutine(SetNewOptions(menuOptions));
