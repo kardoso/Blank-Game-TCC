@@ -202,7 +202,7 @@ public class TransitionManager : SingletonMonoBehaviour<TransitionManager>
 
     public void SettingTransitionType(TransitionType _transitionType)
     {
-
+        transitionType = _transitionType;
         switch (_transitionType)
         {
             //Fade
