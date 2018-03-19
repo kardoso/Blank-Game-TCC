@@ -52,11 +52,5 @@ public class InitialScene : MonoBehaviour {
 		player.fallMultiplier = 20;
 		player.GetComponent<Rigidbody2D>().mass = 45;
 		player.GetComponent<Rigidbody2D>().gravityScale = 30;
-		StartCoroutine("Teste");
-	}
-
-	IEnumerator Teste(){
-		yield return new WaitForSeconds(1);
-		TransitionManager.Instance.LoadLevel("level0", 1f);
 	}
 }
