@@ -828,7 +828,7 @@ MonoBehaviour:
   - {fileID: 62815322}
   - {fileID: 911628545}
   - {fileID: 1158237922}
-  sceneToLoad: Level1
+  sceneToLoad: level0
 --- !u!1 &669781132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1932,6 +1932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuMode: 0
+  initialScene: 1
 --- !u!4 &1631754639
 Transform:
   m_ObjectHideFlags: 0

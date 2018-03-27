@@ -13,6 +13,8 @@ public class OpenDoor : MonoBehaviour {
 	public GameObject buttonImage;
 	private bool isInside;
 
+	private TransitionManager.TransitionType tType;
+
 	void Start()
 	{
 		buttonImage.SetActive(false);
@@ -25,18 +27,9 @@ public class OpenDoor : MonoBehaviour {
 			if((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("B")) && !keyPressed){
 				FindObjectOfType<Inventory>().RemoveKey();
 				FindObjectOfType<Player>().StopMovement();
+				FindObjectOfType<Player>().GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
 				keyPressed = true;
-				int _value = Random.Range(0,2);
-				switch (_value){
-					case 0:
-						GetComponent<Animator>().SetTrigger("Porta1");
-						break;
-					case 1:
-						GetComponent<Animator>().SetTrigger("Porta2");
-						break;
-					default:
-						break;
-				}
+				GetComponent<Animator>().SetTrigger("AbrirPorta");
 			}
 		}
 		else{
@@ -44,7 +37,24 @@ public class OpenDoor : MonoBehaviour {
 		}
 	}
 
+	void AbrirPorta(){
+		int _value = Random.Range(0,2);
+		switch (_value){
+			case 0:
+				GetComponent<Animator>().SetTrigger("Porta1");
+				tType = TransitionManager.TransitionType.Vertical_Bottom;
+				break;
+			case 1:
+				GetComponent<Animator>().SetTrigger("Porta2");
+				tType = TransitionManager.TransitionType.Horizontal_Right;
+				break;
+			default:
+				break;
+		}
+	}
+
 	void LoadLevel(){
+		TransitionManager.Instance.SettingTransitionType(tType);
 		TransitionManager.Instance.LoadLevel(sceneToLoadName, 1.0f);
 	}
 

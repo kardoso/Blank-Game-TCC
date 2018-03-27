@@ -80,7 +80,7 @@ public class MainMenu : Menu
                     //New Game
                     if(chooseThisOption == 0){
                         Debug.Log("New Game");
-                        TransitionManager.Instance.LoadLevel(sceneToLoad, 4);
+                        TransitionManager.Instance.LoadLevel(sceneToLoad, 2);
                     }
                     //Options
                     else if(chooseThisOption == 1){

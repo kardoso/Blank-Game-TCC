@@ -191,6 +191,11 @@ Prefab:
       propertyPath: colorToTransition.b
       value: 0.16078432
       objectReference: {fileID: 0}
+    - target: {fileID: 212355443713939192, guid: c8293d466b0717b48a97733db9f33b93,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8293d466b0717b48a97733db9f33b93, type: 2}
   m_IsPrefabParent: 0
@@ -1745,7 +1750,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
