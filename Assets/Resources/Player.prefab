@@ -155,7 +155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4022724510356318
 Transform:
   m_ObjectHideFlags: 1
@@ -176,7 +176,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1960448122287754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.65999985, y: -5.239998, z: -2}
+  m_LocalPosition: {x: 0.4, y: -5.239998, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4279649075878648}
@@ -215,7 +215,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1442221301137002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -115.99483, y: 91.86423, z: -2}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4580089105304286}
@@ -369,7 +369,7 @@ MonoBehaviour:
   bowInitialPointLeft: {fileID: 4155908022814970}
   layersForArrow:
     serializedVersion: 2
-    m_Bits: 4292933577
+    m_Bits: 4293982153
   boxLayerMask:
     serializedVersion: 2
     m_Bits: 8192

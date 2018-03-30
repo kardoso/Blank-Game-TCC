@@ -10,20 +10,21 @@ public class OpenDoor : MonoBehaviour {
 
 	private bool keyPressed = false;
 
-	public GameObject buttonImage;
 	private bool isInside;
 
 	private TransitionManager.TransitionType tType;
 
 	void Start()
 	{
-		buttonImage.SetActive(false);
+		foreach(Transform t in transform){
+			t.gameObject.SetActive(false);
+		}
 	}
 
 	void Update()
 	{
 		if(isInside){
-			buttonImage.SetActive(keyPressed?false:true);
+			transform.Find("ButtonKeyboard").gameObject.SetActive(keyPressed?false:true);
 			if((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("B")) && !keyPressed){
 				FindObjectOfType<Inventory>().RemoveKey();
 				FindObjectOfType<Player>().StopMovement();
@@ -33,7 +34,9 @@ public class OpenDoor : MonoBehaviour {
 			}
 		}
 		else{
-			buttonImage.SetActive(false);
+			foreach(Transform t in transform){
+				t.gameObject.SetActive(false);
+			}
 		}
 	}
 

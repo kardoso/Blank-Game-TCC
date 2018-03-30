@@ -308,7 +308,11 @@ public class Player : MonoBehaviour
                 _maxSpeed = maxSpeed / 8;
                 _velocityMultiplier = 1;
             }
-            else if((inLeft || inRight) && !isGrounded){
+            else if((inRight && input_x > 0) && !isGrounded){
+                _actualSpeedX = 0;
+                _velocityMultiplier = 0;
+            }
+            else if((inLeft && input_x < 0) && !isGrounded){
                 _actualSpeedX = 0;
                 _velocityMultiplier = 0;
             }
