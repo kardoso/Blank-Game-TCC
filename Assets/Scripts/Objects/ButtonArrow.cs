@@ -15,7 +15,6 @@ public class ButtonArrow : MonoBehaviour {
 	}
 
 	public void DisableButton(){
-		//isActive = false;
 		GetComponent<Animator>().SetBool("Active", false);
 		foreach(Transform t in objBlocos){
 			t.GetComponent<BlocoMovelAtivavel>().DisableBlock();

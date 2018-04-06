@@ -13,4 +13,8 @@ public class Mirror : MonoBehaviour {
 			GetComponent<BoxCollider2D>().enabled = false;
 		}
 	}
+
+	public void ResetMirror(){
+		GetComponent<BoxCollider2D>().enabled = true;
+	}
 }

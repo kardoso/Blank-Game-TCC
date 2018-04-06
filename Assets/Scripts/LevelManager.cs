@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour {
 	ButtonArrow[] buttonsArrow;
 	private Player player;
 	ChangeAmbient[] changesForAmbient;
+	Mirror[] mirrors;
 
 	void Awake()
 	{
@@ -32,6 +33,7 @@ public class LevelManager : MonoBehaviour {
 		boxes = FindObjectsOfType<Box>();
 		buttonsArrow = FindObjectsOfType<ButtonArrow>();
 		changesForAmbient = FindObjectsOfType<ChangeAmbient>();
+		mirrors = FindObjectsOfType<Mirror>();
 		TimeInNormal();
 	}
 	
@@ -50,6 +52,10 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void TimeInDeath(){
+		var invent = FindObjectOfType<Inventory>();
+		if(invent.HasKey()){
+			invent.RemoveKey();
+		}
 		foreach(Enemy e in enemies){
 			e.Respawn();
 		}
@@ -69,6 +75,9 @@ public class LevelManager : MonoBehaviour {
 		player.ImBack();
 		onlyPlayerCamera.SetActive(false);
 		Time.timeScale = 1f;
+		foreach(Mirror m in mirrors){
+			m.ResetMirror();
+		}
 		foreach(ChangeAmbient c in changesForAmbient){
 			c.ResetObject();
 		}

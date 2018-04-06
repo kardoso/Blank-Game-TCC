@@ -173,7 +173,7 @@ public class Player : MonoBehaviour
                 foreach (RaycastHit2D rh in allHits)
                 {
                     objectsInRayHit.Add(rh);
-                    if(rh.collider.gameObject.layer.Equals(8)){
+                    if(rh.collider.gameObject.layer.Equals(8) || rh.collider.gameObject.layer.Equals(13)){
                         break;
                     }
                 }
@@ -270,7 +270,7 @@ public class Player : MonoBehaviour
             //Desativar a esfera indicadora
             //FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, 0.5f, 1, 0);
             //Ativar movimento novamente
-            canMove = true;
+            if(Time.timeScale >= 1){canMove = true;}
 
             yield return new WaitForSeconds(0.5f);
             //arrowIndicatorSphere.SetActive(false);
@@ -353,6 +353,7 @@ public class Player : MonoBehaviour
     }
 
     public void InvetControls() { invertDirectionalControls = !invertDirectionalControls; }
+    public void NormalizeControls(){ invertDirectionalControls = false; }
 
     void Jump()
     {
@@ -446,6 +447,7 @@ public class Player : MonoBehaviour
     }
 
     public void ImBack(){
+        NormalizeControls();
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.isKinematic = false;
         GetComponent<BoxCollider2D>().enabled = true;

@@ -27,7 +27,7 @@ public class EnemyFly : Enemy {
 		base.Start();
 		anim = GetComponent<Animator>();
 		esperartempo = ficarparado;
-		lugar = new Vector3 (Random.Range (minx, maxx), Random.Range (miny, maxy), transform.position.z);
+		lugar = new Vector3 (Random.Range (minx, maxx), Random.Range (miny, maxy), -5);
 		alvo = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform> ();
 		state = States.idle;
 	}
@@ -74,7 +74,7 @@ public class EnemyFly : Enemy {
 	protected override void Walk () {
 		if(state == States.walk){
 			if (Vector2.Distance (transform.position, lugar) < 0.5f) {
-				lugar = new Vector3 (Random.Range (minx, maxx), Random.Range (miny, maxy), 0);
+				lugar = new Vector3 (Random.Range (minx, maxx), Random.Range (miny, maxy), -5);
 				esperartempo = ficarparado;
 			}
 			transform.position = Vector3.MoveTowards (transform.position, lugar, velocidade * Time.deltaTime);
