@@ -19,4 +19,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
             language = value;
         }
     }
+    
+    void Update()
+    {
+        Cursor.visible = false;
+    }
 }
