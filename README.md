@@ -1,5 +1,5 @@
 # Blank Game
-Being done with Unity 2017.3.1f1 (On Linux)
+Being done with Unity 2017.3.0f3
 
 ## Download current playable version
 [Windows](https://drive.google.com/uc?id=11DyBIZMj2kleEyn5gbBcqgYHlflsPsxK&export=download)
