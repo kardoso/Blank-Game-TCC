@@ -11,6 +11,8 @@ public class MainMenu : Menu
     public GameObject[] menuOptions;
     public GameObject[] settingsOptions;
 
+    public AudioClip bgm;
+
     int menuMode;       //0 is language, 1 is menu, 2 is settings
 
     public string sceneToLoad;
@@ -69,6 +71,7 @@ public class MainMenu : Menu
                     StartCoroutine(SetNewOptions(menuOptions));
                     StartCoroutine(FadeTitle(true));
                     menuMode = 1;
+                    SoundManager.PlayBGM(bgm, false, 0);
 
                     pressed = true;
                 }

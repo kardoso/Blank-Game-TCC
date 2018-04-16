@@ -23,6 +23,14 @@ public class LevelManager : MonoBehaviour {
 			var transitionManager= new GameObject().AddComponent<TransitionManager>();
 			transitionManager.name = "TransitionManager";
 		}
+		if(GameManager.Instance == null){
+			var gameManager= new GameObject().AddComponent<GameManager>();
+			gameManager.name = "GameManager";
+		}
+		if(SoundManager.Instance == null){
+			var soundManager= new GameObject().AddComponent<SoundManager>();
+			soundManager.name = "SoundManager";
+		}
 	}
 
 	// Use this for initialization

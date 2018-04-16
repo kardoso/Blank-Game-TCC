@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
     List<RaycastHit2D> objectsInRayHit = new List<RaycastHit2D>();
     bool canUseBow;
     public LayerMask layersForArrow;
+    public LineRenderer ArrowLine;
 
     public LayerMask boxLayerMask;
     public Transform boxCheckRightPoint;
@@ -225,12 +226,10 @@ public class Player : MonoBehaviour
 
             yield return new WaitForSeconds(0.25f);
             //criar linha
-            var lineRenderer= new GameObject().AddComponent<LineRenderer>();
-            lineRenderer.name = "LineRenderer";
             if (Time.timeScale >= 1)
             {
-                lineRenderer.GetComponent<LineRenderer>().SetPosition(0, new Vector3(initialX, initialY, initialZ));
-                lineRenderer.GetComponent<LineRenderer>().SetPosition(1, new Vector3(hitForArrow.x, hitForArrow.y, initialZ));
+                ArrowLine.SetPosition(0, new Vector3(initialX, initialY, initialZ));
+                ArrowLine.SetPosition(1, new Vector3(hitForArrow.x, hitForArrow.y, initialZ));
             }
             //Dano nos inimigos
             if ((allHits != null) && Time.timeScale >= 1)
@@ -264,9 +263,8 @@ public class Player : MonoBehaviour
 
             yield return new WaitForSeconds(0.025f);
             //Limpar a linha
-            lineRenderer.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
-            lineRenderer.GetComponent<LineRenderer>().SetPosition(1, Vector3.zero);
-            Destroy(lineRenderer.gameObject);
+            ArrowLine.SetPosition(0, Vector3.zero);
+            ArrowLine.SetPosition(1, Vector3.zero);
             //Desativar a esfera indicadora
             //FindObjectOfType<Fade>().FadeGameObject(arrowIndicatorSphere, 0.5f, 1, 0);
             //Ativar movimento novamente
