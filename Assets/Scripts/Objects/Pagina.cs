@@ -21,7 +21,7 @@ public class Pagina : MonoBehaviour {
 			player.ImBack();
 			Camera.main.GetComponent<UnityStandardAssets.ImageEffects.SepiaTone>().enabled = false;
 			imgPagina.gameObject.SetActive(false);
-			Debug.Log("k");
+			Destroy(gameObject);
 		}
 	}
 

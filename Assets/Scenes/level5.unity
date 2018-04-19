@@ -372,11 +372,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4399233932526016, guid: e8dd97ea2db8685429127f2273297d74, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 54.6
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4399233932526016, guid: e8dd97ea2db8685429127f2273297d74, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -70.4
+      value: -71.4
       objectReference: {fileID: 0}
     - target: {fileID: 4399233932526016, guid: e8dd97ea2db8685429127f2273297d74, type: 2}
       propertyPath: m_LocalPosition.z
@@ -21522,7 +21522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1982787783
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21599,7 +21599,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1982787782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.7, y: -80.4, z: 0}
+  m_LocalPosition: {x: -142.9, y: -19.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
