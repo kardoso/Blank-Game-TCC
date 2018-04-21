@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (Time.timeScale < 1 && !canMove)
+            if ((Time.timeScale < 1 && Time.timeScale > 0) && !canMove)
             {
                 //Faz a animação usar UnscaledTime, fazendo com que não dependa do Time.deltaTime
                 anim.updateMode = AnimatorUpdateMode.UnscaledTime;

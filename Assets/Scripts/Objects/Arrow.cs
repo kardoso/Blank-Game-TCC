@@ -75,7 +75,7 @@ public class Arrow : MonoBehaviour
             //GetComponent<Rigidbody2D>().AddForce(direction * velocity);
         }
 		
-		if(Time.timeScale < 1)
+		if(Time.timeScale < 1 && Time.timeScale > 0)
 		{
 			Destroy(this.gameObject);
 		}

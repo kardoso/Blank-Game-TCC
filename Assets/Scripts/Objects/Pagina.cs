@@ -18,7 +18,7 @@ public class Pagina : MonoBehaviour {
 	void Update () {
 		if(Input.GetButtonDown("Cancel")){
 			Time.timeScale = 1;
-			player.ImBack();
+			//player.ImBack();
 			Camera.main.GetComponent<UnityStandardAssets.ImageEffects.SepiaTone>().enabled = false;
 			imgPagina.gameObject.SetActive(false);
 			Destroy(gameObject);
