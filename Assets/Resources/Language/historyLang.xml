@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+	<Portuguese>
+		<string name="page1">Uma parte de algo</string>
+	</Portuguese>
+
+	<English>
+		<string name="page1">Some part of something</string>
+	</English>
+
+	<Japanese>
+		<string name="page1">有効</string>
+	</Japanese>
+</languages>

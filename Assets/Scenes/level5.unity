@@ -113,6 +113,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &145081193 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1713260649573122, guid: c7a5af6077eb82742b0b3ac89620fb6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1460787541}
 --- !u!1001 &170432886
 Prefab:
   m_ObjectHideFlags: 0
@@ -449,6 +454,16 @@ Prefab:
       propertyPath: imgPagina
       value: 
       objectReference: {fileID: 1563728512}
+    - target: {fileID: 114024045128665574, guid: eab81031e16ec51449545e56ed16fb8c,
+        type: 2}
+      propertyPath: numeroPagina
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114024045128665574, guid: eab81031e16ec51449545e56ed16fb8c,
+        type: 2}
+      propertyPath: textoPagina
+      value: 
+      objectReference: {fileID: 145081193}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eab81031e16ec51449545e56ed16fb8c, type: 2}
   m_IsPrefabParent: 0
@@ -12142,14 +12157,13 @@ Prefab:
     - target: {fileID: 8195094282022554176, guid: 789d4ea16339ffe488009fef5895ec3e,
         type: 2}
       propertyPath: m_TileSpriteArray.Array.data[0].m_RefCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8195094282022554176, guid: 789d4ea16339ffe488009fef5895ec3e,
         type: 2}
       propertyPath: m_TileSpriteArray.Array.data[0].m_Data
       value: 
-      objectReference: {fileID: 21300238, guid: 83c20bb33be3ede4ca7fb513417e8260,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8195094282022554176, guid: 789d4ea16339ffe488009fef5895ec3e,
         type: 2}
       propertyPath: m_TileMatrixArray.Array.data[0].m_RefCount
@@ -12258,13 +12272,14 @@ Prefab:
     - target: {fileID: 8195094282022554176, guid: 789d4ea16339ffe488009fef5895ec3e,
         type: 2}
       propertyPath: m_TileSpriteArray.Array.data[1].m_RefCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8195094282022554176, guid: 789d4ea16339ffe488009fef5895ec3e,
         type: 2}
       propertyPath: m_TileSpriteArray.Array.data[1].m_Data
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300238, guid: 83c20bb33be3ede4ca7fb513417e8260,
+        type: 3}
     - target: {fileID: 8195094282022554176, guid: 789d4ea16339ffe488009fef5895ec3e,
         type: 2}
       propertyPath: m_Tiles.Array.data[1].second.m_TileIndex
@@ -13424,7 +13439,7 @@ Prefab:
     - target: {fileID: 8195094282022554176, guid: 789d4ea16339ffe488009fef5895ec3e,
         type: 2}
       propertyPath: m_Tiles.Array.data[8].second.m_TileSpriteIndex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8195094282022554176, guid: 789d4ea16339ffe488009fef5895ec3e,
         type: 2}

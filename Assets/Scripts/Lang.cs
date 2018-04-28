@@ -8,8 +8,18 @@ using UnityEngine;
 public class Lang: SingletonMonoBehaviour<Lang>
 {
     private Hashtable Strings;
+    TextAsset xmlText;
 
-    public void setLanguage ( TextAsset xmlText, string language) {
+    public void setLanguage ( int textType /*TextAsset xmlText*/, string language) {
+        //0 for menus
+        //1 for history
+        if(textType == 0){
+            xmlText = Resources.Load<TextAsset>("Language/menusLang");
+        }
+        else if(textType == 1){
+            xmlText = Resources.Load<TextAsset>("Language/historyLang");
+        }
+
         XmlDocument xml = new XmlDocument ();
         xml.LoadXml ( xmlText.text );
     
@@ -27,6 +37,7 @@ public class Lang: SingletonMonoBehaviour<Lang>
     }
 
     public string getString (string name) {
+
         if (!Strings.ContainsKey(name)) {
             Debug.LogError("The specified string does not exist: " + name);
          

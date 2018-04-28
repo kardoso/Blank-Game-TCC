@@ -58,7 +58,7 @@ public class Arrow : MonoBehaviour
 
         }
         else if(hitInButton){
-            
+            gameObject.GetComponent<Animator>().SetBool("Break", true);
         }
         else
         {

@@ -19,6 +19,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
             language = value;
         }
     }
+
+    void Start(){
+        language = "Portuguese";
+    }
     
     void Update()
     {

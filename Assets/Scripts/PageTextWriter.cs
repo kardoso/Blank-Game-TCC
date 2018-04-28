@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class TypeWriterEffect : MonoBehaviour {
+public class PageTextWriter : MonoBehaviour {
 
 	public float delay = 0.05f;
 	public string fullText;

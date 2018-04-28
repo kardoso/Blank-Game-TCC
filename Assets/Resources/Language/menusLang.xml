@@ -11,7 +11,10 @@
 		<string name="settings">Configurações</string>
 		<string name="cancel">Cancelar</string>
 		<string name="confirm">Confirmar</string>
+		<string name="screen_mode">Modo de tela</string>
 		<string name="full_screen">Tela cheia</string>
+		<string name="resolution">Resolução</string>
+		<string name="windowned">Janela</string>
 		<string name="bgm_volume">Música de fundo</string>
 		<string name="fx_volume">Efeitos sonoros</string>
 		<string name="v_sync">Sincronização vertical</string>
@@ -31,7 +34,10 @@
 		<string name="settings">Settings</string>
 		<string name="cancel">Cancel</string>
 		<string name="confirm">Confirm</string>
+		<string name="screen_mode">Screen mode</string>
 		<string name="full_screen">Full Screen</string>
+		<string name="resolution">Resolution</string>
+		<string name="windowned">Window mode</string>
 		<string name="bgm_volume">BGM Sound Volume</string>
 		<string name="fx_volume">FX Sound Volume</string>
 		<string name="v_sync">VSync</string>
@@ -49,7 +55,10 @@
 		<string name="settings">設定</string>
 		<string name="cancel">キャンセル</string>
 		<string name="confirm">決定</string>
+		<string name="screen_mode">スクリーンモード</string>
 		<string name="full_screen">フルスクリーンにする</string>
+		<string name="resolution">解決</string>
+		<string name="windowned">ウィンドウモード</string>
 		<string name="bgm_volume">バックグラウンドミュージックの音量</string>
 		<string name="fx_volume">効果音の音量</string>
 		<string name="v_sync">垂直同期</string>

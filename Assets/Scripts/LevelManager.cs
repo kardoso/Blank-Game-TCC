@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour {
 		if(GameManager.Instance == null){
 			var gameManager= new GameObject().AddComponent<GameManager>();
 			gameManager.name = "GameManager";
+			gameManager.gameObject.AddComponent<Lang>();
 		}
 		if(SoundManager.Instance == null){
 			var soundManager= new GameObject().AddComponent<SoundManager>();
