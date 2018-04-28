@@ -73,6 +73,9 @@ public class LevelManager : MonoBehaviour {
 		foreach(Box b in boxes){
 			b.Respawn();
 		}
+		foreach(ButtonArrow b in buttonsArrow){
+			b.DisableButton();
+		}
 		Time.timeScale = timeWhileDeath;
 		mainCamera.GetComponent<UnityStandardAssets.ImageEffects.ColorCorrectionRamp>().enabled = true;
 		onlyPlayerCamera.SetActive(true);
@@ -88,9 +91,6 @@ public class LevelManager : MonoBehaviour {
 		}
 		foreach(ChangeAmbient c in changesForAmbient){
 			c.ResetObject();
-		}
-		foreach(ButtonArrow b in buttonsArrow){
-			b.DisableButton();
 		}
 	}
 }
