@@ -881,6 +881,35 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1713260649573122, guid: c7a5af6077eb82742b0b3ac89620fb6a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502223138695608, guid: c7a5af6077eb82742b0b3ac89620fb6a,
+        type: 2}
+      propertyPath: m_Text
+      value: "N\xE3o pensei em ter uma vida assim. A campainha toca e atendo; o vendedor
+        me oferece cadeiras de embalo. Senti saudade da minha av\xF3 que vivia nelas,
+        pensei em comprar, fiquei t\xE3o nost\xE1lgica. Ent\xE3o ele apareceu e quando
+        as cortinas se fecharam ele gritou para quem quisesse ouvir, e amea\xE7ou
+        tudo estivesse em seu campo de vis\xE3o. Eu estava em sua frente."
+      objectReference: {fileID: 0}
+    - target: {fileID: 224193158167406716, guid: c7a5af6077eb82742b0b3ac89620fb6a,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223605070127783006, guid: c7a5af6077eb82742b0b3ac89620fb6a,
+        type: 2}
+      propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114502223138695608, guid: c7a5af6077eb82742b0b3ac89620fb6a,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: de76315b7a792fe468a759f67bff6e7f,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c7a5af6077eb82742b0b3ac89620fb6a, type: 2}
   m_IsPrefabParent: 0

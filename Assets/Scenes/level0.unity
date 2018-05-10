@@ -8669,7 +8669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7116bc4514e004f99b8622997a2fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeWhileDeath: 0
+  timeWhileDeath: 0.3
   mainCamera: {fileID: 1867204472}
   onlyPlayerCamera: {fileID: 660351554}
 --- !u!4 &1913798014

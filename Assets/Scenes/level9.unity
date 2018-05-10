@@ -483,6 +483,11 @@ Prefab:
       propertyPath: m_Name
       value: Porta (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114152479026963552, guid: c8293d466b0717b48a97733db9f33b93,
+        type: 2}
+      propertyPath: sceneToLoadName
+      value: level10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8293d466b0717b48a97733db9f33b93, type: 2}
   m_IsPrefabParent: 0
@@ -844,6 +849,11 @@ Prefab:
     - target: {fileID: 4059090248464764, guid: c8293d466b0717b48a97733db9f33b93, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114152479026963552, guid: c8293d466b0717b48a97733db9f33b93,
+        type: 2}
+      propertyPath: sceneToLoadName
+      value: level10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8293d466b0717b48a97733db9f33b93, type: 2}

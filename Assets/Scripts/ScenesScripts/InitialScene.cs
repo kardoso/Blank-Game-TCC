@@ -30,6 +30,7 @@ public class InitialScene : MonoBehaviour {
 			player.enabled = false;
 		}
 		else{
+			RenderSettings.ambientLight = Color.white;
 			skyLayer.SetActive(false);
 			Destroy(lightInPlayer);
 			Destroy(stars.gameObject);

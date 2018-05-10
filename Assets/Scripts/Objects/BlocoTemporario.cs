@@ -7,12 +7,18 @@ public class BlocoTemporario : MonoBehaviour
 
     private bool isActive;
     private float timeActive;
+    public bool iniciarAtivo;
 
     // Use this for initialization
     void Start()
     {
         timeActive = 3;
-        isActive = true;
+        if(iniciarAtivo){
+            isActive = true;
+        }
+        else{
+            isActive = false;
+        }
         StartCoroutine("ChangeActivity");
     }
 
