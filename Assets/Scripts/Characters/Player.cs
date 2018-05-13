@@ -107,8 +107,9 @@ public class Player : MonoBehaviour
                 BowAttack();
             }
         }
-        else
+        /*else
         {
+            //Voltar para a posicao inicial sem tempo definido, em uma velocidade constante
             if ((Time.timeScale < 1 && Time.timeScale > 0) && !canMove)
             {
                 //Faz a animação usar UnscaledTime, fazendo com que não dependa do Time.deltaTime
@@ -124,7 +125,7 @@ public class Player : MonoBehaviour
                     ImBack();
                 }
             }
-        }
+        }*/
     }
 
     void FixedUpdate()
@@ -441,6 +442,7 @@ public class Player : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
         FindObjectOfType<LevelManager>().TimeInDeath();
         posToGo = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
+        StartCoroutine(MoveToInitialPosition(transform, posToGo, 0.5f));
         //transform.position = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
     }
 
@@ -454,6 +456,26 @@ public class Player : MonoBehaviour
 
     public void StopMovement(){
         canMove = false;
+    }
+
+    //Voltar para a posicao inicial em tempo x, com velocidade variavel
+    public IEnumerator MoveToInitialPosition(Transform transform, Vector3 position, float timeToMove)
+    {
+        //Faz a animação usar UnscaledTime, fazendo com que não dependa do Time.deltaTime
+        anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+
+        var currentPos = transform.position;
+        var t = 0f;
+        while(t < 1)
+        {
+            t += Time.deltaTime / timeToMove;
+            transform.position = Vector3.Lerp(currentPos, position, t);
+            yield return null;
+        }
+
+        anim.updateMode = AnimatorUpdateMode.Normal;
+        FindObjectOfType<LevelManager>().TimeInNormal();
+        ImBack();
     }
 
     //Check side collider
