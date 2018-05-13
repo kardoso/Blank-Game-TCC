@@ -11,7 +11,8 @@ public class Key : MonoBehaviour {
 
 	void Update()
 	{
-		if(Time.timeScale < 1){
+		if(Time.timeScale < 1 && Time.timeScale > 0)
+		{
 			Destroy(this.gameObject);
 		}
 	}
