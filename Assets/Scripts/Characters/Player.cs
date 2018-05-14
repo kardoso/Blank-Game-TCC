@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
     //Position player to go when "dead"
     public Vector3 posToGo;
 
+    public GameObject bolha;
+
     // Use this for initialization
     void Awake()
     {
@@ -107,8 +109,15 @@ public class Player : MonoBehaviour
                 BowAttack();
             }
         }
-        /*else
+        else
         {
+            /********* CHANGE ANIMATOR TO IDLE *******/
+            anim.SetFloat("xVelocity", 0);
+            anim.SetFloat("yVelocity", -1);
+            anim.SetBool("isGrounded", false);
+            anim.SetBool("isSliding", false);
+            /********************************************/
+            /*
             //Voltar para a posicao inicial sem tempo definido, em uma velocidade constante
             if ((Time.timeScale < 1 && Time.timeScale > 0) && !canMove)
             {
@@ -124,8 +133,8 @@ public class Player : MonoBehaviour
                     FindObjectOfType<LevelManager>().TimeInNormal();
                     ImBack();
                 }
-            }
-        }*/
+            }*/
+        }
     }
 
     void FixedUpdate()
@@ -442,7 +451,7 @@ public class Player : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
         FindObjectOfType<LevelManager>().TimeInDeath();
         posToGo = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
-        StartCoroutine(MoveToInitialPosition(transform, posToGo, 0.5f));
+        bolha.GetComponent<Bubble>().BubbleOn();
         //transform.position = FindObjectOfType<LevelManager>().GetPlayerInitialPos();
     }
 
@@ -459,7 +468,7 @@ public class Player : MonoBehaviour
     }
 
     //Voltar para a posicao inicial em tempo x, com velocidade variavel
-    public IEnumerator MoveToInitialPosition(Transform transform, Vector3 position, float timeToMove)
+    public IEnumerator MoveToInitialPosition(float timeToMove)
     {
         //Faz a animação usar UnscaledTime, fazendo com que não dependa do Time.deltaTime
         anim.updateMode = AnimatorUpdateMode.UnscaledTime;
@@ -469,10 +478,13 @@ public class Player : MonoBehaviour
         while(t < 1)
         {
             t += Time.deltaTime / timeToMove;
-            transform.position = Vector3.Lerp(currentPos, position, t);
+            transform.position = Vector3.Lerp(currentPos, posToGo, t);
             yield return null;
         }
+        bolha.GetComponent<Bubble>().BubbleOff();
+    }
 
+    public void InitialPositionDone(){
         anim.updateMode = AnimatorUpdateMode.Normal;
         FindObjectOfType<LevelManager>().TimeInNormal();
         ImBack();

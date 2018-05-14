@@ -708,7 +708,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4279649075878648, guid: e812039315f5ae04ba704abad66c54b0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 49.5
+      value: 55.3
       objectReference: {fileID: 0}
     - target: {fileID: 4279649075878648, guid: e812039315f5ae04ba704abad66c54b0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -981,6 +981,11 @@ Prefab:
         type: 2}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114152479026963552, guid: c8293d466b0717b48a97733db9f33b93,
+        type: 2}
+      propertyPath: sceneToLoadName
+      value: level9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8293d466b0717b48a97733db9f33b93, type: 2}
