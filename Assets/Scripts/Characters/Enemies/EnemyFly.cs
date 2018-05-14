@@ -105,6 +105,7 @@ public class EnemyFly : Enemy {
 	}
 
 	public override void MakeDamage() {
+		base.MakeDamage();
 		esperartempo = ficarparado;
 		anim.SetTrigger("Damage");
 		//hp--;

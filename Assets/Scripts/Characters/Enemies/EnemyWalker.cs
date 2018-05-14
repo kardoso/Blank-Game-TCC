@@ -127,6 +127,7 @@ public class EnemyWalker : Enemy {
 	}
 
 	public override void MakeDamage(){
+		base.MakeDamage();
 		isDead = true;
 		GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 		GetComponent<BoxCollider2D>().enabled = false;

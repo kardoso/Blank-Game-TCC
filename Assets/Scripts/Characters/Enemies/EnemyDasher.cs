@@ -132,6 +132,7 @@ public class EnemyDasher : Enemy {
 	}
 
 	public override void MakeDamage(){
+		base.MakeDamage();
 		Idle();
 	}
 

@@ -15,7 +15,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 
     // Static instance
     static SoundManager _instance;
-    public static SoundManager GetInstance()
+    public SoundManager GetInstance()
     {
         if (!_instance)
         {
@@ -28,9 +28,9 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 
 	const float MaxVolume_BGM = 1f;
 	const float MaxVolume_SFX = 1f;
-	static float CurrentVolumeNormalized_BGM = 1f;
-	static float CurrentVolumeNormalized_SFX = 1f;
-	static bool isMuted = false;
+ float CurrentVolumeNormalized_BGM = 1f;
+ float CurrentVolumeNormalized_SFX = 1f;
+ bool isMuted = false;
 	List<AudioSource> sfxSources;
 	AudioSource bgmSource;
 
@@ -45,10 +45,10 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 	}
 
 	// ==================== Volume Getters =====================
-	public static float GetBGMVolume () {
+	public float GetBGMVolume () {
 		return isMuted ? 0f : MaxVolume_BGM * CurrentVolumeNormalized_BGM;
 	}
-	public static float GetSFXVolume () {
+	public float GetSFXVolume () {
 	return isMuted ? 0f : MaxVolume_SFX * CurrentVolumeNormalized_SFX;
 	}
 
@@ -87,7 +87,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 	}
 
 	// ====================== BGM Functions ======================
-	public static void PlayBGM(AudioClip bgmClip, bool fade, float fadeDuration)
+	public void PlayBGM(AudioClip bgmClip, bool fade, float fadeDuration)
 	{
 		SoundManager soundMan = GetInstance();
 		if (fade) {
@@ -107,7 +107,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 			soundMan.bgmSource.Play ();
 		}
 	}
-	public static void StopBGM(bool fade, float fadeDuration)
+	public void StopBGM(bool fade, float fadeDuration)
 	{
 		SoundManager soundMan = GetInstance();
 		if (soundMan.bgmSource.isPlaying) {
@@ -120,7 +120,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 		}
 	}
 
-	public static void PauseBGM()
+	public void PauseBGM()
 	{
 		SoundManager soundMan = GetInstance();
 		if (soundMan.bgmSource.isPlaying) {
@@ -128,7 +128,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 		}
 	}
 
-	public static void UnPauseBGM()
+	public void UnPauseBGM()
 	{
 		SoundManager soundMan = GetInstance();
 		if (soundMan.bgmSource.isPlaying) {
@@ -165,7 +165,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 	}
 
 	// ====================== SFX Functions =================================
-	public static void PlaySFX(AudioClip sfxClip)
+	public void PlaySFX(AudioClip sfxClip)
 	{
 		SoundManager soundMan = GetInstance();
 		AudioSource source = soundMan.GetSFXSource();
@@ -174,7 +174,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 		source.Play();
 		soundMan.StartCoroutine(soundMan.RemoveSFXSource(source));
 	}
-	public static void PlaySFXRandomized(AudioClip sfxClip)
+	public void PlaySFXRandomized(AudioClip sfxClip)
 	{
 		SoundManager soundMan = GetInstance();
 		AudioSource source = soundMan.GetSFXSource();
@@ -184,7 +184,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 		source.Play();
 		soundMan.StartCoroutine(soundMan.RemoveSFXSource(source));
 	}
-	public static void PlaySFXFixedDuration(AudioClip sfxClip, float duration, float volumeMultiplier = 1.0f)
+	public void PlaySFXFixedDuration(AudioClip sfxClip, float duration, float volumeMultiplier = 1.0f)
 	{
 		SoundManager soundMan = GetInstance();
 		AudioSource source = soundMan.GetSFXSource();
@@ -196,7 +196,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 	}
 
 	// ==================== Volume Control Functions ==========================
-	public static void DisableSoundImmediate()
+	public void DisableSoundImmediate()
 	{
 		SoundManager soundMan = GetInstance();
 		soundMan.StopAllCoroutines();
@@ -210,7 +210,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 		soundMan.bgmSource.volume = 0f;
 		isMuted = true;
 	}
-	public static void EnableSoundImmediate()
+	public void EnableSoundImmediate()
 	{
 		SoundManager soundMan = GetInstance();
 		if (soundMan.sfxSources != null)
@@ -223,7 +223,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 		soundMan.bgmSource.volume = GetBGMVolume();
 		isMuted = false;
 	}
-	public static void SetGlobalVolume(float newVolume)
+	public void SetGlobalVolume(float newVolume)
 	{
 		if(newVolume <= 0){
 			newVolume = 0;
@@ -235,7 +235,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 		CurrentVolumeNormalized_SFX = newVolume;
 		AdjustSoundImmediate();
 	}
-	public static void SetSFXVolume(float newVolume){
+	public void SetSFXVolume(float newVolume){
 		if(newVolume <= 0){
 			newVolume = 0;
 		}
@@ -245,7 +245,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 		CurrentVolumeNormalized_SFX = newVolume;
 		AdjustSoundImmediate();
 	}
-	public static void SetBGMVolume(float newVolume){
+	public void SetBGMVolume(float newVolume){
 		if(newVolume <= 0){
 			newVolume = 0;
 		}
@@ -256,7 +256,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 		AdjustSoundImmediate();
 	}
 
-	public static void AdjustSoundImmediate()
+	public void AdjustSoundImmediate()
 	{
 		SoundManager soundMan = GetInstance();
 		if (soundMan.sfxSources != null)
@@ -272,19 +272,19 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 	}
 
 	// ==================== Volume Increase/Decrease Functions ==========================
-	public static void decreaseFXVolume(){
+	public void decreaseFXVolume(){
 		SetSFXVolume(GetSFXVolume() - 0.1f);
 	}
 
-	public static void increaseFXVolume(){
+	public void increaseFXVolume(){
 		SetSFXVolume(GetSFXVolume() + 0.1f);
 	}
 
-	public static void decreaseBGMVolume(){
+	public void decreaseBGMVolume(){
 		SetBGMVolume(GetBGMVolume() - 0.1f);
 	}
 
-	public static void increaseBGMVolume(){
+	public void increaseBGMVolume(){
 		SetBGMVolume(GetBGMVolume() + 0.1f);
 	}
 }

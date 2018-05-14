@@ -52,8 +52,11 @@ public class Player : MonoBehaviour
 
     //Position player to go when "dead"
     public Vector3 posToGo;
-
     public GameObject bolha;
+
+    //Sons
+    public AudioClip arrowFX;
+    public AudioClip dieFX;
 
     // Use this for initialization
     void Awake()
@@ -109,15 +112,8 @@ public class Player : MonoBehaviour
                 BowAttack();
             }
         }
-        else
+        /*else
         {
-            /********* CHANGE ANIMATOR TO IDLE *******/
-            anim.SetFloat("xVelocity", 0);
-            anim.SetFloat("yVelocity", -1);
-            anim.SetBool("isGrounded", false);
-            anim.SetBool("isSliding", false);
-            /********************************************/
-            /*
             //Voltar para a posicao inicial sem tempo definido, em uma velocidade constante
             if ((Time.timeScale < 1 && Time.timeScale > 0) && !canMove)
             {
@@ -133,8 +129,8 @@ public class Player : MonoBehaviour
                     FindObjectOfType<LevelManager>().TimeInNormal();
                     ImBack();
                 }
-            }*/
-        }
+            }
+        }*/
     }
 
     void FixedUpdate()
@@ -269,6 +265,7 @@ public class Player : MonoBehaviour
                 //GameObject.Instantiate(ArrowPrototype, spawnPos, Quaternion.identity);
                 ArrowPrototype.transform.position = spawnPos;
                 GameObject.Instantiate(ArrowPrototype).GetComponent<Arrow>().SetInitial(arrowShouldMove, movingRight ? Vector2.right : Vector2.left);
+                SoundManager.Instance.PlaySFX(arrowFX);
             }
 
             yield return new WaitForSeconds(0.025f);
@@ -445,6 +442,7 @@ public class Player : MonoBehaviour
 
     public void MakeDamage()
     {
+        SoundManager.Instance.PlaySFX(dieFX);
         canMove = false;
         rb.bodyType = RigidbodyType2D.Static;
         rb.isKinematic = true;

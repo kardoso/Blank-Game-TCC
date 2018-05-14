@@ -1402,10 +1402,6 @@ Prefab:
       propertyPath: ArrowLine
       value: 
       objectReference: {fileID: 1679837690}
-    - target: {fileID: 1217922966574396, guid: e812039315f5ae04ba704abad66c54b0, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e812039315f5ae04ba704abad66c54b0, type: 2}
   m_IsPrefabParent: 0

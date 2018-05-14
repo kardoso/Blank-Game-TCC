@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Mirror : MonoBehaviour {
 
+	public AudioClip mirrorFX;
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.gameObject.tag.Equals("Player")){
+			SoundManager.Instance.PlaySFX(mirrorFX);
 			other.gameObject.GetComponent<Player>().InvetControls();
 			Camera.main.GetComponent<CameraControl>().ShakeCamera(0.2f);
 			//break sprite

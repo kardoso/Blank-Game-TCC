@@ -79,6 +79,7 @@ public class EnemySurprise : Enemy {
 	}
 		
 	public override void MakeDamage() {
+		base.MakeDamage();
 		canShootAndMove = false;
 		GetComponent<BoxCollider2D>().enabled = false;
 		anim.updateMode = AnimatorUpdateMode.UnscaledTime;
