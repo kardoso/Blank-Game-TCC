@@ -468,6 +468,7 @@ public class Player : MonoBehaviour
     //Voltar para a posicao inicial em tempo x, com velocidade variavel
     public IEnumerator MoveToInitialPosition(float timeToMove)
     {
+        timeToMove = TempoPorDistancia(500);
         //Faz a animação usar UnscaledTime, fazendo com que não dependa do Time.deltaTime
         anim.updateMode = AnimatorUpdateMode.UnscaledTime;
 
@@ -486,6 +487,15 @@ public class Player : MonoBehaviour
         anim.updateMode = AnimatorUpdateMode.Normal;
         FindObjectOfType<LevelManager>().TimeInNormal();
         ImBack();
+    }
+
+    float TempoPorDistancia(float distancia){
+        if(Vector2.Distance(transform.position, new Vector2(posToGo.x, posToGo.y)) < distancia){
+            return 0.2f;
+        }
+        else{
+            return 0.5f;
+        }
     }
 
     //Check side collider
