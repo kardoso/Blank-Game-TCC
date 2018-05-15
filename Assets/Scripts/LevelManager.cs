@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour {
 	private Player player;
 	ChangeAmbient[] changesForAmbient;
 	Mirror[] mirrors;
+	TrapDoor[] trapDoors;
 
 	void Awake()
 	{
@@ -46,6 +47,7 @@ public class LevelManager : MonoBehaviour {
 		buttonsArrow = FindObjectsOfType<ButtonArrow>();
 		changesForAmbient = FindObjectsOfType<ChangeAmbient>();
 		mirrors = FindObjectsOfType<Mirror>();
+		trapDoors = FindObjectsOfType<TrapDoor>();
 		TimeInNormal();
 	}
 	
@@ -80,6 +82,9 @@ public class LevelManager : MonoBehaviour {
 			}
 			foreach(ButtonArrow b in buttonsArrow){
 				b.DisableButton();
+			}
+			foreach(TrapDoor t in trapDoors){
+				t.Enable();
 			}
 		}
 		Time.timeScale = timeWhileDeath;
