@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
+	private bool isCheckpointed;
 	private Vector3 initialPlayerPos;
 	public float timeWhileDeath;
 	public GameObject mainCamera;
@@ -19,6 +20,8 @@ public class LevelManager : MonoBehaviour {
 
 	void Awake()
 	{
+		isCheckpointed = false;
+
 		if(TransitionManager.Instance == null){
 			var transitionManager= new GameObject().AddComponent<TransitionManager>();
 			transitionManager.name = "TransitionManager";
@@ -61,21 +64,23 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void TimeInDeath(){
-		var invent = FindObjectOfType<Inventory>();
-		if(invent.HasKey()){
-			invent.RemoveKey();
-		}
-		foreach(Enemy e in enemies){
-			e.Respawn();
-		}
-		foreach(Trap t in traps){
-			t.Enable();
-		}
-		foreach(Box b in boxes){
-			b.Respawn();
-		}
-		foreach(ButtonArrow b in buttonsArrow){
-			b.DisableButton();
+		if(!isCheckpointed){
+			var invent = FindObjectOfType<Inventory>();
+			if(invent.HasKey()){
+				invent.RemoveKey();
+			}
+			foreach(Enemy e in enemies){
+				e.Respawn();
+			}
+			foreach(Trap t in traps){
+				t.Enable();
+			}
+			foreach(Box b in boxes){
+				b.Respawn();
+			}
+			foreach(ButtonArrow b in buttonsArrow){
+				b.DisableButton();
+			}
 		}
 		Time.timeScale = timeWhileDeath;
 		mainCamera.GetComponent<UnityStandardAssets.ImageEffects.ColorCorrectionRamp>().enabled = true;
@@ -87,11 +92,22 @@ public class LevelManager : MonoBehaviour {
 		player.ImBack();
 		onlyPlayerCamera.SetActive(false);
 		Time.timeScale = 1f;
-		foreach(Mirror m in mirrors){
-			m.ResetMirror();
+		if(!isCheckpointed){
+			foreach(Mirror m in mirrors){
+				m.ResetMirror();
+			}
+			foreach(ChangeAmbient c in changesForAmbient){
+				c.ResetObject();
+			}
 		}
-		foreach(ChangeAmbient c in changesForAmbient){
-			c.ResetObject();
-		}
+	}
+
+	public void ActiveCheckPoint(){
+		isCheckpointed = true;
+		SetPlayerInitialPos(player.gameObject.transform.position);
+	}
+
+	public bool IsThereAFuckingCheckpoint(){
+		return isCheckpointed;
 	}
 }
