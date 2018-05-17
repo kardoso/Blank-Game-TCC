@@ -58,7 +58,9 @@ public class MainMenu : Menu
             menuMode = 0;
         }
         else{
+            StartCoroutine(FadeTitle(true));
             StartCoroutine(SetNewOptions(menuOptions));
+            SoundManager.Instance.PlayBGM(bgm, false, 0);
             menuMode = 1;
         }
 	}
@@ -104,6 +106,7 @@ public class MainMenu : Menu
                 if(chooseThisOption == 0){
                     Debug.Log("New Game");
                     TransitionManager.Instance.LoadLevel(sceneToLoad, 2);
+                    GameManager.Instance.mainMenuMode = 1;
                 }
                 //Options
                 else if(chooseThisOption == 1){
