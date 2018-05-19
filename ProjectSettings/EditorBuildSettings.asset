@@ -53,3 +53,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level14.unity
     guid: 405a1d8ffe6257f42b6f202f0b636362
+  - enabled: 1
+    path: Assets/Scenes/level15.unity
+    guid: d4e1e05d1aeaf76429191a3c9e4f0358
+  - enabled: 1
+    path: Assets/Scenes/level16.unity
+    guid: 8f07ec94d9eaca8469e4cec8dd30498d
+  - enabled: 1
+    path: Assets/Scenes/level17.unity
+    guid: e822a245c537d8a4daaa2f4cac9359f2
+  - enabled: 1
+    path: Assets/Scenes/level18.unity
+    guid: 4b1263ea5a3cde949995048edef003ec
+  - enabled: 1
+    path: Assets/Scenes/FinalLevel.unity
+    guid: 8255352775f903a40942029418ccc6a3
+  - enabled: 1
+    path: Assets/3DScene/scenes/SalaHospital.unity
+    guid: 960695335edbd3c4f9e81d59a3381126
