@@ -68,6 +68,3 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalLevel.unity
     guid: 8255352775f903a40942029418ccc6a3
-  - enabled: 1
-    path: Assets/3DScene/scenes/SalaHospital.unity
-    guid: 960695335edbd3c4f9e81d59a3381126
