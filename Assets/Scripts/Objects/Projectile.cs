@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour {
 		if(!collided){
 			transform.Translate(Vector2.right * Time.deltaTime * velocity);
 		}
-		if(Time.timeScale < 1){
+		if(Time.timeScale < 1 && Time.timeScale > 0){
 			Destroy(this.gameObject);
 		}
 	}

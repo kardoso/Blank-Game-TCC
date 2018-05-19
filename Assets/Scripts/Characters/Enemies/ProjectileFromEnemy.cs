@@ -9,7 +9,7 @@ public class ProjectileFromEnemy : MonoBehaviour {
 	void Update () {
 		transform.Translate(Vector2.right * Time.deltaTime * velocidade);
 		//transform.position = Vector2.MoveTowards (transform.position, alvo, velocidade * Time.deltaTime);
-		if(Time.timeScale < 1){
+		if(Time.timeScale < 1 && Time.timeScale > 0){
 			Destroy(this.gameObject);
 		}
 	}

@@ -17,6 +17,7 @@ public class InitialScene : MonoBehaviour {
 		fade = FindObjectOfType<Fade>();
 		done = false;
 		if(GameManager.Instance.initialScene){
+			FindObjectOfType<LevelManager>().CanPause = false;
 			//Important Scene Objects
 			skyLayer.SetActive(true);
 			//player position
@@ -30,6 +31,7 @@ public class InitialScene : MonoBehaviour {
 			player.enabled = false;
 		}
 		else{
+			FindObjectOfType<LevelManager>().CanPause = true;
 			RenderSettings.ambientLight = Color.white;
 			skyLayer.SetActive(false);
 			Destroy(lightInPlayer);
@@ -43,11 +45,12 @@ public class InitialScene : MonoBehaviour {
 		if((player.transform.position.y <= 0 && !done) && GameManager.Instance.initialScene){
 			Debug.Log("ok");
 			done = true;
-			StartCoroutine("StartGame");
+			StartGame();
 		}
 	}
 
 	void StartGame(){
+		FindObjectOfType<LevelManager>().CanPause = true;
 		GameManager.Instance.initialScene = false;
 		fade.FadeGameObject(skyLayer, 1, 1, 0);
 		stars.gameObject.SetActive(false);

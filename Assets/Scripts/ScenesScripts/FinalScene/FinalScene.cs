@@ -19,6 +19,7 @@ public class FinalScene : MonoBehaviour {
         player.GetComponent<Rigidbody2D>().isKinematic = true;
 		player.GetComponent<Animator>().SetFloat("yVelocity", -1);
 		player.enabled = false;
+		FindObjectOfType<LevelManager>().CanPause = false;
 		StartCoroutine("PleaseJustFinish");
 	}
 
@@ -30,6 +31,7 @@ public class FinalScene : MonoBehaviour {
 	private void EndGame(){
 		//Player Variables
 		player.enabled = true;
+		TransitionManager.Instance.SetColor(Color.white);
 		TransitionManager.Instance.LoadLevel(levelToLoad, 2);
 	}
 }

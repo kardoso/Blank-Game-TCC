@@ -19,8 +19,14 @@ public class LevelManager : MonoBehaviour {
 	Mirror[] mirrors;
 	TrapDoor[] trapDoors;
 
+	public GameObject pauseMenu;
+	bool isDead;
+	public bool CanPause{get; set;}
+
 	void Awake()
 	{
+		CanPause = true;
+		isDead = false;
 		isCheckpointed = false;
 
 		if(TransitionManager.Instance == null){
@@ -30,7 +36,10 @@ public class LevelManager : MonoBehaviour {
 		if(GameManager.Instance == null){
 			var gameManager= new GameObject().AddComponent<GameManager>();
 			gameManager.name = "GameManager";
-			gameManager.gameObject.AddComponent<Lang>();
+		}
+		if(Lang.Instance == null){
+			var lang = new GameObject().AddComponent<Lang>();
+			lang.name = "Lang";
 		}
 		if(SoundManager.Instance == null){
 			var soundManager= new GameObject().AddComponent<SoundManager>();
@@ -53,8 +62,14 @@ public class LevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.R)){
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		if(!isDead && CanPause){
+			if(Input.GetKeyDown(KeyCode.R)){
+				player.MakeDamage();
+			}
+
+			if(Input.GetButtonDown("Cancel")){
+				pauseMenu.SetActive(true);
+			}
 		}
 	}
 
@@ -66,6 +81,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void TimeInDeath(){
+		isDead = true;
 		if(!isCheckpointed){
 			var invent = FindObjectOfType<Inventory>();
 			if(invent.HasKey()){
@@ -93,6 +109,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void TimeInNormal(){
+		isDead = false;
 		mainCamera.GetComponent<UnityStandardAssets.ImageEffects.ColorCorrectionRamp>().enabled = false;
 		player.ImBack();
 		onlyPlayerCamera.SetActive(false);
@@ -114,5 +131,14 @@ public class LevelManager : MonoBehaviour {
 
 	public bool IsThereAFuckingCheckpoint(){
 		return isCheckpointed;
+	}
+
+	public void DeactivePause(){
+		StartCoroutine("DeactivePauseRoutine");
+	}
+
+	IEnumerator DeactivePauseRoutine(){
+		yield return new WaitForSecondsRealtime(0.01f);
+		pauseMenu.SetActive(false);
 	}
 }

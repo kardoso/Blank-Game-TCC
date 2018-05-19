@@ -54,7 +54,7 @@ public abstract class Menu : MonoBehaviour{
                     fade.FadeGameObject(gg.gameObject, 1, 1, 0);
                 }
             }
-            yield return new WaitForSeconds(0.9f);
+            yield return new WaitForSecondsRealtime(0.9f);
             foreach(GameObject g in availableOptions){
                 g.SetActive(false);
                 foreach(Transform gg in g.transform){

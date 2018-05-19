@@ -200,6 +200,10 @@ public class TransitionManager : SingletonMonoBehaviour<TransitionManager>
         transImageObj.SetActive(false);
     }
 
+    public void SetColor(Color _transitionColor){
+        transitionColor = _transitionColor;
+    }
+
     public void SettingTransitionType(TransitionType _transitionType)
     {
         transitionType = _transitionType;

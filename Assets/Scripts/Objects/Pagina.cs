@@ -17,6 +17,8 @@ public class Pagina : MonoBehaviour {
 			//player.ImBack();
 			Camera.main.GetComponent<UnityStandardAssets.ImageEffects.SepiaTone>().enabled = false;
 			imgPagina.gameObject.SetActive(false);
+			FindObjectOfType<LevelManager>().CanPause = true;
+			FindObjectOfType<LevelManager>().DeactivePause();
 			Destroy(gameObject);
 		}
 	}
@@ -31,6 +33,7 @@ public class Pagina : MonoBehaviour {
 			Time.timeScale = 0;
 			imgPagina.gameObject.SetActive(true);
 			Camera.main.GetComponent<UnityStandardAssets.ImageEffects.SepiaTone>().enabled = true;
+			FindObjectOfType<LevelManager>().CanPause = false;
 			active = true;
 			//player.StopMovement();//imback to return
 		}
