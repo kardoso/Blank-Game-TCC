@@ -6,6 +6,7 @@ public class FinalScene : MonoBehaviour {
 
 	public string levelToLoad;
 	public Player player;
+	public TransitionManager.TransitionType _transitionType;
 
 	private Fade fade;
 
@@ -32,6 +33,7 @@ public class FinalScene : MonoBehaviour {
 		//Player Variables
 		player.enabled = true;
 		TransitionManager.Instance.SetColor(Color.white);
+		TransitionManager.Instance.SettingTransitionType(_transitionType);
 		TransitionManager.Instance.LoadLevel(levelToLoad, 2);
 	}
 }

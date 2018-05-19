@@ -48698,7 +48698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7ab6ebe7a6d46418f701fa01c4afa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: SalaHospital
+  levelToLoad: MainMenu
   player: {fileID: 276454417}
 --- !u!4 &1832833339
 Transform:
