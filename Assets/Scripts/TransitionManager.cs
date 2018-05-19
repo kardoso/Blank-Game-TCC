@@ -45,7 +45,6 @@ public class TransitionManager : SingletonMonoBehaviour<TransitionManager>
     [SerializeField]
     private AnimationCurve animationCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
-    private float transTimeCnt = 0.0f;
     private bool isTransition = false;
     private RectTransform transImageRectTransfrm;
     private GameObject transImageObj;

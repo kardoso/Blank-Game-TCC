@@ -265,7 +265,7 @@ public class Player : MonoBehaviour
                 //GameObject.Instantiate(ArrowPrototype, spawnPos, Quaternion.identity);
                 ArrowPrototype.transform.position = spawnPos;
                 GameObject.Instantiate(ArrowPrototype).GetComponent<Arrow>().SetInitial(arrowShouldMove, movingRight ? Vector2.right : Vector2.left);
-                SoundManager.Instance.PlaySFX(arrowFX);
+                SoundManager.PlaySFX(arrowFX);
             }
 
             yield return new WaitForSeconds(0.025f);
@@ -442,7 +442,7 @@ public class Player : MonoBehaviour
 
     public void MakeDamage()
     {
-        SoundManager.Instance.PlaySFX(dieFX);
+        SoundManager.PlaySFX(dieFX);
         canMove = false;
         rb.bodyType = RigidbodyType2D.Static;
         rb.isKinematic = true;

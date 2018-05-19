@@ -40,7 +40,7 @@ public abstract class Enemy : MonoBehaviour{
 	protected abstract void Attack(Vector2 whereThePlayerIs);
 	//Função de dano no inimigo
 	public virtual void MakeDamage(){
-		SoundManager.Instance.PlaySFX(damageFX);
+		SoundManager.PlaySFX(damageFX);
 	}
 
 	public abstract void Respawn();

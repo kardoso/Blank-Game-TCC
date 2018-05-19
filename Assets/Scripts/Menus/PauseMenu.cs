@@ -87,19 +87,19 @@ public class PauseMenu : Menu
             //Music Volume
             if(chooseThisOption == 0){
                 if(Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") > 0){
-                    SoundManager.Instance.increaseBGMVolume();
+                    SoundManager.increaseBGMVolume();
                 }
                 else if(Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") < 0){
-                    SoundManager.Instance.decreaseBGMVolume();
+                    SoundManager.decreaseBGMVolume();
                 }
             }
             //FX Volume
             else if(chooseThisOption == 1){
                 if(Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") > 0){
-                    SoundManager.Instance.increaseFXVolume();
+                    SoundManager.increaseFXVolume();
                 }
                 else if(Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") < 0){
-                    SoundManager.Instance.decreaseFXVolume();
+                    SoundManager.decreaseFXVolume();
                 }
             }
             //Screen Mode
@@ -160,13 +160,13 @@ public class PauseMenu : Menu
             {
                 //opção do música de fundo
                 if(i == 0){
-                    int volume = (int)System.Math.Round(SoundManager.Instance.GetBGMVolume()*100, 2);
+                    int volume = (int)System.Math.Round(SoundManager.GetBGMVolume()*100, 2);
                     settingsOptions[i].transform.Find("Number").GetComponent<Text>().text = volume.ToString();
                 }
 
                 //opção de efeitos sonoros
                 if(i == 1){
-                    int volume = (int)System.Math.Round(SoundManager.Instance.GetSFXVolume()*100, 2);
+                    int volume = (int)System.Math.Round(SoundManager.GetSFXVolume()*100, 2);
                     settingsOptions[i].transform.Find("Number").GetComponent<Text>().text = volume.ToString();
                 }
 

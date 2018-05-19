@@ -9,7 +9,7 @@ public class Trampoline : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.tag.Equals("Player")){
-			SoundManager.Instance.PlaySFX(trampFX);
+			SoundManager.PlaySFX(trampFX);
 			other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpVelocity;/*400f */
 			GetComponent<Animator>().SetTrigger("Active");
 		}

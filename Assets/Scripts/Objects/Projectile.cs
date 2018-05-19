@@ -42,13 +42,16 @@ public class Projectile : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		collided = true;
-		Destroy(transform.GetChild(0).gameObject);
+		if(!other.gameObject.tag.Equals("OnlyForPlayer")){
+			collided = true;
+			Destroy(transform.GetChild(0).gameObject);
+			GetComponent<BoxCollider2D>().enabled = false;
+			GetComponent<Animator>().SetTrigger("Explode");
+		}
+		
 		if(other.gameObject.tag == "Player"){
 			other.GetComponent<Player>().MakeDamage();
 		}
-		GetComponent<BoxCollider2D>().enabled = false;
-		GetComponent<Animator>().SetTrigger("Explode");
 	}
 
 	void OnTriggerEnter2D(TilemapCollider2D other)

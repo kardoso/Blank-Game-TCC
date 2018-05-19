@@ -9,7 +9,7 @@ public class Mirror : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.gameObject.tag.Equals("Player")){
-			SoundManager.Instance.PlaySFX(mirrorFX);
+			SoundManager.PlaySFX(mirrorFX);
 			other.gameObject.GetComponent<Player>().InvetControls();
 			Camera.main.GetComponent<CameraControl>().ShakeCamera(0.2f);
 			//break sprite
