@@ -8,6 +8,8 @@ public class OpenDoor : MonoBehaviour {
 	[SerializeField]
     private string sceneToLoadName;
 
+	public AudioClip doorFX;
+
 	private bool keyPressed = false;
 
 	private bool isInside;
@@ -30,6 +32,7 @@ public class OpenDoor : MonoBehaviour {
 				FindObjectOfType<Player>().StopMovement();
 				FindObjectOfType<Player>().GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
 				keyPressed = true;
+				SoundManager.PlaySFX(doorFX);
 				GetComponent<Animator>().SetTrigger("AbrirPorta");
 			}
 		}

@@ -864,7 +864,7 @@ MonoBehaviour:
   - {fileID: 911628545}
   - {fileID: 1839744052}
   - {fileID: 1158237922}
-  bgm: {fileID: 8300000, guid: 54286274be3c651439f7b4387a9d4e19, type: 3}
+  bgm: {fileID: 8300000, guid: 5d0fe6329deb779428b4202774700c2a, type: 3}
   sceneToLoad: level0
 --- !u!1 &669781132
 GameObject:

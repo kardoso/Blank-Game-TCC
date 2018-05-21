@@ -1025,6 +1025,7 @@ MonoBehaviour:
   objBlocos:
   - {fileID: 831959545}
   - {fileID: 413234871}
+  buttonFX: {fileID: 0}
 --- !u!61 &743670779
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1513,6 +1514,7 @@ MonoBehaviour:
   - {fileID: 1225989736}
   - {fileID: 1907752568}
   - {fileID: 586534610}
+  buttonFX: {fileID: 8300000, guid: 45148dd65ec6ec1488f3998c066afd5f, type: 3}
 --- !u!61 &1099771388
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2306,6 +2308,7 @@ MonoBehaviour:
   objBlocos:
   - {fileID: 1385046500}
   - {fileID: 156400641}
+  buttonFX: {fileID: 8300000, guid: 45148dd65ec6ec1488f3998c066afd5f, type: 3}
 --- !u!61 &1641548954
 BoxCollider2D:
   m_ObjectHideFlags: 0

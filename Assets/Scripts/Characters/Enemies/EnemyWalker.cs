@@ -97,7 +97,7 @@ public class EnemyWalker : Enemy {
 
 	protected override void Walk(){
 		velocity = _velocity;
-		rb.AddForce((Vector2.right * velocity * 500) * (movingRight?1:-1) * Time.timeScale);
+		rb.AddForce((Vector2.right * (velocity * 500)) * ((movingRight?1:-1) * Time.timeScale));
 		if(rb.velocity.x > velocity){
 			rb.velocity = new Vector2(velocity, rb.velocity.y);
 		}
@@ -108,7 +108,7 @@ public class EnemyWalker : Enemy {
 
 	protected override void Attack(Vector2 whereThePlayerIs){
 		velocity = _velocity*2;
-		rb.AddForce((Vector2.right * velocity * 500) * (movingRight?1:-1) * Time.timeScale);
+		rb.AddForce((Vector2.right * (velocity * 500)) * ((movingRight?1:-1) * Time.timeScale));
 		if(rb.velocity.x > velocity){
 			rb.velocity = new Vector2(velocity, rb.velocity.y);
 		}

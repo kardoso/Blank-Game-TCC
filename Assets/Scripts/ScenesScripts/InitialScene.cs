@@ -9,6 +9,9 @@ public class InitialScene : MonoBehaviour {
 	public GameObject skyLayer;
 	public ParticleSystem stars;
 
+	public AudioClip fallingBGM;
+	public AudioClip gameBGM;
+
 	private Fade fade;
 	private bool done;
 
@@ -17,6 +20,7 @@ public class InitialScene : MonoBehaviour {
 		fade = FindObjectOfType<Fade>();
 		done = false;
 		if(GameManager.Instance.initialScene){
+			SoundManager.PlayBGM(fallingBGM, true, 1);
 			FindObjectOfType<LevelManager>().CanPause = false;
 			//Important Scene Objects
 			skyLayer.SetActive(true);
@@ -50,6 +54,7 @@ public class InitialScene : MonoBehaviour {
 	}
 
 	void StartGame(){
+		SoundManager.PlayBGM(gameBGM, true, 1);
 		FindObjectOfType<LevelManager>().CanPause = true;
 		GameManager.Instance.initialScene = false;
 		fade.FadeGameObject(skyLayer, 1, 1, 0);

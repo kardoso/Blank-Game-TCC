@@ -5,6 +5,12 @@ using UnityEngine;
 public class ProjectileFromEnemy : MonoBehaviour {
 
 	public float velocidade;
+	public AudioClip projectileFX;
+	
+	void Start()
+	{
+		SoundManager.PlaySFX(projectileFX);	
+	}
 	
 	void Update () {
 		transform.Translate(Vector2.right * Time.deltaTime * velocidade);

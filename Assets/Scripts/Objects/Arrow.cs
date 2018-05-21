@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    public AudioClip hitFX;
 
     Player player;
     RaycastHit2D hitInArrow;
@@ -55,7 +56,7 @@ public class Arrow : MonoBehaviour
         }
         else if (hitWallForArrow)
         {
-
+            
         }
         else if(hitInButton){
             gameObject.GetComponent<Animator>().SetBool("Break", true);

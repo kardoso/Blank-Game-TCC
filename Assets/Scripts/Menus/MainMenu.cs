@@ -61,7 +61,7 @@ public class MainMenu : Menu
         else{
             StartCoroutine(FadeTitle(true));
             StartCoroutine(SetNewOptions(menuOptions));
-            SoundManager.PlayBGM(bgm, false, 0);
+            SoundManager.PlayBGM(bgm, true, 1);
             menuMode = 1;
         }
 	}
@@ -106,8 +106,8 @@ public class MainMenu : Menu
                 //New Game
                 if(chooseThisOption == 0){
                     Debug.Log("New Game");
-                    TransitionManager.Instance.LoadLevel(sceneToLoad, 2);
                     GameManager.Instance.mainMenuMode = 1;
+                    TransitionManager.Instance.LoadLevel(sceneToLoad, 2);
                 }
                 //Options
                 else if(chooseThisOption == 1){
@@ -117,8 +117,7 @@ public class MainMenu : Menu
                     menuMode = 2;
                 }
                 //Quit
-                else if(chooseThisOption == 1){
-                    Application.Quit();
+                else if(chooseThisOption == 2){
                 }
 
                 pressed = true;

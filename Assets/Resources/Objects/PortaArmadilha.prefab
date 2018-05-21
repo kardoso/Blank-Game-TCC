@@ -266,6 +266,7 @@ MonoBehaviour:
   point1: {fileID: 4480017821134896}
   point2: {fileID: 4442726364694054}
   point3: {fileID: 4988669619254358}
+  trapFX: {fileID: 8300000, guid: 1ecf7a582203d24428baa2b51a1fdc5f, type: 3}
 --- !u!212 &212327407644275940
 SpriteRenderer:
   m_ObjectHideFlags: 1

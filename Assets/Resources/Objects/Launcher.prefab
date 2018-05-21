@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchDirection: 3
   timeToThrow: 2
+  projectileFX: {fileID: 8300000, guid: 5b3e57da0f0ac414a9be33a6453daedf, type: 3}
 --- !u!212 &212968054140626794
 SpriteRenderer:
   m_ObjectHideFlags: 1

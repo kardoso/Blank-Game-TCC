@@ -74228,6 +74228,7 @@ MonoBehaviour:
   - {fileID: 342923900}
   - {fileID: 109814131}
   - {fileID: 703731693}
+  buttonFX: {fileID: 8300000, guid: 45148dd65ec6ec1488f3998c066afd5f, type: 3}
 --- !u!61 &1343313147
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74469,6 +74470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objBlocos:
   - {fileID: 2106772028}
+  buttonFX: {fileID: 8300000, guid: 45148dd65ec6ec1488f3998c066afd5f, type: 3}
 --- !u!61 &1519821592
 BoxCollider2D:
   m_ObjectHideFlags: 0

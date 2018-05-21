@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182f243ab60b934fa26d72ce856a7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageFX: {fileID: 8300000, guid: 4bcdba2b1c6ef7d4da8ec382153b612e, type: 3}
   bala: {fileID: 1706662012413940, guid: 0c06f046ef0c6c4458ac2e467004b5fe, type: 2}
   velocidade: 80
   seguir: 150

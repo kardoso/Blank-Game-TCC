@@ -10,6 +10,7 @@ public class Trap : MonoBehaviour {
     public Transform point1;
     public Transform point2;
     public Transform point3;
+    public AudioClip trapFX;
     
     private Vector3 p1;
     private Vector3 p2;
@@ -25,6 +26,7 @@ public class Trap : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.gameObject.tag.Equals("Player")){
+            SoundManager.PlaySFX(trapFX);
             this.gameObject.SetActive(false);
             ObjectForEnemiesSpawn = new GameObject();
             ObjectForEnemiesSpawn.transform.position = this.transform.position;

@@ -271,6 +271,7 @@ MonoBehaviour:
   objBlocos:
   - {fileID: 4550787216156098}
   - {fileID: 4700476831718104}
+  buttonFX: {fileID: 8300000, guid: 45148dd65ec6ec1488f3998c066afd5f, type: 3}
 --- !u!212 &212327796013772952
 SpriteRenderer:
   m_ObjectHideFlags: 1

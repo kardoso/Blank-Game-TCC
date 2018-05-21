@@ -50679,6 +50679,7 @@ MonoBehaviour:
   objBlocos:
   - {fileID: 282641695}
   - {fileID: 1945754778}
+  buttonFX: {fileID: 8300000, guid: 45148dd65ec6ec1488f3998c066afd5f, type: 3}
 --- !u!61 &2130102484
 BoxCollider2D:
   m_ObjectHideFlags: 0

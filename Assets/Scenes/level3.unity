@@ -13613,6 +13613,7 @@ MonoBehaviour:
   objBlocos:
   - {fileID: 817426131}
   - {fileID: 711896143}
+  buttonFX: {fileID: 8300000, guid: 45148dd65ec6ec1488f3998c066afd5f, type: 3}
 --- !u!1 &1639350636
 GameObject:
   m_ObjectHideFlags: 0
@@ -14051,6 +14052,7 @@ MonoBehaviour:
   objBlocos:
   - {fileID: 431907926}
   - {fileID: 410009515}
+  buttonFX: {fileID: 8300000, guid: 45148dd65ec6ec1488f3998c066afd5f, type: 3}
 --- !u!61 &1832921551
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -18,6 +18,8 @@ public class TrapDoor : MonoBehaviour {
     private Vector3 p2;
     private Vector3 p3;
 
+	public AudioClip trapFX;
+
 	void Start()
 	{
 		foreach(Transform t in transform){
@@ -64,7 +66,7 @@ public class TrapDoor : MonoBehaviour {
 	void LoadLevel(){
 		FindObjectOfType<Inventory>().AddKey();
 		FindObjectOfType<Player>().ImBack();
-
+		SoundManager.PlaySFX(trapFX);
 		SpawnEnemies();
 	}
 

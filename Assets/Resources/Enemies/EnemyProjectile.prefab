@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidade: 100
+  projectileFX: {fileID: 8300000, guid: 6207652e468de3d4bb1063a0641504ed, type: 3}
 --- !u!212 &212032454367306552
 SpriteRenderer:
   m_ObjectHideFlags: 1

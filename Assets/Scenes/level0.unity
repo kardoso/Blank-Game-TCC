@@ -3453,6 +3453,8 @@ MonoBehaviour:
   lightInPlayer: {fileID: 2028558055}
   skyLayer: {fileID: 1685633525}
   stars: {fileID: 994494137}
+  fallingBGM: {fileID: 8300000, guid: 5b414e910e9824347b4fa20662b2778a, type: 3}
+  gameBGM: {fileID: 8300000, guid: 54286274be3c651439f7b4387a9d4e19, type: 3}
 --- !u!4 &228664784
 Transform:
   m_ObjectHideFlags: 0
@@ -3554,8 +3556,7 @@ MonoBehaviour:
   boxCheckLeft: 0
   posToGo: {x: 0, y: 0, z: 0}
   bolha: {fileID: 999206193}
-  arrowFX: {fileID: 8300000, guid: d219d9f36f2a2f5418f391000c9c8166, type: 3}
-  dieFX: {fileID: 8300000, guid: 4553f6db69938a74a8bdfd637a3b2b95, type: 3}
+  bubbleFX: {fileID: 8300000, guid: acb7f5be59fb3bd41a9744bfae17ba30, type: 3}
 --- !u!1 &338920260
 GameObject:
   m_ObjectHideFlags: 0

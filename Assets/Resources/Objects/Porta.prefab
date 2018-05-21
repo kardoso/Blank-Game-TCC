@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoadName: level1
+  doorFX: {fileID: 8300000, guid: 532c62a20123d4244bf1e26ab17c861e, type: 3}
 --- !u!212 &212104013010135104
 SpriteRenderer:
   m_ObjectHideFlags: 1
