@@ -49,7 +49,7 @@ public class SoundManager : MonoBehaviour
 		return isMuted ? 0f : MaxVolume_BGM * CurrentVolumeNormalized_BGM;
 	}
 	public static float GetSFXVolume () {
-	return isMuted ? 0f : MaxVolume_SFX * CurrentVolumeNormalized_SFX;
+		return isMuted ? 0f : MaxVolume_SFX * CurrentVolumeNormalized_SFX;
 	}
 
 	// ====================== BGM Utils ======================
@@ -268,6 +268,7 @@ public class SoundManager : MonoBehaviour
 		}
 		Debug.Log("BGM Volume: "+ GetBGMVolume());
 		soundMan.bgmSource.volume = GetBGMVolume();
+		AudioListener.volume = GetBGMVolume();
 		Debug.Log("BGM Volume is now: " + GetBGMVolume());
 	}
 
