@@ -118,6 +118,7 @@ public class MainMenu : Menu
                 }
                 //Quit
                 else if(chooseThisOption == 2){
+                    Application.Quit();
                 }
 
                 pressed = true;
