@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: da3d98b6538dd074f89ae780271f0f77
-timeCreated: 1521311824
+guid: 044ac002e74c4044cb72e9a89fc453c3
+timeCreated: 1527044500
 licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
@@ -10,9 +10,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Press Start 2P
+  fontName: 001Shirokuma
   fontNames:
-  - Press Start 2P
+  - 001Shirokuma
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

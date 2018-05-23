@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <languages>
 	<Portuguese>
-		<string name="page1">- - - - - - -</string>
+		<string name="page1">A única máscara que eu usava caiu naquele dia, porém duas novas foram colocadas no lugar. Desde então nunca mais fui a mesma.</string>
+		<string name="page2">Eu não quero mais vê-los. Eu quero ficar sozinha.</string>
+		<string name="page3">Você não vai conseguir, ainda tem tanta coisa que pode dar errado. Só perda de tempo.</string>
+		<string name="page4">Não tem mais volta.</string>
+		<string name="page5">Chegar aqui não significa nada, só que a queda será maior.</string>
+		<string name="page6">E agora? Não é o fim, mas sim o começo.</string>
 	</Portuguese>
 
 	<English>
-		<string name="page1">- - - - - - -</string>
+		<string name="page1"></string>
+		<string name="page2"></string>
+		<string name="page3"></string>
+		<string name="page4"></string>
+		<string name="page5"></string>
+		<string name="page6"></string>
 	</English>
 
 	<Japanese>
-		<string name="page1">- - - - - - -</string>
+		<string name="page1">ひらがな 平仮名 カタカナ 片仮名</string>
+		<string name="page2">ひらがな 平仮名 カタカナ 片仮名</string>
+		<string name="page3">ひらがな 平仮名 カタカナ 片仮名</string>
+		<string name="page4">ひらがな 平仮名 カタカナ 片仮名</string>
+		<string name="page5">ひらがな 平仮名 カタカナ 片仮名</string>
+		<string name="page6">ひらがな 平仮名 カタカナ 片仮名</string>
 	</Japanese>
 </languages>

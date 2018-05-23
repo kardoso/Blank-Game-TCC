@@ -431,6 +431,18 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 786724158}
+    - target: {fileID: 114083349844915004, guid: c7a5af6077eb82742b0b3ac89620fb6a,
+        type: 2}
+      propertyPath: ocidentalFont
+      value: 
+      objectReference: {fileID: 12800000, guid: 354ccc3ff482086479e52bcf51f3ab6d,
+        type: 3}
+    - target: {fileID: 114083349844915004, guid: c7a5af6077eb82742b0b3ac89620fb6a,
+        type: 2}
+      propertyPath: japaneseFont
+      value: 
+      objectReference: {fileID: 12800000, guid: 044ac002e74c4044cb72e9a89fc453c3,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c7a5af6077eb82742b0b3ac89620fb6a, type: 2}
   m_IsPrefabParent: 0
@@ -911,7 +923,7 @@ Prefab:
     - target: {fileID: 114024045128665574, guid: eab81031e16ec51449545e56ed16fb8c,
         type: 2}
       propertyPath: numeroPagina
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eab81031e16ec51449545e56ed16fb8c, type: 2}

@@ -7,10 +7,19 @@ public class PageTextWriter : MonoBehaviour {
 	public float delay = 0.05f;
 	public string fullText;
 	private string currentText = "";
+	public Font ocidentalFont;
+	public Font japaneseFont;
 
 	// Use this for initialization
 	void Start () {
 		StartCoroutine(ShowText());
+		if(FindObjectOfType<GameManager>().Language == "Japanese"){
+			GetComponent<Text>().font = japaneseFont;
+		}
+		else{
+			GetComponent<Text>().font = ocidentalFont;
+		}
+		
 	}
 	
 	IEnumerator ShowText(){
