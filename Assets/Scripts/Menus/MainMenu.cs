@@ -20,6 +20,7 @@ public class MainMenu : Menu
 	private bool vsyncActive;
 
     public string sceneToLoad;
+    public Color mainTransitionColor;
 
     void Awake()
     {
@@ -59,6 +60,7 @@ public class MainMenu : Menu
             menuMode = 0;
         }
         else{
+            LoadLanguage();
             StartCoroutine(FadeTitle(true));
             StartCoroutine(SetNewOptions(menuOptions));
             SoundManager.PlayBGM(bgm, true, 1);
@@ -107,6 +109,7 @@ public class MainMenu : Menu
                 if(chooseThisOption == 0){
                     Debug.Log("New Game");
                     GameManager.Instance.mainMenuMode = 1;
+                    FindObjectOfType<TransitionManager>().SetColor(mainTransitionColor);
                     TransitionManager.Instance.LoadLevel(sceneToLoad, 2);
                 }
                 //Options

@@ -866,6 +866,7 @@ MonoBehaviour:
   - {fileID: 1158237922}
   bgm: {fileID: 8300000, guid: 5d0fe6329deb779428b4202774700c2a, type: 3}
   sceneToLoad: level0
+  mainTransitionColor: {r: 0.24705882, g: 0.15686275, b: 0.19607843, a: 1}
 --- !u!1 &669781132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,7 +2370,8 @@ MonoBehaviour:
   - {fileID: 12800000, guid: 768c2c8143746de4d99887ba18d58935, type: 3}
   - {fileID: 12800000, guid: 13a49f6b3b142f749a1328919bda03c5, type: 3}
   - {fileID: 12800000, guid: 2d4b966aa23e2db478964d954185dc53, type: 3}
-  - {fileID: 12800000, guid: da3d98b6538dd074f89ae780271f0f77, type: 3}
+  - {fileID: 12800000, guid: 044ac002e74c4044cb72e9a89fc453c3, type: 3}
+  - {fileID: 12800000, guid: 354ccc3ff482086479e52bcf51f3ab6d, type: 3}
 --- !u!1 &1653246274
 GameObject:
   m_ObjectHideFlags: 0
