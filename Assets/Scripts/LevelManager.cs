@@ -63,11 +63,11 @@ public class LevelManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(!isDead && CanPause){
-			if(Input.GetKeyDown(KeyCode.R)){
+			if(Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("View")){
 				player.MakeDamage();
 			}
 
-			if(Input.GetButtonDown("Cancel")){
+			if(Input.GetButtonDown("Cancel") || Input.GetButtonDown("Menu")){
 				pauseMenu.SetActive(true);
 			}
 		}
@@ -140,5 +140,9 @@ public class LevelManager : MonoBehaviour {
 	IEnumerator DeactivePauseRoutine(){
 		yield return new WaitForSecondsRealtime(0.01f);
 		pauseMenu.SetActive(false);
+	}
+
+	public bool PlayerIsDead(){
+		return isDead;
 	}
 }

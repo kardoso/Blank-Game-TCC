@@ -54,7 +54,7 @@ public class PauseMenu : Menu
     protected override void CheckSubmit(){
         //Menu
         if(menuMode == 0){
-            if (Input.GetButtonDown("Submit"))
+            if (Input.GetButtonDown("Submit") || Input.GetButtonDown("A"))
             {
                 //Resume
                 if(chooseThisOption == 0){
@@ -69,6 +69,7 @@ public class PauseMenu : Menu
                 }
                 //Quit
                 else if(chooseThisOption == 2){
+                    Debug.Log("To Main Menu");
 					Time.timeScale = 1;
                     TransitionManager.Instance.LoadLevel(sceneToLoad, 1);
                 }
@@ -76,7 +77,7 @@ public class PauseMenu : Menu
                 pressed = true;
             }
 
-			if(Input.GetButtonDown("Cancel")){
+			if(Input.GetButtonDown("Cancel") || Input.GetButtonDown("Menu") || Input.GetButtonDown("B")){
 				Debug.Log("Resume");
 				this.gameObject.SetActive(false);
 			}
@@ -146,7 +147,7 @@ public class PauseMenu : Menu
             }
             
             //back to menu
-            if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel"))
+            if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel") || (Input.GetButtonDown("A") || Input.GetButtonDown("B")) || Input.GetButtonDown("Menu"))
             {
 
                 StartCoroutine(SetNewOptions(menuOptions));

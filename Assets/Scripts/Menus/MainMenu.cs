@@ -76,7 +76,7 @@ public class MainMenu : Menu
     protected override void CheckSubmit(){
         //Language
         if(menuMode == 0){
-            if (Input.GetButtonDown("Submit"))
+            if (Input.GetButtonDown("Submit")  || (Input.GetButtonDown("A") || Input.GetButtonDown("Menu")))
             {
                 //Portugues
                 if(chooseThisOption == 0){
@@ -103,7 +103,7 @@ public class MainMenu : Menu
         }
         //Main Menu
         else if(menuMode == 1){
-            if (Input.GetButtonDown("Submit"))
+            if (Input.GetButtonDown("Submit") || (Input.GetButtonDown("A") || Input.GetButtonDown("Menu")))
             {
                 //New Game
                 if(chooseThisOption == 0){
@@ -192,7 +192,7 @@ public class MainMenu : Menu
             }
             
             //back to menu
-            if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel"))
+            if (Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel") || (Input.GetButtonDown("A") || Input.GetButtonDown("B")) || Input.GetButtonDown("Menu"))
             {
 
                 StartCoroutine(SetNewOptions(menuOptions));
