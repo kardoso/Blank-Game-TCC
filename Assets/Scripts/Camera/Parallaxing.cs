@@ -32,6 +32,13 @@ public class Parallaxing : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 
+		if(FindObjectOfType<LevelManager>().PlayerIsDead()){
+			cam = Camera.main.transform;
+		}
+		else{
+			transform.Find("CameraOnPlayer");
+		}
+
 		//for each background
 
 		for (int i = 0; i < backgrounds.Length; i++) {
