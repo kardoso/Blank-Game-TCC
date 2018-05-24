@@ -152,20 +152,11 @@ public class Player : MonoBehaviour
         float initialZ = 0;
         float distance = 0;
 
-        if (movingRight)
-        {
-            initialX = bowInitialPointRight.position.x;
-            initialY = bowInitialPointRight.position.y;
-            initialZ = bowInitialPointRight.position.z;
-            distance = 500;
-        }
-        else
-        {
-            initialX = bowInitialPointLeft.position.x;
-            initialY = bowInitialPointLeft.position.y;
-            initialZ = bowInitialPointLeft.position.z;
-            distance = -500;
-        }
+        initialX = bowInitialPointLeft.position.x;
+        initialY = bowInitialPointLeft.position.y;
+        initialZ = bowInitialPointLeft.position.z;
+
+        distance = movingRight?500:-500;
 
 
         allHits = Physics2D.LinecastAll(new Vector2(initialX, initialY), new Vector2(initialX + distance, initialY), layersForArrow);
