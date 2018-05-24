@@ -10,20 +10,20 @@
 	</Portuguese>
 
 	<English>
-		<string name="page1"></string>
-		<string name="page2"></string>
-		<string name="page3"></string>
-		<string name="page4"></string>
-		<string name="page5"></string>
-		<string name="page6"></string>
+		<string name="page1">The only mask I wore fell on that day, but two new ones were put in place. Since then I have never been the same.</string>
+		<string name="page2">I don't want to see them anymore. I want to be alone.</string>
+		<string name="page3">You will not get it, there's still so much that can go wrong. Just a waste of time.</string>
+		<string name="page4">There is no turning back.</string>
+		<string name="page5">Getting here means nothing, only the fall will be greater.</string>
+		<string name="page6">And now? It is not the end, but just the beginning.</string>
 	</English>
 
 	<Japanese>
-		<string name="page1">ひらがな 平仮名 カタカナ 片仮名</string>
-		<string name="page2">ひらがな 平仮名 カタカナ 片仮名</string>
-		<string name="page3">ひらがな 平仮名 カタカナ 片仮名</string>
-		<string name="page4">ひらがな 平仮名 カタカナ 片仮名</string>
-		<string name="page5">ひらがな 平仮名 カタカナ 片仮名</string>
-		<string name="page6">ひらがな 平仮名 カタカナ 片仮名</string>
+		<string name="page1">翻訳なし</string>
+		<string name="page2">翻訳なし</string>
+		<string name="page3">翻訳なし</string>
+		<string name="page4">翻訳なし</string>
+		<string name="page5">翻訳なし</string>
+		<string name="page6">翻訳なし</string>
 	</Japanese>
 </languages>

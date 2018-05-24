@@ -8426,12 +8426,24 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4175029548840162, guid: b827512793f351847805a66f51427128, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -73.6
+      value: -90.19
       objectReference: {fileID: 0}
     - target: {fileID: 114347262900175280, guid: b827512793f351847805a66f51427128,
         type: 2}
       propertyPath: smoothing
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4175029548840162, guid: b827512793f351847805a66f51427128, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 5.894717
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904390237105872, guid: b827512793f351847805a66f51427128, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 57.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904390237105872, guid: b827512793f351847805a66f51427128, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 4.8530993
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b827512793f351847805a66f51427128, type: 2}

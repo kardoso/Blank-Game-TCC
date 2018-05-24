@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PageTextWriter : MonoBehaviour {
 
-	public float delay = 0.05f;
+	private float delay = 0.05f;
 	public string fullText;
 	private string currentText = "";
 	public Font ocidentalFont;
