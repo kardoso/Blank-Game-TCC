@@ -185,7 +185,6 @@ public class Player : MonoBehaviour
                     Debug.Log(objectsInRayHit[i].distance);
                 }*/
             }
-            //objectsInRayHit.Clear();
             //Se o ultimo ponto da reta toca em algo
             bool hasFinalPoint = objectsInRayHit.Count != 0;
             //Se o ultimo ponto da reta toca em algo e esse algo é um inimigo
@@ -217,6 +216,7 @@ public class Player : MonoBehaviour
             //congelar constraints
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
+            //Carregar o prefab
             var ArrowPrototype = Resources.Load("Objects/Arrow", typeof(GameObject)) as GameObject;
             //Definir posição para spawnar a flecha
             Vector3 spawnPos = new Vector3(spawnX, spawnY, initialZ);
@@ -235,7 +235,7 @@ public class Player : MonoBehaviour
                 {
                     if (rh.collider.gameObject.layer.Equals(12)) //12 = Enemy layer
                         rh.collider.gameObject.GetComponent<Enemy>().MakeDamage();
-                    if(rh.collider.gameObject.layer.Equals(20))
+                    if(rh.collider.gameObject.layer.Equals(20)) //20 = Button layer
                         rh.collider.gameObject.GetComponent<ButtonArrow>().EnableButton();
                 }
 
