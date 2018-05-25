@@ -170,4 +170,4 @@ MonoBehaviour:
   point1: {fileID: 4010733744668812}
   point2: {fileID: 4874893875910540}
   point3: {fileID: 4724124599132746}
-  trapFX: {fileID: 8300000, guid: 1ecf7a582203d24428baa2b51a1fdc5f, type: 3}
+  trapFX: {fileID: 8300000, guid: c8106316755f01f4b8225979a249ef02, type: 3}

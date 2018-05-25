@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpVelocity: 400
-  trampFX: {fileID: 8300000, guid: 2110035aeabee0149b9c15eb60736985, type: 3}
+  trampFX: {fileID: 8300000, guid: 4c78c5b68a7eacc4199611249ff1b9c4, type: 3}
 --- !u!61 &786966248
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1727,7 +1727,7 @@ Prefab:
     - target: {fileID: 66746023899261412, guid: 789d4ea16339ffe488009fef5895ec3e,
         type: 2}
       propertyPath: m_ColliderPaths.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8195094282022554176, guid: 789d4ea16339ffe488009fef5895ec3e,
         type: 2}
@@ -2755,7 +2755,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1091244737901032, guid: 789d4ea16339ffe488009fef5895ec3e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280394171372, guid: 789d4ea16339ffe488009fef5895ec3e,
         type: 2}
@@ -75103,6 +75103,26 @@ Prefab:
       propertyPath: m_Tiles.Array.data[497].second.m_ColliderType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114966967111049936, guid: 789d4ea16339ffe488009fef5895ec3e,
+        type: 2}
+      propertyPath: inAmbientColor.r
+      value: 0.91764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114966967111049936, guid: 789d4ea16339ffe488009fef5895ec3e,
+        type: 2}
+      propertyPath: inAmbientColor.g
+      value: 0.91764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114966967111049936, guid: 789d4ea16339ffe488009fef5895ec3e,
+        type: 2}
+      propertyPath: inAmbientColor.b
+      value: 0.91764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114966967111049936, guid: 789d4ea16339ffe488009fef5895ec3e,
+        type: 2}
+      propertyPath: inAmbientColor.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 789d4ea16339ffe488009fef5895ec3e, type: 2}
   m_IsPrefabParent: 0
@@ -75139,7 +75159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpVelocity: 400
-  trampFX: {fileID: 8300000, guid: 2110035aeabee0149b9c15eb60736985, type: 3}
+  trampFX: {fileID: 8300000, guid: 4c78c5b68a7eacc4199611249ff1b9c4, type: 3}
 --- !u!61 &988809190
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75812,7 +75832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpVelocity: 400
-  trampFX: {fileID: 8300000, guid: 2110035aeabee0149b9c15eb60736985, type: 3}
+  trampFX: {fileID: 8300000, guid: 4c78c5b68a7eacc4199611249ff1b9c4, type: 3}
 --- !u!61 &1496715424
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -76305,7 +76325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpVelocity: 400
-  trampFX: {fileID: 8300000, guid: 2110035aeabee0149b9c15eb60736985, type: 3}
+  trampFX: {fileID: 8300000, guid: 4c78c5b68a7eacc4199611249ff1b9c4, type: 3}
 --- !u!61 &1628655360
 BoxCollider2D:
   m_ObjectHideFlags: 0

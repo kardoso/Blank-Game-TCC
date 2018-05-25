@@ -56,7 +56,8 @@ public class Player : MonoBehaviour
 
     //Sons
     public AudioClip bubbleFX;
-    //public AudioClip arrowFX;
+    public AudioClip arrowFX;
+    public AudioClip jumpFX;
 
     // Use this for initialization
     void Awake()
@@ -152,11 +153,18 @@ public class Player : MonoBehaviour
         float initialZ = 0;
         float distance = 0;
 
-        initialX = bowInitialPointLeft.position.x;
-        initialY = bowInitialPointLeft.position.y;
-        initialZ = bowInitialPointLeft.position.z;
-
-        distance = movingRight?500:-500;
+        if(movingRight){
+            initialX = bowInitialPointRight.position.x;
+            initialY = bowInitialPointRight.position.y;
+            initialZ = bowInitialPointRight.position.z;
+            distance = 500;
+        }
+        else{
+            initialX = bowInitialPointLeft.position.x;
+            initialY = bowInitialPointLeft.position.y;
+            initialZ = bowInitialPointLeft.position.z;
+            distance = -500;
+        }
 
 
         allHits = Physics2D.LinecastAll(new Vector2(initialX, initialY), new Vector2(initialX + distance, initialY), layersForArrow);
@@ -222,6 +230,7 @@ public class Player : MonoBehaviour
             Vector3 spawnPos = new Vector3(spawnX, spawnY, initialZ);
 
             yield return new WaitForSeconds(0.25f);
+            SoundManager.PlaySFX(arrowFX);
             //criar linha
             if (Time.timeScale >= 1)
             {
@@ -256,7 +265,6 @@ public class Player : MonoBehaviour
                 //GameObject.Instantiate(ArrowPrototype, spawnPos, Quaternion.identity);
                 ArrowPrototype.transform.position = spawnPos;
                 GameObject.Instantiate(ArrowPrototype).GetComponent<Arrow>().SetInitial(arrowShouldMove, movingRight ? Vector2.right : Vector2.left);
-                //SoundManager.PlaySFX(arrowFX);
             }
 
             yield return new WaitForSeconds(0.025f);
@@ -357,6 +365,7 @@ public class Player : MonoBehaviour
         {
             if (isGrounded)
             {
+                SoundManager.PlaySFX(jumpFX);
                 rb.velocity = Vector2.up * jumpVelocity;
             }
         }
@@ -401,10 +410,12 @@ public class Player : MonoBehaviour
         {
             if (wallCheckLeft)
             {
+                SoundManager.PlaySFX(jumpFX);
                 rb.AddForce(new Vector2(5000, 2500) * jumpVelocity);
             }
             else
             {
+                SoundManager.PlaySFX(jumpFX);
                 rb.AddForce(new Vector2(-5000, 2500) * jumpVelocity);
             }
         }

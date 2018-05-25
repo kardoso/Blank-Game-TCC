@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpVelocity: 400
-  trampFX: {fileID: 8300000, guid: 2110035aeabee0149b9c15eb60736985, type: 3}
+  trampFX: {fileID: 8300000, guid: 4c78c5b68a7eacc4199611249ff1b9c4, type: 3}
 --- !u!212 &212931346420847802
 SpriteRenderer:
   m_ObjectHideFlags: 1

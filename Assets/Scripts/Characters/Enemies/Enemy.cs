@@ -20,8 +20,6 @@ public abstract class Enemy : MonoBehaviour{
 	protected bool isDead = false;
 	private Vector3 initialPos;
 
-	public AudioClip damageFX;
-
 	protected virtual void Start(){
 		initialPos = transform.position;
 	}
@@ -40,7 +38,7 @@ public abstract class Enemy : MonoBehaviour{
 	protected abstract void Attack(Vector2 whereThePlayerIs);
 	//Função de dano no inimigo
 	public virtual void MakeDamage(){
-		SoundManager.PlaySFX(damageFX);
+		
 	}
 
 	public abstract void Respawn();

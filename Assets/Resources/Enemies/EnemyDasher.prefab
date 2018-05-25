@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54354b2dfa6f77c46bee4677d9fab31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageFX: {fileID: 8300000, guid: 4bcdba2b1c6ef7d4da8ec382153b612e, type: 3}
+  damageFX: {fileID: 8300000, guid: 939230c760b3fb543bf533587fd21636, type: 3}
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 45824

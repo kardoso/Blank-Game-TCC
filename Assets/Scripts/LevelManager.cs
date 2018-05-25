@@ -49,6 +49,9 @@ public class LevelManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Camera.main.GetComponent<CameraControl>().enabled = false;
+		Camera.main.GetComponent<CameraControl>().enabled = true;
+
 		player = FindObjectOfType<Player>();
 		enemies = FindObjectsOfType<Enemy>();
 		traps = FindObjectsOfType<Trap>();
