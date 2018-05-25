@@ -9,6 +9,7 @@
 		<string name="reload">Recarregar</string>
 		<string name="main_menu">Voltar ao menu principal</string>
 		<string name="settings">Configurações</string>
+		<string name="credits">Créditos</string>
 		<string name="cancel">Cancelar</string>
 		<string name="confirm">Confirmar</string>
 		<string name="screen_mode">Modo de tela</string>
@@ -19,6 +20,11 @@
 		<string name="fx_volume">Efeitos sonoros</string>
 		<string name="v_sync">Sincronização vertical</string>
 		<string name="resume">Continuar</string>
+		<string name="credit_code">Programação</string>
+		<string name="credit_art">Arte</string>
+		<string name="credit_sound">Som</string>
+		<string name="credit_level">Design de níveis</string>
+		<string name="credit_sfx">Alguns efeitos do site</string>
 		<string name="confirm_new_game">Um jogo salvo foi encontrado. Deseja carregá-lo ou iniciar um novo jogo?
 		
 		O estado salvo será apagado caso inicie um novo jogo.</string>
@@ -33,6 +39,7 @@
 		<string name="reload">Reload</string>
 		<string name="main_menu">Return to main menu</string>
 		<string name="settings">Settings</string>
+		<string name="credits">Credits</string>
 		<string name="cancel">Cancel</string>
 		<string name="confirm">Confirm</string>
 		<string name="screen_mode">Screen mode</string>
@@ -43,6 +50,11 @@
 		<string name="fx_volume">FX Sound Volume</string>
 		<string name="v_sync">VSync</string>
 		<string name="resume">Resume</string>
+		<string name="credit_code">Programming</string>
+		<string name="credit_art">Art</string>
+		<string name="credit_sound">Sound</string>
+		<string name="credit_level">Level Design</string>
+		<string name="credit_sfx">Some SFXs are from</string>
 		<string name="confirm_new_game">blah blah blah blah</string>
 	</English>
 
@@ -55,6 +67,7 @@
 		<string name="reload">リロード</string>
 		<string name="main_menu">タイル画面に戻る</string>
 		<string name="settings">設定</string>
+		<string name="credits">ゲームクレジット</string>
 		<string name="cancel">キャンセル</string>
 		<string name="confirm">決定</string>
 		<string name="screen_mode">スクリーンモード</string>
@@ -65,6 +78,11 @@
 		<string name="fx_volume">効果音の音量</string>
 		<string name="v_sync">垂直同期</string>
 		<string name="resume">再開する</string>
+		<string name="credit_code">プログラミング</string>
+		<string name="credit_art">アート</string>
+		<string name="credit_sound">音</string>
+		<string name="credit_level">レベルの設計</string>
+		<string name="credit_sfx">いくつかの効果音は、</string>
 		<string name="confirm_new_game">ああああああああああああ</string>
 	</Japanese>
 </languages>

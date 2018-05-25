@@ -10,10 +10,12 @@ public class MainMenu : Menu
     public GameObject[] languageOptions;
     public GameObject[] menuOptions;
     public GameObject[] settingsOptions;
+    public GameObject[] creditsOnlyOption;
+    public GameObject[] credits;
 
     public AudioClip bgm;
 
-    int menuMode;       //0 is language, 1 is menu, 2 is settings
+    int menuMode;       //0 is language, 1 is menu, 2 is settings, 3 is credits
 
     private int currentResolution;
 	private bool isFullScreen;
@@ -115,12 +117,19 @@ public class MainMenu : Menu
                 //Options
                 else if(chooseThisOption == 1){
                     Debug.Log("Options");
+                    menuMode = 2;
                     StartCoroutine(SetNewOptions(settingsOptions));
                     StartCoroutine(FadeTitle(false));
-                    menuMode = 2;
+                }
+                //Creits
+                else if(chooseThisOption == 2){
+                    menuMode = 3;
+                    StartCoroutine(SetNewOptions(creditsOnlyOption));
+                    StartCoroutine(ShowCredits(true));
+                    StartCoroutine(FadeTitle(false));
                 }
                 //Quit
-                else if(chooseThisOption == 2){
+                else if(chooseThisOption == 3){
                     Application.Quit();
                 }
 
@@ -280,6 +289,44 @@ public class MainMenu : Menu
                         settingsOptions[i].transform.Find("Text").GetComponent<Text>().text = LMan.getString("keyboard");
                     }
                 }*/
+            }
+        }
+        //Credits
+        else if(menuMode == 3){
+            if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Submit")) ||(Input.GetButtonDown("A") || Input.GetButtonDown("B")) || Input.GetButtonDown("Menu")){
+                menuMode = 1;
+                StartCoroutine(SetNewOptions(menuOptions));
+                StartCoroutine(ShowCredits(false));
+                StartCoroutine(FadeTitle(true));
+            }
+        }
+    }
+
+    IEnumerator ShowCredits(bool show){
+        yield return new WaitForSeconds(0.5f);
+        if(show){
+            foreach(GameObject g in credits){
+                g.SetActive(true);
+                fade.FadeGameObject(g, 1, 0, 1);
+                foreach(Transform t in g.transform){
+                    t.gameObject.SetActive(true);
+                    fade.FadeGameObject(t.gameObject, 1, 0, 1);
+                }
+            }
+        }
+        else{
+            foreach(GameObject g in credits){
+                fade.FadeGameObject(g, 1, 1, 0);
+                foreach(Transform t in g.transform){
+                    fade.FadeGameObject(t.gameObject, 1, 1, 0);
+                }
+            }
+            yield return new WaitForSeconds(1);
+            foreach(GameObject g in credits){
+                g.SetActive(false);
+                foreach(Transform t in g.transform){
+                    t.gameObject.SetActive(false);
+                }
             }
         }
     }
@@ -466,12 +513,23 @@ public class MainMenu : Menu
 
         menuOptions[0].GetComponent<Text>().text = Lang.Instance.getString("start_game");
         menuOptions[1].GetComponent<Text>().text = Lang.Instance.getString("settings");
-        menuOptions[2].GetComponent<Text>().text = Lang.Instance.getString("exit");
+        menuOptions[2].GetComponent<Text>().text = Lang.Instance.getString("credits");
+        menuOptions[3].GetComponent<Text>().text = Lang.Instance.getString("exit");
 
         settingsOptions[0].GetComponent<Text>().text = Lang.Instance.getString("bgm_volume");
         settingsOptions[1].GetComponent<Text>().text = Lang.Instance.getString("fx_volume");
         settingsOptions[2].GetComponent<Text>().text = Lang.Instance.getString("screen_mode");
         settingsOptions[3].GetComponent<Text>().text = Lang.Instance.getString("resolution");
         settingsOptions[4].GetComponent<Text>().text = Lang.Instance.getString("v_sync");
+
+        creditsOnlyOption[0].GetComponent<Text>().text = "";
+
+        credits[0].transform.GetChild(0).GetComponent<Text>().text = Lang.Instance.getString("credit_code");
+        credits[1].transform.GetChild(0).GetComponent<Text>().text = Lang.Instance.getString("credit_code");
+        credits[2].transform.GetChild(0).GetComponent<Text>().text = Lang.Instance.getString("credit_art") + "  /  " + Lang.Instance.getString("credit_sound");
+        credits[3].transform.GetChild(0).GetComponent<Text>().text = Lang.Instance.getString("credit_art");
+        credits[4].transform.GetChild(0).GetComponent<Text>().text = Lang.Instance.getString("credit_level");
+        credits[5].transform.GetChild(0).GetComponent<Text>().text = Lang.Instance.getString("credit_level");
+        credits[6].GetComponent<Text>().text = Lang.Instance.getString("credit_sfx");
     }
 }
