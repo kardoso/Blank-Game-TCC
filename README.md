@@ -2,11 +2,7 @@
 Being done with Unity 2017.3.0f3
 
 ## Download current playable version
-[Windows](https://drive.google.com/uc?id=11DyBIZMj2kleEyn5gbBcqgYHlflsPsxK&export=download)
-
-[Linux](https://drive.google.com/uc?id=1wibIuPqlxEpIvmT8SKxFVVW0T2JImaDK&export=download)
-
-[MacOS](https://drive.google.com/uc?id=1_SDE4ZROX0HODg1x47qFcwMm7CcA01IF&export=download)
+[Blank at itch.io](https://kardoso.itch.io/blank)
 
 ## Used repositories
 [TransitionManager](https://github.com/LightGive/TransitionManager)
