@@ -28,6 +28,9 @@
 		<string name="confirm_new_game">Um jogo salvo foi encontrado. Deseja carregá-lo ou iniciar um novo jogo?
 		
 		O estado salvo será apagado caso inicie um novo jogo.</string>
+		<string name="select_difficulty">Escolha a dificuldade</string>
+		<string name="easy_difficulty">Casual</string>
+		<string name="normal_difficulty">Difícil</string>
 	</Portuguese>
 
 	<English>
@@ -56,6 +59,9 @@
 		<string name="credit_level">Level Design</string>
 		<string name="credit_sfx">Some SFXs are from</string>
 		<string name="confirm_new_game">blah blah blah blah</string>
+		<string name="select_difficulty">Choose your challenge</string>
+		<string name="easy_difficulty">Casual</string>
+		<string name="normal_difficulty">Hard</string>
 	</English>
 
 	<Japanese>
@@ -84,5 +90,8 @@
 		<string name="credit_level">レベルの設計</string>
 		<string name="credit_sfx">いくつかの効果音は、</string>
 		<string name="confirm_new_game">ああああああああああああ</string>
+		<string name="select_difficulty">チャレンジを選択して</string>
+		<string name="easy_difficulty">カジュアル</string>
+		<string name="normal_difficulty">ハード</string>
 	</Japanese>
 </languages>

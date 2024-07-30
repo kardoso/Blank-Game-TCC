@@ -1729,7 +1729,7 @@ MonoBehaviour:
   - {fileID: 337736064}
   - {fileID: 78747254}
   bgm: {fileID: 8300000, guid: 5d0fe6329deb779428b4202774700c2a, type: 3}
-  sceneToLoad: level0
+  sceneToLoad: SelectDifficulty
   mainTransitionColor: {r: 0.24705882, g: 0.15686275, b: 0.19607843, a: 1}
 --- !u!1 &548671182
 GameObject:
@@ -3790,6 +3790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuMode: 0
   initialScene: 1
+  difficulty: 0
 --- !u!4 &1631754639
 Transform:
   m_ObjectHideFlags: 0

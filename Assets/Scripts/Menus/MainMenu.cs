@@ -112,7 +112,7 @@ public class MainMenu : Menu
                     Debug.Log("New Game");
                     GameManager.Instance.mainMenuMode = 1;
                     FindObjectOfType<TransitionManager>().SetColor(mainTransitionColor);
-                    TransitionManager.Instance.LoadLevel(sceneToLoad, 2);
+                    TransitionManager.Instance.LoadLevel(sceneToLoad, 1);
                 }
                 //Options
                 else if(chooseThisOption == 1){

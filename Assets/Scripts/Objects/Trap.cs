@@ -18,6 +18,10 @@ public class Trap : MonoBehaviour {
 
     void Start()
     {
+        if (GameManager.Instance.difficulty == 0)
+        {
+            Destroy(gameObject);
+        }
         p1 = point1.position;
         p2 = point2.position;
         p3 = point3.position;

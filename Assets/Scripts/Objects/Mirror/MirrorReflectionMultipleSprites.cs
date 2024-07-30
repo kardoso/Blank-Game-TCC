@@ -24,6 +24,11 @@ public class MirrorReflectionMultipleSprites : MonoBehaviour
 
 	void Start()
 	{
+		if (GameManager.Instance.difficulty == 0)
+        {
+			Destroy(gameObject);
+        }
+
 		var rend = GetComponent<Renderer>();
 		Material[] materials = rend.sharedMaterials;
 		foreach( Material mat in materials ) {
